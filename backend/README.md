@@ -47,6 +47,8 @@ npm run lint
 - **Fotos:** en MongoDB con GridFS (`media.files` / `media.chunks`). JPG o PNG hasta 10 MB; hasta 10 fotos por perfil (decisión delegada, para no llenar el clúster M0 de 512 MB).
 - **Índices:** `googleId` usa un índice único **parcial** (un índice «sparse» no ignora los `null` y bloqueaba el segundo registro con correo). Los tests e2e crean todos los índices antes de empezar.
 
-## Propuestas pendientes de validar por el equipo
-- Sinónimos de rol en la búsqueda libre («pianista» → Piano, «guitarrista» → Guitarra…): `src/profiles/busqueda.ts`.
-- Al bloquear a alguien, se quita de tus Favoritos (y no vuelve al desbloquear).
+## Decisiones delegadas
+Sinónimos de rol en la búsqueda («pianista» → Piano), bloquear quita de Favoritos, límite de fotos, etc.: ver «Decisiones delegadas» en `docs/producto.md`.
+
+## Despliegue
+Ver `docs/deploy.md` (MongoDB Atlas + Render con `render.yaml`).

@@ -1,0 +1,36 @@
+# Blueprint de Render para el backend de setena.
+# Render → New → Blueprint → elige el repositorio. Pasos completos en docs/deploy.md.
+services:
+  - type: web
+    name: setena-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI
+        sync: false # se pega a mano en Render (cadena de conexión de Atlas)
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_ACCESS_TTL
+        value: "900"
+      - key: JWT_REFRESH_TTL
+        value: "2592000"
+      - key: CORS_ORIGINS
+        value: "http://localhost:8100,capacitor://localhost,http://localhost"
+      - key: GOOGLE_CLIENT_IDS
+        sync: false # IDs de cliente OAuth (web y Android); vacío desactiva el login con Google
+      - key: THROTTLE_LIMIT
+        value: "10"
+      - key: THROTTLE_TTL_MS
+        value: "60000"
+      - key: SEED_DEMO_PASSWORD
+        sync: false # solo si se va a ejecutar el seed desde la Shell de Render
