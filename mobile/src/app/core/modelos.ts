@@ -92,3 +92,46 @@ export interface ResumenChat {
   ultimoMensajeAt: string | null;
   noLeidos: number;
 }
+
+export interface Ajustes {
+  notifMensajes: boolean;
+  notifNovedades: boolean;
+}
+
+export interface Yo {
+  id: string;
+  email: string;
+  proveedores: string[];
+  tienePassword: boolean;
+  ajustes: Ajustes;
+  perfil: Ficha | null;
+}
+
+export interface TarifaEntrada {
+  servicio: string;
+  precio?: number | null;
+  texto?: string | null;
+}
+
+export interface CambiosPerfil {
+  roles?: string[];
+  generos?: string[];
+  remunerados?: boolean;
+  colaboraciones?: boolean;
+  zona?: string;
+  lugar?: string;
+  disponibilidad?: string[];
+  sobreMi?: string | null;
+  tarifas?: TarifaEntrada[];
+  redes?: Partial<Redes>;
+}
+
+export interface PerfilCompartido {
+  id: string;
+  nombre: string;
+  roles: string[];
+  generos: string[];
+  zona: string;
+  lugar: string;
+  avatarId: string | null;
+}

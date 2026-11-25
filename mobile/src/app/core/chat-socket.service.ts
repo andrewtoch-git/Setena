@@ -5,6 +5,7 @@ import { io } from 'socket.io-client';
 
 import { environment } from '../../environments/environment';
 
+import type { PerfilCompartido } from './modelos';
 import { SesionService } from './sesion.service';
 
 export interface MensajeChat {
@@ -13,6 +14,8 @@ export interface MensajeChat {
   mio: boolean;
   enviadoAt: string;
   leidoAt: string | null;
+  /** Mensaje de tipo «Perfil compartido». */
+  perfil?: PerfilCompartido | null;
 }
 
 type Ack<T> = { ok: true; datos: T } | { ok: false; error: string; status: number };

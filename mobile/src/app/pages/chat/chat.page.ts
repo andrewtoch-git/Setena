@@ -13,15 +13,17 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { IonContent, IonFooter, IonHeader, NavController } from '@ionic/angular';
+import { IonContent, IonFooter, IonHeader, IonModal, NavController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../core/api.service';
 import type { MensajeChat } from '../../core/chat-socket.service';
 import { ChatSocketService, ErrorChat } from '../../core/chat-socket.service';
-import type { ResumenChat } from '../../core/modelos';
+import { ubicacion } from '../../core/formato';
+import type { PerfilCompartido, ResumenChat } from '../../core/modelos';
 import { IconoComponent } from '../../ui/icono.component';
+import { OpcionesPerfilComponent } from '../../ui/opciones-perfil.component';
 
 interface Burbuja extends MensajeChat {
   /** Solo en mensajes propios pendientes o fallidos. */
@@ -35,7 +37,7 @@ const SUGERENCIA = 'Hola, he visto tu perfil y me interesa colaborar contigo. ¿
 @Component({
   selector: 'app-chat',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IonHeader, IonContent, IonFooter, RouterLink, IconoComponent],
+  imports: [IonHeader, IonContent, IonFooter, IonModal, RouterLink, IconoComponent, OpcionesPerfilComponent],
   templateUrl: './chat.page.html',
   styleUrl: './chat.page.scss',
 })
@@ -52,7 +54,11 @@ export class ChatPage {
   protected readonly resumen = signal<ResumenChat | null>(null);
   protected readonly mensajes = signal<Burbuja[]>([]);
   protected readonly cargando = signal(true);
+  /** La otra persona me ha bloqueado (lo sabemos al intentar enviar). */
   protected readonly bloqueado = signal(false);
+  /** Yo he bloqueado a la otra persona. */
+  protected readonly bloqueadoPorMi = signal(false);
+  protected readonly opciones = signal(false);
   protected readonly texto = signal('');
   protected readonly sugerencia = SUGERENCIA;
 
@@ -91,8 +97,10 @@ export class ChatPage {
           }),
         ),
       ]);
-      this.resumen.set(chats.find((c) => c.id === id) ?? null);
+      const resumen = chats.find((c) => c.id === id) ?? null;
+      this.resumen.set(resumen);
       this.mensajes.set(historial);
+      if (resumen?.con) void this.estadoBloqueo(resumen.con.perfilId);
       void this.marcarLeido();
     } catch (e) {
       if (e instanceof HttpErrorResponse && e.status === 404) this.nav.back();
@@ -100,6 +108,39 @@ export class ChatPage {
       this.cargando.set(false);
       this.bajar();
     }
+  }
+
+  private async estadoBloqueo(perfilId: string): Promise<void> {
+    try {
+      this.bloqueadoPorMi.set((await this.api.perfil(perfilId)).bloqueadoPorMi);
+    } catch (e) {
+      // 404: la otra persona me ha bloqueado o ha borrado su cuenta
+      if (e instanceof HttpErrorResponse && e.status === 404) this.bloqueado.set(true);
+    }
+  }
+
+  protected async desbloquear(): Promise<void> {
+    const con = this.resumen()?.con;
+    if (!con) return;
+    try {
+      await this.api.desbloquear(con.perfilId);
+      this.bloqueadoPorMi.set(false);
+    } catch {
+      // se mantiene el aviso
+    }
+  }
+
+  protected bloqueoCambiado(bloqueado: boolean): void {
+    this.bloqueadoPorMi.set(bloqueado);
+  }
+
+  /** Datos de la tarjeta «Perfil compartido». */
+  protected lineaPerfil(p: PerfilCompartido): string {
+    return `${p.roles.join(', ')} · ${p.generos.join(', ')}`;
+  }
+
+  protected ubicPerfil(p: PerfilCompartido): string {
+    return ubicacion(p.zona, p.lugar);
   }
 
   private async marcarLeido() {

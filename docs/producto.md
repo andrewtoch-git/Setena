@@ -101,6 +101,9 @@ El equipo delegó en Claude estas decisiones para poder avanzar. Se pueden revis
 | Login con Google en la app | Aplazado hasta configurar el OAuth de Google. El wireframe de «Iniciar sesión» no tiene botón de Google (manda el wireframe); el backend ya lo soporta. | Sin el ID de cliente no se puede probar. |
 | «¿Has olvidado tu contraseña?» | No aparece hasta tener un servicio de correo para enviar el enlace. | Un enlace que no funciona confunde en las pruebas con usuarios. |
 | Búsqueda | Se escribe directamente en la barra de Explorar (resultados mientras escribes), en vez de abrir una pantalla aparte. | Menos pasos; mismo resultado que el wireframe «Explorar-busqueda». |
+| Compartir fuera de la app | Enlace público `…/p/<id>` (página mínima con vista previa) y botón que abre la app con `setena://perfil/<id>`. Opciones: Copiar enlace, WhatsApp, Facebook y «Más» (menú del sistema). **Instagram no se ofrece**: no permite compartir enlaces desde una app web. | Sin dominio propio, es la forma de que el enlace funcione en cualquier sitio. |
+| «Añadir a tu perfil» | Solo «Subir foto» mientras los vídeos estén aplazados. | No mostrar una opción que no funciona. |
+| Cerrar sesión | Se hace desde Ajustes (como el wireframe) y vuelve a Inicio. | — |
 | Fotos por perfil | Máximo 10 fotos, JPG o PNG de hasta 10 MB | Cabe en el clúster gratuito M0 (512 MB) con margen. |
 | `applicationId` Android | `cat.setena.app` | La marca es «setena» y el proyecto es de Barcelona. |
 | Ionic vs. nativo (fase 5) | Ionic es **aceptable** si en un Android de gama media: (1) el scroll de Explorar con 30 tarjetas va a 60 fps sin tirones visibles, (2) abrir una ficha tarda < 300 ms desde el toque, (3) el botón Atrás y el teclado se comportan como en una app nativa en todas las pantallas, y (4) los componentes cumplen el design system (color, Roboto, formas, estados). Si falla (1) o (3), plan B nativo. | Criterios medibles y ligados a la experiencia real. |

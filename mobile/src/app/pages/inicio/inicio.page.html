@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div class="inicio" [class.fin]="fin">
+    <div class="fondo" aria-hidden="true">
+      <img src="assets/inicio.jpg" alt="" />
+      <div class="velo"></div>
+    </div>
+
+    <svg class="marca" viewBox="-201 -437 402 874" preserveAspectRatio="xMidYMin meet" role="img" aria-label="setena">
+      <g id="v-all" class="t">
+        <circle class="t d d1" cx="-38.9" cy="-67.4" r="27.24" />
+        <circle class="t d d2" cx="38.9" cy="-67.4" r="27.24" />
+        <circle class="t d d3" cx="-77.8" cy="0" r="27.24" />
+        <circle class="t d d4" cx="-38.9" cy="67.4" r="27.24" />
+        <circle class="t d d5" cx="38.9" cy="67.4" r="27.24" />
+        <path
+          id="v-br"
+          class="t p lima"
+          d="M23.01,-14.59a18.83,18.83 0 0 0 31.82,0L54.83,14.59a18.83,18.83 0 0 0 -31.82,0Z"
+        />
+        <circle id="v-p1" class="t p lima" cx="0" cy="0" r="27.24" />
+        <circle id="v-p2" class="t p lima" cx="77.8" cy="0" r="27.24" />
+        <text id="v-word" class="t" x="0" y="158" text-anchor="middle">setena</text>
+      </g>
+    </svg>
+
+    <div class="contenido">
+      <div class="cerrar">
+        <a
+          class="in in1 icono-boton"
+          routerLink="/tabs/explorar"
+          [replaceUrl]="true"
+          aria-label="Cerrar y explorar sin cuenta"
+        >
+          <app-icono nombre="cerrar" />
+        </a>
+      </div>
+      <div class="hueco" aria-hidden="true"></div>
+      <h1 class="in in2"><strong>Conecta</strong> con músicos en tu misma frecuencia.</h1>
+      <p class="in in3">
+        Descubre nuevos talentos, encuentra personas con las que compartir tu música y crea nuevas oportunidades.
+      </p>
+      <div class="crece"></div>
+      <a class="in in4 btn btn-principal" routerLink="/registro">Regístrate gratis</a>
+      <a class="in in5 btn btn-contorno" routerLink="/iniciar-sesion">Iniciar sesión</a>
+    </div>
+  </div>
+</ion-content>

@@ -4,6 +4,15 @@
       <app-icono nombre="volver" />
     </button>
     <h1>Perfil</h1>
+    @if (ficha(); as f) { @if (estado() === 'listo') {
+    <button type="button" class="icono-boton" aria-label="Compartir perfil" (click)="compartir.set(true)">
+      <app-icono nombre="compartir" />
+    </button>
+    @if (!f.esPropio) {
+    <button type="button" class="icono-boton" aria-label="Más opciones" (click)="abrirOpciones()">
+      <app-icono nombre="mas" />
+    </button>
+    } } }
   </div>
 </ion-header>
 
@@ -33,40 +42,13 @@
   } @default { @if (ficha(); as f) {
   <div class="contenido">
     @if (f.bloqueadoPorMi) {
-    <div class="aviso-bloqueo" role="status">Has bloqueado a {{ f.nombre }}. No podrá escribirte ni ver tu perfil.</div>
+    <div class="aviso-bloqueo" role="status">
+      <span>Has bloqueado a {{ f.nombre }}. No podrá escribirte ni ver tu perfil.</span>
+      <button type="button" class="btn btn-texto" (click)="desbloquear()">Desbloquear</button>
+    </div>
     }
 
-    <!-- Carrusel de fotos y vídeos (vídeos aplazados: se muestra la miniatura) -->
-    <div>
-      <div class="carrusel" #carrusel aria-label="Fotos y vídeos" (scroll)="alDeslizar($event)">
-        @for (m of media(); track $index) {
-        <div class="diapositiva" role="group" [attr.aria-label]="m.titulo">
-          @if (m.img) {
-          <img [src]="m.img" alt="" />
-          } @else {
-          <app-icono nombre="foto" [tam]="32" />
-          }
-          <span class="rotulo">{{ m.titulo }}</span>
-        </div>
-        } @empty {
-        <div class="diapositiva"><app-icono nombre="foto" [tam]="32" /></div>
-        }
-      </div>
-      @if (media().length > 1) {
-      <div class="puntos">
-        @for (m of media(); track $index) {
-        <button
-          type="button"
-          [attr.aria-label]="'Ir a ' + m.titulo"
-          [attr.aria-current]="diapositiva() === $index"
-          (click)="irA(carrusel, $index)"
-        >
-          <span [class.activo]="diapositiva() === $index"></span>
-        </button>
-        }
-      </div>
-      }
-    </div>
+    <app-carrusel [media]="f.media" />
 
     <div class="cabecera">
       <div class="avatar">
@@ -84,7 +66,7 @@
       </div>
     </div>
 
-    @if (!f.esPropio) {
+    @if (!f.esPropio && !f.bloqueadoPorMi) {
     <div>
       <button
         type="button"
@@ -107,62 +89,7 @@
     </div>
     }
 
-    <div class="pestanas" role="tablist">
-      <button role="tab" type="button" [attr.aria-selected]="pestana() === 'info'" (click)="pestana.set('info')">
-        Info
-      </button>
-      <button role="tab" type="button" [attr.aria-selected]="pestana() === 'tarifas'" (click)="pestana.set('tarifas')">
-        Tarifas
-      </button>
-    </div>
-
-    @if (pestana() === 'info') {
-    <div class="info">
-      <section>
-        <h3>Sobre mí</h3>
-        <p>{{ f.sobreMi || 'Aún no ha escrito nada sobre sí mismo.' }}</p>
-      </section>
-      <section>
-        <h3>Disponibilidad</h3>
-        <p>{{ f.disponibilidad.length ? f.disponibilidad.join(' · ') : 'No indicada' }}</p>
-      </section>
-      <section>
-        <h3>Redes sociales</h3>
-        @if (redes().length) {
-        <div class="redes">
-          @for (r of redes(); track r.clave) {
-          <a [href]="r.url" target="_blank" rel="noopener"> <span class="red">{{ r.letra }}</span>{{ r.nombre }} </a>
-          }
-        </div>
-        } @else {
-        <p>Aún no ha añadido redes sociales.</p>
-        }
-      </section>
-    </div>
-    } @else {
-    <div class="tarifas">
-      @for (t of f.tarifas; track t.servicio) {
-      <div class="tarifa">
-        <div class="col">
-          <span class="servicio">{{ t.nombre }}</span>
-          <span class="pequeno">{{ t.servicio === 'otros' ? t.texto : t.descripcion }}</span>
-        </div>
-        @if (t.servicio !== 'otros') {
-        <div class="col derecha">
-          <span class="importe">{{ precio(t) }}</span>
-          @if (t.precio !== null) {
-          <span class="pequeno">{{ t.unidad }}</span>
-          }
-        </div>
-        }
-      </div>
-      } @empty {
-      <p class="texto-secundario">Aún no ha añadido tarifas.</p>
-      } @if (f.tarifas.length) {
-      <p class="pequeno nota">Precios orientativos. El precio final se acuerda por chat.</p>
-      }
-    </div>
-    }
+    <app-ficha-detalle [ficha]="f" [propio]="f.esPropio" />
   </div>
   } } }
 
@@ -179,6 +106,30 @@
       <app-invitacion-registro (navegar)="invitar.set(false)" />
     </ng-template>
   </ion-modal>
+
+  @if (ficha(); as f) {
+  <ion-modal class="hoja" [isOpen]="compartir()" (didDismiss)="compartir.set(false)">
+    <ng-template>
+      <app-compartir-perfil
+        [perfilId]="f.id"
+        [nombre]="f.nombre"
+        [propio]="f.esPropio"
+        (cerrar)="compartir.set(false)"
+      />
+    </ng-template>
+  </ion-modal>
+  <ion-modal class="hoja" [isOpen]="opciones()" (didDismiss)="opciones.set(false)">
+    <ng-template>
+      <app-opciones-perfil
+        [perfilId]="f.id"
+        [nombre]="f.nombre"
+        [bloqueado]="f.bloqueadoPorMi"
+        (bloqueoCambiado)="bloqueoCambiado($event)"
+        (cerrar)="opciones.set(false)"
+      />
+    </ng-template>
+  </ion-modal>
+  }
 </ion-content>
 
 @if (ficha(); as f) { @if (!f.esPropio && estado() === 'listo') {

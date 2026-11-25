@@ -29,7 +29,19 @@ npm run test:e2e     # Playwright (pruebas de humo; la primera vez: npx playwrig
 | `src/app/ui/` | Iconos del wireframe, logotipo, tarjeta de músico, ventana de registro |
 | `src/app/pages/` | Explorar (+ Filtros), Perfil, Iniciar sesión, Registro, Bienvenida, Favoritos, Chats, Chat, Mi perfil |
 
-## Estado (iteración 1, 25/11)
-Hecho: Explorar con búsqueda libre, chips rápidos, panel de Filtros, paginación y estados de carga, error y vacío · ficha de músico (carrusel, Info/Tarifas, Favorito, Chat) · iniciar sesión · registro con validación del wireframe · Bienvenida · Favoritos con «Deshacer» · lista de Chats · conversación en tiempo real con «Enviado / No se ha enviado / Reintentar» · invitación a registrarse sin sesión · insignia de no leídos.
+## Estado (fase 4 completa salvo el APK, 25/11)
+| Pantalla | Wireframe |
+|---|---|
+| Inicio con animación de 1 s (una vez por sesión; respeta «reducir movimiento») | Inicio |
+| Explorar: búsqueda libre, chips rápidos, Filtros, paginación, estados | Explorar*, Filtros |
+| Perfil: carrusel, Favorito, Info/Tarifas, Chat, Compartir, Más opciones (denunciar, bloquear, desbloquear) | Perfil-musico* |
+| Iniciar sesión, Registro, Bienvenida | Iniciar-sesion*, Registro*, Bienvenida |
+| Favoritos con «Deshacer» | Favoritos* |
+| Chats y conversación en tiempo real; «Perfil compartido»; bloqueo | Chats*, Chat-* |
+| Mi perfil: carrusel editable (subir, eliminar, principal), Compartir, Editar perfil | Mi-perfil* |
+| Editar perfil: «Cambios guardados», error con «Reintentar», «¿Salir sin guardar?» | Mi-perfil-editar* |
+| Ajustes: notificaciones, cambiar contraseña, cerrar sesión, eliminar cuenta | Ajustes* |
 
-Pendiente: Editar perfil, subir fotos desde Mi perfil, Ajustes (contraseña, notificaciones, eliminar cuenta), Compartir, Más opciones (denunciar, bloquear), animación de Inicio, login con Google, proyecto Android (`npx cap add android`, requiere Android Studio).
+Compartir fuera de la app usa el enlace público `https://setena-api.onrender.com/p/<id>`; su botón abre la app con `setena://perfil/<id>` (hay que registrar el esquema al crear el proyecto Android).
+
+Pendiente: proyecto Android y APK (`npx cap add android`, requiere Android Studio); login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada).

@@ -1,0 +1,240 @@
+<ion-header class="ion-no-border">
+  <div class="barra">
+    <button type="button" class="icono-boton" aria-label="Volver" (click)="volver()">
+      <app-icono nombre="volver" />
+    </button>
+    <h1>Editar perfil</h1>
+  </div>
+</ion-header>
+
+<ion-content>
+  <form class="pagina formulario" (submit)="$event.preventDefault(); guardar()" novalidate>
+    @if (enviado() && !valido()) {
+    <div class="aviso-error" role="alert">
+      <app-icono nombre="error" /><span>Faltan campos obligatorios. Revisa los campos marcados.</span>
+    </div>
+    } @if (errorGuardar()) {
+    <div class="aviso-error" role="alert">
+      <app-icono nombre="error" />
+      <span>No se han podido guardar los cambios. Revisa tu conexión e inténtalo de nuevo.</span>
+      <button type="button" class="btn btn-texto reintentar" (click)="guardar()">Reintentar</button>
+    </div>
+    }
+
+    <div class="foto">
+      <span class="titulo-campo">Foto de perfil</span>
+      <label class="btn btn-contorno">
+        Cambiar foto
+        <input type="file" accept="image/jpeg,image/png" hidden (change)="elegirFoto($event)" />
+      </label>
+      @if (fotoNueva()) {
+      <span class="texto-secundario">Nueva foto seleccionada</span>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('roles')">
+      <label for="e-roles">Instrumento o rol</label>
+      <button id="e-roles" type="button" class="selector" (click)="selector.set('roles')">
+        <span [class.texto-secundario]="!roles().length"
+          >{{ roles().length ? roles().join(', ') : 'Elige uno o varios' }}</span
+        >
+        <span aria-hidden="true">▾</span>
+      </button>
+      @if (err('roles')) {
+      <span class="mensaje-error">{{ err('roles') }}</span>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('generos')">
+      <label for="e-generos">Géneros musicales</label>
+      <button id="e-generos" type="button" class="selector" (click)="selector.set('generos')">
+        <span [class.texto-secundario]="!generos().length"
+          >{{ generos().length ? generos().join(', ') : 'Elige tus estilos' }}</span
+        >
+        <span aria-hidden="true">▾</span>
+      </button>
+      @if (err('generos')) {
+      <span class="mensaje-error">{{ err('generos') }}</span>
+      }
+    </div>
+
+    <fieldset>
+      <legend>Tipo de proyecto</legend>
+      <div class="chips">
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="remunerados()"
+          (click)="remunerados.set(!remunerados()); cambio()"
+        >
+          @if (remunerados()) {
+          <app-icono nombre="check" [tam]="18" />
+          } Proyectos remunerados
+        </button>
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="colaboraciones()"
+          (click)="colaboraciones.set(!colaboraciones()); cambio()"
+        >
+          @if (colaboraciones()) {
+          <app-icono nombre="check" [tam]="18" />
+          } Colaboraciones gratuitas
+        </button>
+      </div>
+      @if (err('tipo')) {
+      <span class="mensaje-error">{{ err('tipo') }}</span>
+      }
+    </fieldset>
+
+    <fieldset>
+      <legend>Ubicación</legend>
+      <div class="pestanas" role="tablist">
+        @for (z of catalogos()?.zonas ?? []; track z) {
+        <button type="button" role="tab" [attr.aria-selected]="zona() === z" (click)="elegirZona(z)">{{ z }}</button>
+        }
+      </div>
+      <p class="texto-secundario">{{ zona() === 'Barcelona ciudad' ? 'Elige tu distrito' : 'Elige tu municipio' }}</p>
+      <div class="chips">
+        @for (l of lugares(); track l) {
+        <button type="button" class="chip" [attr.aria-pressed]="lugar() === l" (click)="lugar.set(l); cambio()">
+          @if (lugar() === l) {
+          <app-icono nombre="check" [tam]="18" />
+          } {{ l }}
+        </button>
+        }
+      </div>
+      @if (lugar()) {
+      <p>Tu ubicación: {{ zona() === 'Barcelona ciudad' ? lugar() + ', Barcelona' : lugar() }}</p>
+      } @if (err('ubic')) {
+      <span class="mensaje-error">{{ err('ubic') }}</span>
+      }
+    </fieldset>
+
+    <fieldset>
+      <legend>Disponibilidad</legend>
+      <div class="chips">
+        @for (d of catalogos()?.disponibilidad ?? []; track d) {
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="disponibilidad().includes(d)"
+          (click)="alternar(disponibilidad, d)"
+        >
+          @if (disponibilidad().includes(d)) {
+          <app-icono nombre="check" [tam]="18" />
+          } {{ d }}
+        </button>
+        }
+      </div>
+      @if (err('disp')) {
+      <span class="mensaje-error">{{ err('disp') }}</span>
+      } @else {
+      <span class="ayuda texto-secundario">«Inmediata»: disponible en cuanto te contacten.</span>
+      }
+    </fieldset>
+
+    <div class="campo">
+      <label for="e-sobre">Sobre mí</label>
+      <textarea
+        id="e-sobre"
+        maxlength="600"
+        [value]="sobreMi()"
+        (input)="sobreMi.set($any($event.target).value); cambio()"
+      ></textarea>
+    </div>
+
+    <fieldset>
+      <legend>Tarifas <span class="texto-secundario">(opcional)</span></legend>
+      <p class="texto-secundario">Escribe un precio o «A convenir».</p>
+      @for (s of servicios; track s.clave) {
+      <div class="tarifa">
+        <div class="col">
+          <span class="servicio">{{ s.nombre }}</span>
+          <span class="pequeno">{{ s.descripcion }}</span>
+        </div>
+        <div class="precio">
+          <input
+            type="text"
+            inputmode="decimal"
+            [attr.aria-label]="'Precio de ' + s.nombre"
+            [value]="precios()[s.clave] ?? ''"
+            (input)="ponerPrecio(s.clave, $any($event.target).value)"
+          />
+          <span class="pequeno">{{ s.unidad }}</span>
+        </div>
+      </div>
+      }
+      <div class="campo">
+        <label for="e-otros">Otros · Servicios adicionales</label>
+        <input
+          id="e-otros"
+          maxlength="120"
+          [value]="otros()"
+          (input)="otros.set($any($event.target).value); cambio()"
+        />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Redes sociales</legend>
+      @for (r of redesLista; track r.clave) {
+      <div class="red">
+        <span class="letra" aria-hidden="true">{{ r.letra }}</span>
+        <input
+          type="url"
+          inputmode="url"
+          [attr.aria-label]="r.nombre"
+          [placeholder]="r.nombre"
+          [value]="redes()[r.clave]"
+          (input)="ponerRed(r.clave, $any($event.target).value)"
+        />
+      </div>
+      }
+    </fieldset>
+  </form>
+
+  <ion-modal class="hoja" [isOpen]="selector() !== null" (didDismiss)="selector.set(null)">
+    <ng-template>
+      <app-selector-multiple
+        [titulo]="selector() === 'roles' ? 'Instrumento o rol' : 'Géneros musicales'"
+        [opciones]="opcionesSelector()"
+        [seleccion]="selector() === 'roles' ? roles() : generos()"
+        (guardar)="guardarSelector($event)"
+      />
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal class="ventana" [isOpen]="guardado()" (didDismiss)="guardado.set(false)">
+    <ng-template>
+      <app-dialogo
+        titulo="Cambios guardados"
+        texto="Tu perfil ya muestra la información actualizada."
+        accion="Ver mi perfil"
+        cancelar=""
+        (confirmar)="verMiPerfil()"
+      />
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal class="ventana" [isOpen]="salir()" (didDismiss)="salir.set(false)">
+    <ng-template>
+      <app-dialogo
+        titulo="¿Salir sin guardar?"
+        texto="Perderás los cambios que no hayas guardado."
+        accion="Seguir editando"
+        cancelar="Salir sin guardar"
+        (confirmar)="salir.set(false)"
+        (cerrar)="salirSinGuardar()"
+      />
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="pie">
+    <button type="button" class="btn btn-principal btn-m" [disabled]="guardando()" (click)="guardar()">
+      Guardar cambios
+    </button>
+  </div>
+</ion-footer>

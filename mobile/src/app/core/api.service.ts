@@ -4,7 +4,17 @@ import { firstValueFrom, shareReplay } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
-import type { Busqueda, Catalogos, Ficha, FiltrosBusqueda, ResumenChat, Tarjeta } from './modelos';
+import type {
+  Ajustes,
+  Busqueda,
+  CambiosPerfil,
+  Catalogos,
+  Ficha,
+  FiltrosBusqueda,
+  ResumenChat,
+  Tarjeta,
+  Yo,
+} from './modelos';
 
 /** Acceso a la API de setena. Las rutas y respuestas están documentadas en /docs. */
 @Injectable({ providedIn: 'root' })
@@ -59,7 +69,70 @@ export class ApiService {
     return firstValueFrom(this.http.post<ResumenChat>(`${this.base}/conversaciones`, { perfilId }));
   }
 
-  yo(): Promise<{ id: string; email: string; perfil: Ficha | null }> {
-    return firstValueFrom(this.http.get<{ id: string; email: string; perfil: Ficha | null }>(`${this.base}/me`));
+  yo(): Promise<Yo> {
+    return firstValueFrom(this.http.get<Yo>(`${this.base}/me`));
+  }
+
+  // ---------- mi perfil ----------
+  actualizarPerfil(cambios: CambiosPerfil): Promise<Ficha> {
+    return firstValueFrom(this.http.patch<Ficha>(`${this.base}/me/perfil`, cambios));
+  }
+
+  subirAvatar(archivo: File): Promise<Ficha> {
+    return firstValueFrom(this.http.post<Ficha>(`${this.base}/me/avatar`, this.formulario(archivo)));
+  }
+
+  subirFoto(archivo: File, titulo: string): Promise<Ficha> {
+    return firstValueFrom(this.http.post<Ficha>(`${this.base}/me/fotos`, this.formulario(archivo, titulo)));
+  }
+
+  eliminarMedia(indice: number): Promise<Ficha> {
+    return firstValueFrom(this.http.delete<Ficha>(`${this.base}/me/media/${indice}`));
+  }
+
+  marcarPrincipal(indice: number): Promise<Ficha> {
+    return firstValueFrom(this.http.post<Ficha>(`${this.base}/me/media/${indice}/principal`, null));
+  }
+
+  private formulario(archivo: File, titulo?: string): FormData {
+    const f = new FormData();
+    f.append('archivo', archivo);
+    if (titulo) f.append('titulo', titulo);
+    return f;
+  }
+
+  // ---------- cuenta ----------
+  guardarAjustes(ajustes: Partial<Ajustes>): Promise<Ajustes> {
+    return firstValueFrom(this.http.patch<Ajustes>(`${this.base}/me/ajustes`, ajustes));
+  }
+
+  cambiarPassword(actual: string, nueva: string): Promise<unknown> {
+    return firstValueFrom(this.http.patch(`${this.base}/me/password`, { actual, nueva }));
+  }
+
+  eliminarCuenta(): Promise<unknown> {
+    return firstValueFrom(this.http.delete(`${this.base}/me`));
+  }
+
+  // ---------- moderación y compartir ----------
+  bloquear(perfilId: string): Promise<unknown> {
+    return firstValueFrom(this.http.post(`${this.base}/bloqueos/${perfilId}`, null));
+  }
+
+  desbloquear(perfilId: string): Promise<unknown> {
+    return firstValueFrom(this.http.delete(`${this.base}/bloqueos/${perfilId}`));
+  }
+
+  denunciar(perfilId: string, motivo: string): Promise<unknown> {
+    return firstValueFrom(this.http.post(`${this.base}/denuncias`, { perfilId, motivo }));
+  }
+
+  compartirEnChat(conversacionId: string, perfilId: string): Promise<unknown> {
+    return firstValueFrom(this.http.post(`${this.base}/conversaciones/${conversacionId}/compartir`, { perfilId }));
+  }
+
+  /** Enlace público para compartir fuera de la app (página /p/:id del backend). */
+  enlacePerfil(perfilId: string): string {
+    return `${this.base}/p/${perfilId}`;
   }
 }

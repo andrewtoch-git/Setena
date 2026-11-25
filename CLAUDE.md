@@ -34,4 +34,5 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 - Fase 2 hecha: `npm run seed` (desde `mock-data/`) y fotos en GridFS (`/media/:id`, `/me/avatar`, `/me/fotos`).
 - Fase 3 hecha: API en https://setena-api.onrender.com con Atlas (detalles en `docs/deploy.md`).
 - Fase 4, iteración 1 hecha (`mobile/README.md`): Explorar, Filtros, Perfil, Iniciar sesión, Registro, Bienvenida, Favoritos, Chats y Chat en tiempo real.
-- Siguiente: Editar perfil, fotos, Ajustes, Compartir, denunciar y bloquear desde la app, animación de Inicio, proyecto Android.
+- Fase 4 completa salvo el APK: Inicio, Mi perfil, Editar perfil, Ajustes, Compartir (enlace público /p/:id y «Perfil compartido» en el chat), denunciar y bloquear.
+- Siguiente: proyecto Android y APK (requiere Android Studio); fase 5 (evaluar Ionic vs. nativo con los criterios de docs/producto.md).

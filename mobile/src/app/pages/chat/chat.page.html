@@ -15,11 +15,20 @@
       <span class="nombre">{{ con.nombre }}</span>
       <a class="ver-perfil" [routerLink]="['/perfil', con.perfilId]">Ver perfil</a>
     </div>
+    <button type="button" class="icono-boton" aria-label="Más opciones" (click)="opciones.set(true)">
+      <app-icono nombre="mas" />
+    </button>
     }
   </div>
 </ion-header>
 
 <ion-content>
+  @if (bloqueadoPorMi()) {
+  <div class="aviso-bloqueo arriba" role="status">
+    <span>Has bloqueado a {{ resumen()?.con?.nombre }}. No podéis enviaros mensajes.</span>
+    <button type="button" class="btn btn-texto" (click)="desbloquear()">Desbloquear</button>
+  </div>
+  }
   <div class="mensajes">
     @if (!cargando() && !mensajes().length) {
     <div class="vacio">
@@ -30,8 +39,18 @@
     </div>
     } @for (m of mensajes(); track m.id) {
     <div class="fila" [class.mia]="m.mio">
+      @if (m.perfil; as p) {
+      <!-- «Perfil compartido» -->
+      <div class="burbuja tarjeta" [class.mia]="m.mio">
+        <span class="etiqueta-tarjeta">Perfil compartido</span>
+        <span class="nombre-tarjeta">{{ p.nombre }}</span>
+        <span class="texto-secundario">{{ lineaPerfil(p) }}</span>
+        <span class="texto-secundario">{{ ubicPerfil(p) }}</span>
+        <a class="btn btn-contorno" [routerLink]="['/perfil', p.id]">Ver perfil</a>
+      </div>
+      } @else {
       <div class="burbuja" [class.mia]="m.mio" [class.fallida]="m.estado === 'fallido'">{{ m.texto }}</div>
-      @if (m.estado === 'fallido') {
+      } @if (m.estado === 'fallido') {
       <div class="estado-envio error" role="alert">
         <app-icono nombre="error" [tam]="16" />
         No se ha enviado
@@ -43,12 +62,26 @@
     </div>
     }
   </div>
+
+  @if (resumen()?.con; as con) {
+  <ion-modal class="hoja" [isOpen]="opciones()" (didDismiss)="opciones.set(false)">
+    <ng-template>
+      <app-opciones-perfil
+        [perfilId]="con.perfilId"
+        [nombre]="con.nombre"
+        [bloqueado]="bloqueadoPorMi()"
+        (bloqueoCambiado)="bloqueoCambiado($event)"
+        (cerrar)="opciones.set(false)"
+      />
+    </ng-template>
+  </ion-modal>
+  }
 </ion-content>
 
 <ion-footer class="ion-no-border">
   @if (bloqueado()) {
   <div class="aviso-bloqueo" role="status">No puedes enviar mensajes a una persona bloqueada.</div>
-  }
+  } @if (!bloqueadoPorMi()) {
   <form class="envio" (submit)="$event.preventDefault(); enviar()">
     <textarea
       #campo
@@ -66,4 +99,5 @@
       </svg>
     </button>
   </form>
+  }
 </ion-footer>

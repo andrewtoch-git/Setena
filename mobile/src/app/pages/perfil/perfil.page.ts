@@ -1,22 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { NavController, IonContent, IonFooter, IonHeader, IonModal, IonToast } from '@ionic/angular';
+import { IonContent, IonFooter, IonHeader, IonModal, IonToast, NavController } from '@ionic/angular';
 
 import { ApiService } from '../../core/api.service';
-import { haceCuanto, precio, ubicacion } from '../../core/formato';
+import { haceCuanto, ubicacion } from '../../core/formato';
 import type { Ficha } from '../../core/modelos';
 import { SesionService } from '../../core/sesion.service';
+import { CarruselComponent } from '../../ui/carrusel.component';
+import { CompartirPerfilComponent } from '../../ui/compartir-perfil.component';
+import { FichaDetalleComponent } from '../../ui/ficha-detalle.component';
 import { IconoComponent } from '../../ui/icono.component';
 import { InvitacionRegistroComponent } from '../../ui/invitacion-registro.component';
-
-const REDES = [
-  { clave: 'instagram', nombre: 'Instagram', letra: 'I' },
-  { clave: 'youtube', nombre: 'YouTube', letra: 'Y' },
-  { clave: 'spotify', nombre: 'Spotify', letra: 'S' },
-  { clave: 'tiktok', nombre: 'TikTok', letra: 'T' },
-  { clave: 'soundcloud', nombre: 'SoundCloud', letra: 'SC' },
-] as const;
+import { OpcionesPerfilComponent } from '../../ui/opciones-perfil.component';
 
 /** Perfil de músico (wireframe: Perfil-musico y variantes). */
 @Component({
@@ -31,6 +27,10 @@ const REDES = [
     RouterLink,
     IconoComponent,
     InvitacionRegistroComponent,
+    CarruselComponent,
+    FichaDetalleComponent,
+    CompartirPerfilComponent,
+    OpcionesPerfilComponent,
   ],
   templateUrl: './perfil.page.html',
   styleUrl: './perfil.page.scss',
@@ -46,14 +46,11 @@ export class PerfilPage {
 
   protected readonly ficha = signal<Ficha | null>(null);
   protected readonly estado = signal<'cargando' | 'listo' | 'no-disponible' | 'error'>('cargando');
-  protected readonly pestana = signal<'info' | 'tarifas'>('info');
-  protected readonly diapositiva = signal(0);
   protected readonly invitar = signal(false);
+  protected readonly compartir = signal(false);
+  protected readonly opciones = signal(false);
   protected readonly aviso = signal<string | null>(null);
 
-  protected readonly media = computed(() =>
-    (this.ficha()?.media ?? []).map((m) => ({ ...m, img: this.api.media(m.miniaturaId ?? m.archivoId) })),
-  );
   protected readonly avatar = computed(() => this.api.media(this.ficha()?.avatarId));
   protected readonly linea = computed(() => {
     const f = this.ficha();
@@ -64,17 +61,12 @@ export class PerfilPage {
     return f ? ubicacion(f.zona, f.lugar) : '';
   });
   protected readonly actividad = computed(() => haceCuanto(this.ficha()?.ultimaActividadAt));
-  protected readonly redes = computed(() => {
-    const r = this.ficha()?.redes;
-    return r ? REDES.filter((x) => r[x.clave]).map((x) => ({ ...x, url: r[x.clave] as string })) : [];
-  });
-  protected readonly precio = precio;
 
   constructor() {
     effect(() => void this.cargar(this.id()));
   }
 
-  private async cargar(id: string) {
+  private async cargar(id: string): Promise<void> {
     this.estado.set('cargando');
     try {
       this.ficha.set(await this.api.perfil(id));
@@ -92,13 +84,25 @@ export class PerfilPage {
     this.nav.back();
   }
 
-  protected alDeslizar(ev: Event): void {
-    const el = ev.target as HTMLElement;
-    this.diapositiva.set(Math.round(el.scrollLeft / el.clientWidth));
+  protected abrirOpciones(): void {
+    if (!this.sesion.iniciada()) this.invitar.set(true);
+    else this.opciones.set(true);
   }
 
-  protected irA(carrusel: HTMLElement, i: number): void {
-    carrusel.scrollTo({ left: i * carrusel.clientWidth, behavior: 'smooth' });
+  protected bloqueoCambiado(bloqueado: boolean): void {
+    const f = this.ficha();
+    if (f) this.ficha.set({ ...f, bloqueadoPorMi: bloqueado, esFavorito: bloqueado ? false : f.esFavorito });
+  }
+
+  protected async desbloquear(): Promise<void> {
+    const f = this.ficha();
+    if (!f) return;
+    try {
+      await this.api.desbloquear(f.id);
+      this.bloqueoCambiado(false);
+    } catch {
+      this.aviso.set('No se ha podido completar la acción. Revisa tu conexión e inténtalo de nuevo.');
+    }
   }
 
   protected async alternarFavorito(): Promise<void> {

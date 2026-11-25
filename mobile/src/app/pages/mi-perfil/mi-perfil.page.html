@@ -1,0 +1,104 @@
+<ion-header class="ion-no-border">
+  <div class="barra-logo"><app-logo /></div>
+</ion-header>
+
+<ion-content>
+  <div class="pagina">
+    <div class="titulo">
+      <h1>Mi perfil</h1>
+      @if (perfil()) {
+      <button type="button" class="icono-boton" aria-label="Compartir mi perfil" (click)="compartir.set(true)">
+        <app-icono nombre="compartir" />
+      </button>
+      <a class="icono-boton" routerLink="/ajustes" aria-label="Ajustes"><app-icono nombre="ajustes" /></a>
+      }
+    </div>
+
+    @if (!sesion.iniciada()) {
+    <app-invitacion-registro />
+    } @else if (perfil(); as p) {
+    <div class="contenido">
+      <app-carrusel
+        [media]="p.media"
+        [editable]="true"
+        (anadir)="anadir.set(true)"
+        (eliminar)="pedirEliminar($event)"
+        (principal)="marcarPrincipal($event)"
+      />
+
+      <div class="cabecera">
+        <div class="avatar">
+          @if (avatar(); as src) {
+          <img [src]="src" alt="" />
+          } @else {
+          <app-icono nombre="persona" [tam]="40" />
+          }
+        </div>
+        <div class="identidad">
+          <h2>{{ p.nombre }}</h2>
+          <span>{{ linea() }}</span>
+          <span>{{ ubic() }}</span>
+        </div>
+      </div>
+
+      @if (p.remunerados || p.colaboraciones) {
+      <div class="etiquetas">
+        @if (p.remunerados) {
+        <span class="etiqueta"><app-icono nombre="euro" [tam]="16" />Proyectos remunerados</span>
+        } @if (p.colaboraciones) {
+        <span class="etiqueta"><app-icono nombre="personas" [tam]="16" />Colaboraciones gratuitas</span>
+        }
+      </div>
+      }
+
+      <a class="btn btn-contorno editar" routerLink="/editar-perfil">Editar perfil</a>
+
+      <app-ficha-detalle [ficha]="p" [propio]="true" />
+    </div>
+    }
+  </div>
+
+  <ion-toast
+    [isOpen]="!!aviso()"
+    [message]="aviso()?.texto"
+    [duration]="aviso()?.reintentar ? 6000 : 2500"
+    [buttons]="aviso()?.reintentar ? [{ text: 'Reintentar', role: 'reintentar' }] : []"
+    (didDismiss)="alCerrarAviso($event)"
+  />
+
+  <!-- Añadir a tu perfil (vídeos aplazados: solo foto) -->
+  <ion-modal class="hoja" [isOpen]="anadir()" (didDismiss)="anadir.set(false)">
+    <ng-template>
+      <div class="contenido-ventana">
+        <h2>Añadir a tu perfil</h2>
+        <label class="opcion">
+          <app-icono nombre="foto" />
+          <span class="dos-lineas"><span>Subir foto</span><small>JPG o PNG, hasta 10 MB</small></span>
+          <input type="file" accept="image/jpeg,image/png" hidden (change)="elegirFoto($event)" />
+        </label>
+        <button type="button" class="btn btn-contorno" (click)="anadir.set(false)">Cancelar</button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal class="ventana" [isOpen]="!!confirmar()" (didDismiss)="confirmar.set(null)">
+    <ng-template>
+      <app-dialogo
+        [titulo]="tituloConfirmar()"
+        [texto]="'«' + (confirmar()?.media?.titulo ?? '') + '» dejará de verse en tu perfil.'"
+        accion="Eliminar"
+        [destructiva]="true"
+        (confirmar)="eliminar()"
+        (cerrar)="confirmar.set(null)"
+      />
+    </ng-template>
+  </ion-modal>
+
+  @if (perfil(); as p) {
+  <ion-modal class="hoja" [isOpen]="compartir()" (didDismiss)="compartir.set(false)">
+    <ng-template>
+      <app-compartir-perfil [perfilId]="p.id" [nombre]="p.nombre" [propio]="true" (cerrar)="compartir.set(false)" />
+    </ng-template>
+  </ion-modal>
+  }
+</ion-content>

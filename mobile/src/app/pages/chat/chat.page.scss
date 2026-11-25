@@ -177,3 +177,39 @@
     color: color-mix(in srgb, var(--on-surface) 38%, transparent);
   }
 }
+
+.quien {
+  flex: 1;
+}
+
+.aviso-bloqueo.arriba {
+  margin: 12px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  span {
+    flex: 1;
+  }
+}
+
+/* Tarjeta «Perfil compartido» */
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 220px;
+  font-size: 14px;
+  line-height: 20px;
+  .etiqueta-tarjeta {
+    font: 500 12px var(--font-brand);
+    color: var(--on-surface-variant);
+  }
+  .nombre-tarjeta {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .btn {
+    margin-top: 8px;
+    height: 36px;
+  }
+}

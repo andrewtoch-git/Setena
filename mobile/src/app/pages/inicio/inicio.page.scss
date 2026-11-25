@@ -1,0 +1,284 @@
+/* Animación «Encuentro» corta (≈1 s), copiada del lienzo (Inicio.dc.html, decisión del 25/11). */
+
+.inicio {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fondo {
+  position: absolute;
+  inset: 0;
+  animation: vbg 1s cubic-bezier(0.2, 0, 0, 1) 1 both;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/* Degradado oscuro de la paleta para que el texto se lea sobre la foto */
+.velo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 20% at 50% 17%,
+      rgba(14, 13, 18, 0.9) 0%,
+      rgba(14, 13, 18, 0.6) 55%,
+      rgba(14, 13, 18, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(20, 19, 24, 0.95) 0%,
+      rgba(20, 19, 24, 0.9) 20%,
+      rgba(20, 19, 24, 0.55) 30%,
+      rgba(30, 22, 62, 0.36) 39%,
+      rgba(20, 19, 24, 0.6) 45%,
+      rgba(20, 19, 24, 0.84) 50%,
+      rgba(20, 19, 24, 0.95) 58%,
+      var(--surface) 72%,
+      var(--surface) 100%
+    );
+}
+
+.marca {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 402px;
+  height: 874px;
+  max-width: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  circle {
+    fill: var(--palette-primary-40);
+  }
+  .lima {
+    fill: var(--acento);
+  }
+  text {
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: 58px;
+    letter-spacing: -0.4px;
+    fill: var(--on-surface);
+  }
+}
+
+.t {
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: both;
+}
+.d,
+.p {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+#v-all {
+  animation-name: vall;
+  transform-origin: 0 0;
+}
+.d {
+  animation-name: vd;
+}
+.d2 {
+  animation-delay: 0.03s;
+}
+.d3 {
+  animation-delay: 0.06s;
+}
+.d4 {
+  animation-delay: 0.09s;
+}
+.d5 {
+  animation-delay: 0.12s;
+}
+#v-p1 {
+  animation-name: vp1;
+}
+#v-p2 {
+  animation-name: vp2;
+}
+#v-br {
+  animation-name: vbr;
+}
+#v-word {
+  animation-name: vword;
+}
+
+@keyframes vall {
+  0%,
+  55% {
+    transform: translate(0, 0) scale(1);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  90%,
+  100% {
+    transform: translate(0, -287px) scale(0.62);
+  }
+}
+@keyframes vbg {
+  0%,
+  55% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  90%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes vd {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  25%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes vp1 {
+  0% {
+    transform: scale(0.001);
+  }
+  20% {
+    transform: scale(1.08);
+  }
+  28%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes vp2 {
+  0%,
+  10% {
+    transform: scale(0.001);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  38%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes vbr {
+  0%,
+  30% {
+    transform: scale(1, 0.001);
+  }
+  45%,
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes vword {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  52%,
+  66% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+.in {
+  animation: vin 0.35s cubic-bezier(0.2, 0, 0, 1) both;
+}
+.in1 {
+  animation-delay: 0.85s;
+}
+.in2 {
+  animation-delay: 0.9s;
+}
+.in3 {
+  animation-delay: 0.95s;
+}
+.in4 {
+  animation-delay: 1s;
+}
+.in5 {
+  animation-delay: 1.05s;
+}
+@keyframes vin {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+}
+
+/* Ya vista en esta sesión, o «reducir movimiento»: estado final directamente */
+.fin .t,
+.fin .fondo,
+.fin .in {
+  animation-delay: -30s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .t,
+  .fondo,
+  .in {
+    animation-delay: -30s !important;
+  }
+}
+
+.contenido {
+  position: relative;
+  flex: 1;
+  padding: calc(16px + var(--ion-safe-area-top, 0px)) 24px calc(32px + var(--ion-safe-area-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  .btn {
+    width: 100%;
+  }
+}
+.cerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+.hueco {
+  height: 300px;
+}
+h1 {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  strong {
+    font-weight: 700;
+    color: var(--acento);
+  }
+}
+p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--on-surface-variant);
+  text-align: center;
+}
+.crece {
+  flex: 1;
+}
