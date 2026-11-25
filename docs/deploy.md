@@ -1,5 +1,14 @@
 # Despliegue: MongoDB Atlas + Render
 
+## Estado actual (25/11)
+| Pieza | Valor |
+|---|---|
+| API | https://setena-api.onrender.com (`/health`, `/docs`) · Render, plan Free, Frankfurt, despliegue automático desde `main` |
+| Base de datos | Atlas, proyecto `setena`, clúster `setena` (M0, AWS Frankfurt), base de datos `setena` |
+| Usuario de BD | `setena-api` (lectura y escritura). La contraseña solo la tiene el equipo |
+| Acceso de red | `0.0.0.0/0` (Render free no tiene IP fija) |
+| Datos | Seed cargado: 32 músicos ficticios, 15 fotos, chats y favoritos de Alex. Usuario demo `alex.martin@example.com`, con la contraseña de `SEED_DEMO_PASSWORD` en `backend/.env` |
+
 > Los pasos con cuentas y contraseñas los hace una persona del equipo. Claude no crea cuentas ni introduce credenciales.
 
 ## 1. MongoDB Atlas (base de datos)
