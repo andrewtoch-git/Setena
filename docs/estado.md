@@ -8,7 +8,7 @@ Fases según `Guia_Chat_a_Claude_Code_App_Music.md` (sección 7). Cada «Comprob
 | 1b · Chat en tiempo real (WebSocket) | ✅ Hecha | socket.io `/chat`, tests con clientes reales. Contrato en `docs/evaluacion-websocket.md` |
 | 2 · Datos mock | ✅ Hecha | `npm run seed` idempotente desde `mock-data/` (32 músicos ficticios + fotos en GridFS). Usuario demo `alex.martin@example.com`; su contraseña va en `SEED_DEMO_PASSWORD` (`.env.example`) |
 | 3 · MongoDB Atlas + Render | ✅ Hecha | API https://setena-api.onrender.com (`/health` → db up). App web https://setena-app.onrender.com. Pasos en `docs/deploy.md` |
-| 4 · Ionic + Capacitor | 🟡 Casi: falta compilar la APK | Todas las pantallas del wireframe (ver `mobile/README.md`); 11 tests unitarios, lint y build de producción limpios. Proyecto Android generado en `mobile/android` (`cat.setena.app`, esquema `setena://perfil/<id>` registrado). **Falta:** abrirlo en Android Studio y generar la APK (este Mac no tiene Java ni SDK de Android) |
+| 4 · Ionic + Capacitor | ✅ Hecha | Todas las pantallas del wireframe (ver `mobile/README.md`); 11 tests unitarios, lint y build de producción limpios. APK de depuración generada desde la terminal (JDK 21 + SDK de Android, sin Android Studio): `cat.setena.app`, Android 7.0+ (SDK 24), destino SDK 36, esquema `setena://perfil/<id>`. La API acepta su origen (`https://localhost`) |
 | 5 · Evaluar Ionic vs. nativo | ⏳ Sin empezar | Criterios ya fijados en `docs/producto.md` (60 fps en Explorar, ficha < 300 ms, Atrás y teclado nativos, fidelidad al design system). Necesita la APK en un Android de gama media |
 
 ## Diferencias con la guía (decididas)
@@ -28,9 +28,8 @@ Fases según `Guia_Chat_a_Claude_Code_App_Music.md` (sección 7). Cada «Comprob
 | Nombre de la marca | «setena»; `applicationId` `cat.setena.app` |
 
 ## Siguientes pasos
-1. **APK** (necesita Android Studio): `cd mobile && npx ng build && npx cap sync android && npx cap open android` → *Build › Build App Bundle(s) / APK(s) › Build APK(s)*.
-2. **Fase 5**: instalar la APK en un Android de gama media y medir los 4 criterios; si fallan el scroll o Atrás/teclado → plan B Kotlin + Compose (el backend no cambia).
-3. Opcional: ID de cliente OAuth de Google (web y Android) para el botón de Google; vídeos cuando se pidan.
+1. **Fase 5**: instalar la APK en un Android de gama media y medir los 4 criterios; si fallan el scroll o Atrás/teclado → plan B Kotlin + Compose (el backend no cambia).
+2. Opcional: ID de cliente OAuth de Google (web y Android) para el botón de Google; vídeos cuando se pidan.
 
 ## Nota sobre los datos publicados
 La API publicada tiene 33 perfiles: los 32 del seed más 1 creado desde la app (registro de prueba o de alguien del equipo).

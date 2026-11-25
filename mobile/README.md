@@ -47,10 +47,16 @@ npm run test:e2e     # Playwright (pruebas de humo; la primera vez: npx playwrig
 Compartir fuera de la app usa el enlace público `https://setena-api.onrender.com/p/<id>`; su botón abre la app con `setena://perfil/<id>` (hay que registrar el esquema al crear el proyecto Android).
 
 ## Android
-El proyecto está en `android/` (`cat.setena.app`, esquema `setena://perfil/<id>`). Para generar la APK hace falta Android Studio:
-```bash
-npx ng build && npx cap sync android && npx cap open android
-# Android Studio › Build › Build App Bundle(s) / APK(s) › Build APK(s)
-```
+El proyecto está en `android/` (`cat.setena.app`, esquema `setena://perfil/<id>`). La APK se genera desde la terminal, sin Android Studio.
 
-Pendiente: compilar la APK; login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada). Estado general en `docs/estado.md`.
+Requisitos (una vez): JDK 21 (Temurin) en `~/Library/Java/jdk-21` y SDK de Android en `~/Library/Android/sdk` con `platform-tools`, `platforms;android-36` y `build-tools;36.0.0` (`cmdline-tools/latest/bin/sdkmanager`). El archivo `android/local.properties` (no se sube a git) contiene `sdk.dir=/Users/<usuario>/Library/Android/sdk`.
+
+```bash
+export JAVA_HOME=~/Library/Java/jdk-21/Contents/Home
+npx ng build && npx cap sync android
+cd android && ./gradlew assembleDebug
+# → android/app/build/outputs/apk/debug/app-debug.apk
+```
+Es una APK de depuración: se instala en cualquier Android activando «Instalar apps desconocidas». Para publicarla en Google Play haría falta una versión firmada (`assembleRelease` con un keystore).
+
+Pendiente: login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada). Estado general en `docs/estado.md`.
