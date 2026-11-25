@@ -1,8 +1,18 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model, Types } from 'mongoose';
 import { ProfilesService } from '../profiles/profiles.service';
-import { Conversation, ConversationDoc, Message, Profile } from '../schemas';
+import {
+  Conversation,
+  ConversationDoc,
+  Message,
+  MessageDoc,
+  Profile,
+} from '../schemas';
 
 const oid = (id: string | Types.ObjectId) => new Types.ObjectId(id);
 const NO_DISPONIBLE = 'No puedes enviar mensajes a este usuario';
@@ -10,7 +20,8 @@ const NO_DISPONIBLE = 'No puedes enviar mensajes a este usuario';
 @Injectable()
 export class ChatsService {
   constructor(
-    @InjectModel(Conversation.name) private readonly conversaciones: Model<Conversation>,
+    @InjectModel(Conversation.name)
+    private readonly conversaciones: Model<Conversation>,
     @InjectModel(Message.name) private readonly mensajes: Model<Message>,
     @InjectModel(Profile.name) private readonly perfilesModel: Model<Profile>,
     private readonly perfiles: ProfilesService,
@@ -22,8 +33,11 @@ export class ChatsService {
 
   /** Conversación en la que participa el usuario; si no, 404 (no se revela que exista). */
   async propia(convId: string, userId: string): Promise<ConversationDoc> {
-    const c = isValidObjectId(convId) ? await this.conversaciones.findById(convId) : null;
-    if (!c || !c.participantes.some((p) => p.equals(userId))) throw new NotFoundException('La conversación no existe');
+    const c = isValidObjectId(convId)
+      ? await this.conversaciones.findById(convId)
+      : null;
+    if (!c || !c.participantes.some((p) => p.equals(userId)))
+      throw new NotFoundException('La conversación no existe');
     return c;
   }
 
@@ -34,24 +48,37 @@ export class ChatsService {
   async abrirCon(userId: string, perfilId: string) {
     const perfil = await this.perfiles.porId(perfilId);
     if (!perfil) throw new NotFoundException('Este perfil no está disponible');
-    if (perfil.userId.equals(userId)) throw new ForbiddenException('No puedes abrir un chat contigo');
-    if (await this.perfiles.hayBloqueo(userId, perfil.userId)) throw new ForbiddenException(NO_DISPONIBLE);
+    if (perfil.userId.equals(userId))
+      throw new ForbiddenException('No puedes abrir un chat contigo');
+    if (await this.perfiles.hayBloqueo(userId, perfil.userId))
+      throw new ForbiddenException(NO_DISPONIBLE);
     const yo = oid(userId);
     const clave = this.clave(yo, perfil.userId);
     const c = await this.conversaciones.findOneAndUpdate(
       { clave },
-      { $setOnInsert: { clave, participantes: [yo, perfil.userId].sort((a, b) => a.toString().localeCompare(b.toString())) } },
+      {
+        $setOnInsert: {
+          clave,
+          participantes: [yo, perfil.userId].sort((a, b) =>
+            a.toString().localeCompare(b.toString()),
+          ),
+        },
+      },
       { upsert: true, new: true },
     );
-    return this.resumen(c!, userId);
+    return this.resumen(c, userId);
   }
 
   async listar(userId: string) {
-    const ocultos = new Set((await this.perfiles.usuariosOcultos(userId)).map(String));
+    const ocultos = new Set(
+      (await this.perfiles.usuariosOcultos(userId)).map(String),
+    );
     const convs = await this.conversaciones
       .find({ participantes: oid(userId), ultimoMensajeAt: { $ne: null } })
       .sort({ ultimoMensajeAt: -1 });
-    const visibles = convs.filter((c) => !ocultos.has(this.otro(c, userId).toString()));
+    const visibles = convs.filter(
+      (c) => !ocultos.has(this.otro(c, userId).toString()),
+    );
     return Promise.all(visibles.map((c) => this.resumen(c, userId)));
   }
 
@@ -61,7 +88,12 @@ export class ChatsService {
     return {
       id: c.id as string,
       con: perfil
-        ? { perfilId: perfil.id as string, nombre: perfil.nombre, avatarId: perfil.avatarId, roles: perfil.roles }
+        ? {
+            perfilId: perfil.id as string,
+            nombre: perfil.nombre,
+            avatarId: perfil.avatarId,
+            roles: perfil.roles,
+          }
         : null,
       ultimoMensaje: c.ultimoMensaje,
       ultimoMensajeAt: c.ultimoMensajeAt,
@@ -69,22 +101,38 @@ export class ChatsService {
     };
   }
 
-  async historial(convId: string, userId: string, antesDe?: string, limite = 30) {
+  async historial(
+    convId: string,
+    userId: string,
+    antesDe?: string,
+    limite = 30,
+  ) {
     const c = await this.propia(convId, userId);
     const filtro: Record<string, unknown> = { conversationId: c._id };
     if (antesDe) filtro.createdAt = { $lt: new Date(antesDe) };
-    const docs = await this.mensajes.find(filtro).sort({ createdAt: -1 }).limit(limite);
+    const docs = await this.mensajes
+      .find(filtro)
+      .sort({ createdAt: -1 })
+      .limit(limite);
     return docs.reverse().map((m) => this.serializar(m, userId));
   }
 
   async enviar(convId: string, userId: string, texto: string) {
     const c = await this.propia(convId, userId);
     const otroId = this.otro(c, userId);
-    if (await this.perfiles.hayBloqueo(userId, otroId)) throw new ForbiddenException(NO_DISPONIBLE);
-    const m = await this.mensajes.create({ conversationId: c._id, de: oid(userId), texto });
+    if (await this.perfiles.hayBloqueo(userId, otroId))
+      throw new ForbiddenException(NO_DISPONIBLE);
+    const m = await this.mensajes.create({
+      conversationId: c._id,
+      de: oid(userId),
+      texto,
+    });
     await this.conversaciones.updateOne(
       { _id: c._id },
-      { $set: { ultimoMensaje: texto, ultimoMensajeAt: m.createdAt }, $inc: { [`noLeidos.${otroId}`]: 1 } },
+      {
+        $set: { ultimoMensaje: texto, ultimoMensajeAt: m.createdAt },
+        $inc: { [`noLeidos.${otroId.toString()}`]: 1 },
+      },
     );
     await this.perfiles.tocarActividad(userId);
     return this.serializar(m, userId);
@@ -96,7 +144,10 @@ export class ChatsService {
       { conversationId: c._id, de: { $ne: oid(userId) }, leidoAt: null },
       { $set: { leidoAt: new Date() } },
     );
-    await this.conversaciones.updateOne({ _id: c._id }, { $set: { [`noLeidos.${userId}`]: 0 } });
+    await this.conversaciones.updateOne(
+      { _id: c._id },
+      { $set: { [`noLeidos.${userId}`]: 0 } },
+    );
   }
 
   async totalNoLeidos(userId: string) {
@@ -104,7 +155,13 @@ export class ChatsService {
     return convs.reduce((n, c) => n + c.noLeidos, 0);
   }
 
-  private serializar(m: { id: string; texto: string; de: Types.ObjectId; createdAt: Date; leidoAt: Date | null }, userId: string) {
-    return { id: m.id, texto: m.texto, mio: m.de.equals(userId), enviadoAt: m.createdAt, leidoAt: m.leidoAt };
+  private serializar(m: MessageDoc, userId: string) {
+    return {
+      id: m.id as string,
+      texto: m.texto,
+      mio: m.de.equals(userId),
+      enviadoAt: m.createdAt,
+      leidoAt: m.leidoAt,
+    };
   }
 }

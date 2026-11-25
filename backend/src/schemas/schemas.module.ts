@@ -1,8 +1,20 @@
 import { Global, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
-  Block, BlockSchema, Conversation, ConversationSchema, Favorite, FavoriteSchema, Message, MessageSchema,
-  Profile, ProfileSchema, Report, ReportSchema, User, UserSchema,
+  Block,
+  BlockSchema,
+  Conversation,
+  ConversationSchema,
+  Favorite,
+  FavoriteSchema,
+  Message,
+  MessageSchema,
+  Profile,
+  ProfileSchema,
+  Report,
+  ReportSchema,
+  User,
+  UserSchema,
 } from './index';
 
 const modelos = MongooseModule.forFeature([

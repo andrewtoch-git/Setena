@@ -18,15 +18,24 @@ import { MeController } from './users/me.controller';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, validate: validateEnv, cache: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validate: validateEnv,
+      cache: true,
+    }),
     MongooseModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService<EnvVars, true>) => ({ uri: config.get('MONGODB_URI') }),
+      useFactory: (config: ConfigService<EnvVars, true>) => ({
+        uri: config.get('MONGODB_URI'),
+      }),
     }),
     ThrottlerModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService<EnvVars, true>) => [
-        { ttl: config.get('THROTTLE_TTL_MS', { infer: true }), limit: config.get('THROTTLE_LIMIT', { infer: true }) },
+        {
+          ttl: config.get('THROTTLE_TTL_MS', { infer: true }),
+          limit: config.get('THROTTLE_LIMIT', { infer: true }),
+        },
       ],
     }),
     JwtModule.register({ global: true }),
@@ -34,7 +43,13 @@ import { MeController } from './users/me.controller';
     ProfilesModule,
     AuthModule,
   ],
-  controllers: [MiscController, MeController, FavoritesController, ChatsController, ModerationController],
+  controllers: [
+    MiscController,
+    MeController,
+    FavoritesController,
+    ChatsController,
+    ModerationController,
+  ],
   providers: [ChatsService, { provide: APP_GUARD, useClass: AuthGuard }],
 })
 export class AppModule {}

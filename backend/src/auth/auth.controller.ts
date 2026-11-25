@@ -13,7 +13,9 @@ export class AuthController {
   constructor(private readonly auth: AuthService) {}
 
   @Post('registro')
-  @ApiOperation({ summary: 'Crear cuenta con correo y perfil (el vídeo está aplazado)' })
+  @ApiOperation({
+    summary: 'Crear cuenta con correo y perfil (el vídeo está aplazado)',
+  })
   registro(@Body() dto: RegistroDto) {
     return this.auth.registrar(dto);
   }
@@ -26,7 +28,10 @@ export class AuthController {
 
   @Post('google')
   @HttpCode(200)
-  @ApiOperation({ summary: 'Entrar con Google. Si perfilCompleto es false, la app debe pedir POST /me/perfil' })
+  @ApiOperation({
+    summary:
+      'Entrar con Google. Si perfilCompleto es false, la app debe pedir POST /me/perfil',
+  })
   google(@Body() dto: GoogleDto) {
     return this.auth.loginGoogle(dto.idToken);
   }

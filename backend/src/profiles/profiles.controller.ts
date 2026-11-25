@@ -1,7 +1,19 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthUser, CurrentUser, Public } from '../common/decorators';
-import { ActualizarPerfilDto, BuscarPerfilesQuery, CrearPerfilDto } from './dto';
+import {
+  ActualizarPerfilDto,
+  BuscarPerfilesQuery,
+  CrearPerfilDto,
+} from './dto';
 import { ProfilesService } from './profiles.service';
 
 @ApiTags('perfiles')
@@ -32,7 +44,12 @@ export class ProfilesController {
 
   @Patch('me/perfil')
   @ApiOperation({ summary: 'Editar mi perfil (el nombre no se puede cambiar)' })
-  async actualizar(@CurrentUser() user: AuthUser, @Body() dto: ActualizarPerfilDto) {
-    return this.perfiles.ficha(await this.perfiles.actualizar(user.userId, dto));
+  async actualizar(
+    @CurrentUser() user: AuthUser,
+    @Body() dto: ActualizarPerfilDto,
+  ) {
+    return this.perfiles.ficha(
+      await this.perfiles.actualizar(user.userId, dto),
+    );
   }
 }
