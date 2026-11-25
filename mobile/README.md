@@ -46,4 +46,11 @@ npm run test:e2e     # Playwright (pruebas de humo; la primera vez: npx playwrig
 
 Compartir fuera de la app usa el enlace público `https://setena-api.onrender.com/p/<id>`; su botón abre la app con `setena://perfil/<id>` (hay que registrar el esquema al crear el proyecto Android).
 
-Pendiente: proyecto Android y APK (`npx cap add android`, requiere Android Studio); login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada).
+## Android
+El proyecto está en `android/` (`cat.setena.app`, esquema `setena://perfil/<id>`). Para generar la APK hace falta Android Studio:
+```bash
+npx ng build && npx cap sync android && npx cap open android
+# Android Studio › Build › Build App Bundle(s) / APK(s) › Build APK(s)
+```
+
+Pendiente: compilar la APK; login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada). Estado general en `docs/estado.md`.

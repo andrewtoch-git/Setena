@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">setena</string>
+    <string name="title_activity_main">setena</string>
+    <string name="package_name">cat.setena.app</string>
+    <string name="custom_url_scheme">cat.setena.app</string>
+</resources>
