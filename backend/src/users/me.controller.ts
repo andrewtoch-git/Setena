@@ -26,6 +26,7 @@ import {
 } from 'class-validator';
 import { Model, Types } from 'mongoose';
 import { AuthUser, CurrentUser } from '../common/decorators';
+import { MediaService } from '../media/media.service';
 import { ProfilesService } from '../profiles/profiles.service';
 import {
   Block,
@@ -65,6 +66,7 @@ export class MeController {
     @InjectModel(Block.name) private readonly bloqueos: Model<Block>,
     @InjectModel(Report.name) private readonly denuncias: Model<Report>,
     private readonly perfiles: ProfilesService,
+    private readonly media: MediaService,
   ) {}
 
   private async usuario(userId: string) {
@@ -144,6 +146,7 @@ export class MeController {
         ],
       }),
       this.perfilesModel.deleteOne({ userId: yo }),
+      this.media.borrarDonde({ 'metadata.userId': user.userId }),
     ]);
     await this.usuarios.deleteOne({ _id: yo });
   }

@@ -12,10 +12,13 @@ import { ChatsService } from './chats/chats.service';
 import { AuthGuard } from './common/auth.guard';
 import { EnvVars, validateEnv } from './config/env.validation';
 import { FavoritesController } from './favorites/favorites.controller';
+import { MediaController } from './media/media.controller';
+import { MediaService } from './media/media.service';
 import { MiscController } from './misc.controller';
 import { ModerationController } from './moderation/moderation.controller';
 import { ProfilesModule } from './profiles/profiles.module';
 import { SchemasModule } from './schemas/schemas.module';
+import { SeedService } from './seed/seed.service';
 import { MeController } from './users/me.controller';
 
 @Module({
@@ -51,11 +54,14 @@ import { MeController } from './users/me.controller';
     FavoritesController,
     ChatsController,
     ModerationController,
+    MediaController,
   ],
   providers: [
     ChatsService,
     ChatEventos,
     ChatGateway,
+    MediaService,
+    SeedService,
     { provide: APP_GUARD, useClass: AuthGuard },
   ],
 })

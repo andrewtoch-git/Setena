@@ -20,8 +20,9 @@ export class User {
   @Prop({ required: true, unique: true, lowercase: true, trim: true })
   email!: string;
   @Prop({ type: String, default: null }) passwordHash!: string | null;
-  @Prop({ type: String, default: null, index: { unique: true, sparse: true } })
-  googleId!: string | null;
+  /** Sin valor (campo ausente) en cuentas que no usan Google. */
+  @Prop({ type: String })
+  googleId?: string;
   @Prop({ type: [String], default: [] }) proveedores!: string[];
   @Prop({ type: Ajustes, default: () => ({}) }) ajustes!: Ajustes;
   @Prop({ type: [Sesion], default: [] }) sesiones!: Sesion[];
@@ -29,6 +30,11 @@ export class User {
 }
 export type UserDoc = HydratedDocument<User>;
 export const UserSchema = SchemaFactory.createForClass(User);
+// Índice parcial: único solo entre quienes tienen googleId (un índice «sparse» no ignora los null).
+UserSchema.index(
+  { googleId: 1 },
+  { unique: true, partialFilterExpression: { googleId: { $type: 'string' } } },
+);
 
 // ---------- profiles ----------
 @Schema({ _id: false })

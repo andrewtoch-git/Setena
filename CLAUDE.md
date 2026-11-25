@@ -31,4 +31,5 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 
 ## Estado
 - Fase 1 (backend REST + auth) y 1b (chat en tiempo real, socket.io `/chat`) hechas y con tests. Contrato del socket en `docs/evaluacion-websocket.md`.
-- Siguiente: fase 2 (seed desde `mock-data/` + fotos en GridFS).
+- Fase 2 hecha: `npm run seed` (desde `mock-data/`) y fotos en GridFS (`/media/:id`, `/me/avatar`, `/me/fotos`).
+- Siguiente: fase 3 (despliegue: MongoDB Atlas + Render) y fase 4 (app Ionic + Angular).

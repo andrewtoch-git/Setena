@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-require-imports -- AppModule se carga después de fijar el entorno */
 import { INestApplication, UnauthorizedException } from '@nestjs/common';
+import { getConnectionToken } from '@nestjs/mongoose';
 import { Test } from '@nestjs/testing';
+import type { Connection } from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import request from 'supertest';
 import { GoogleVerifier, IdentidadGoogle } from '../src/auth/google-verifier';
@@ -52,6 +54,8 @@ export async function crearApp(escuchar = false): Promise<Contexto> {
     .useValue(googleFalso)
     .compile();
   const app = setupApp(modulo.createNestApplication());
+  // Crea los índices ya (en producción también existen): así los tests detectan choques de unicidad.
+  await app.get<Connection>(getConnectionToken()).syncIndexes();
   let url: string | undefined;
   if (escuchar) {
     await app.listen(0, '127.0.0.1');

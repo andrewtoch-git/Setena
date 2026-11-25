@@ -98,6 +98,7 @@ El equipo delegó en Claude estas decisiones para poder avanzar. Se pueden revis
 | Vídeo aplazado | La tarjeta y el carrusel muestran la **miniatura/foto principal sin botón de reproducir**; si no hay imagen, el marcador de foto del wireframe. No se añade texto nuevo. | No inventar textos ni pantallas. |
 | Textos «hasta 100 MB» del wireframe | Se mantienen hasta que se implemente el vídeo; entonces pasan a «hasta 30 s». | Hoy la subida de vídeo no existe. |
 | Conflictos C5–C7 (wireframe vs. M3) | Se mantiene M3: chips de 8 dp, **áreas táctiles de 48 dp**, botones de ventana de M3. | 48 dp es el mínimo de accesibilidad de Android; bajar a 44 empeora la app. |
+| Fotos por perfil | Máximo 10 fotos, JPG o PNG de hasta 10 MB | Cabe en el clúster gratuito M0 (512 MB) con margen. |
 | `applicationId` Android | `cat.setena.app` | La marca es «setena» y el proyecto es de Barcelona. |
 | Ionic vs. nativo (fase 5) | Ionic es **aceptable** si en un Android de gama media: (1) el scroll de Explorar con 30 tarjetas va a 60 fps sin tirones visibles, (2) abrir una ficha tarda < 300 ms desde el toque, (3) el botón Atrás y el teclado se comportan como en una app nativa en todas las pantallas, y (4) los componentes cumplen el design system (color, Roboto, formas, estados). Si falla (1) o (3), plan B nativo. | Criterios medibles y ligados a la experiencia real. |
 
