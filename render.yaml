@@ -1,4 +1,4 @@
-# Blueprint de Render para el backend de setena.
+# Blueprint de Render de setena: API (setena-api) y app web (setena-app).
 # Render → New → Blueprint → elige el repositorio. Pasos completos en docs/deploy.md.
 services:
   - type: web
@@ -25,7 +25,7 @@ services:
       - key: JWT_REFRESH_TTL
         value: "2592000"
       - key: CORS_ORIGINS
-        value: "http://localhost:8100,capacitor://localhost,http://localhost"
+        value: "https://setena-app.onrender.com,http://localhost:8100,capacitor://localhost,http://localhost"
       - key: GOOGLE_CLIENT_IDS
         sync: false # IDs de cliente OAuth (web y Android); vacío desactiva el login con Google
       - key: THROTTLE_LIMIT
@@ -34,3 +34,24 @@ services:
         value: "60000"
       - key: SEED_DEMO_PASSWORD
         sync: false # solo si se va a ejecutar el seed desde la Shell de Render
+
+  # App (Ionic + Angular) como sitio estático. Usa la API publicada (src/environments/environment.prod.ts).
+  - type: web
+    name: setena-app
+    runtime: static
+    rootDir: mobile
+    buildCommand: npm ci && npx ng build
+    staticPublishPath: www
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+    # Navegación de la app (rutas como /tabs/explorar o /perfil/:id): todo sirve index.html
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
