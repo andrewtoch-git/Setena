@@ -74,6 +74,32 @@
     "Barcelona ciudad",
     "Alrededores"
   ],
+  "lugares": {
+    "Barcelona ciudad": [
+      "Ciutat Vella",
+      "Eixample",
+      "Sants-Montjuïc",
+      "Les Corts",
+      "Sarrià-Sant Gervasi",
+      "Gràcia",
+      "Horta-Guinardó",
+      "Nou Barris",
+      "Sant Andreu",
+      "Sant Martí"
+    ],
+    "Alrededores": [
+      "L'Hospitalet de Llobregat",
+      "Badalona",
+      "Santa Coloma de Gramenet",
+      "Sant Adrià de Besòs",
+      "Esplugues de Llobregat",
+      "Cornellà de Llobregat",
+      "El Prat de Llobregat",
+      "Sant Just Desvern",
+      "Montcada i Reixac",
+      "Sant Cugat del Vallès"
+    ]
+  },
   "tiposProyecto": [
     "Proyectos remunerados",
     "Colaboraciones gratuitas"

@@ -15,8 +15,9 @@ SERVICIOS = [
     {'clave': 'composicion', 'nombre': 'Composición', 'descripcion': 'Canciones y melodías', 'unidad': 'por proyecto'},
     {'clave': 'otros', 'nombre': 'Otros', 'descripcion': 'Servicios adicionales', 'unidad': None},
 ]
-BARRIOS = ['Eixample', 'Gràcia', 'Sants-Montjuïc', 'Sant Martí', 'Ciutat Vella', 'Sarrià-Sant Gervasi', 'Les Corts', 'Horta-Guinardó', 'Nou Barris', 'Sant Andreu']
-ALREDEDORES = ["L'Hospitalet de Llobregat", 'Badalona', 'Cornellà de Llobregat', 'Sant Cugat del Vallès', 'Terrassa', 'Sabadell', 'Esplugues de Llobregat', 'El Prat de Llobregat', 'Santa Coloma de Gramenet', 'Mataró']
+# Listas cerradas del wireframe (Registro / Editar perfil: const LUG)
+BARRIOS = ['Ciutat Vella', 'Eixample', 'Sants-Montjuïc', 'Les Corts', 'Sarrià-Sant Gervasi', 'Gràcia', 'Horta-Guinardó', 'Nou Barris', 'Sant Andreu', 'Sant Martí']
+ALREDEDORES = ["L'Hospitalet de Llobregat", 'Badalona', 'Santa Coloma de Gramenet', 'Sant Adrià de Besòs', 'Esplugues de Llobregat', 'Cornellà de Llobregat', 'El Prat de Llobregat', 'Sant Just Desvern', 'Montcada i Reixac', 'Sant Cugat del Vallès']
 
 
 def tarifas(bolo, grab, comp, otros):
@@ -161,6 +162,7 @@ for i, (nombre, (roles, gens)) in enumerate(zip(NOMBRES, PLAN)):
 perfiles = WF + extra
 for p in perfiles:
     p['ficticio'] = True
+    assert p['lugar'] in (BARRIOS if p['zona'] == ZONAS[0] else ALREDEDORES), p['lugar']
     assert all(r in ROLES for r in p['roles']) and all(g in GENEROS for g in p['generos']) and all(d in DISP for d in p['disponibilidad'])
 
 usuarios = [{'clave': p['clave'], 'email': p['email'], 'nombre': p['nombre'], 'proveedor': 'email', 'demo': bool(p.get('demo')),
@@ -186,7 +188,7 @@ conversaciones = [
         {'de': 'pau', 'texto': 'Gracias, te escribo cuando tenga la fecha del ensayo', 'haceMin': 4320, 'leido': True}]},
 ]
 
-catalogos = {'roles': ROLES, 'generos': GENEROS, 'disponibilidad': DISP, 'zonas': ZONAS, 'tiposProyecto': TIPOS,
+catalogos = {'roles': ROLES, 'generos': GENEROS, 'disponibilidad': DISP, 'zonas': ZONAS, 'lugares': {ZONAS[0]: BARRIOS, ZONAS[1]: ALREDEDORES}, 'tiposProyecto': TIPOS,
              'servicios': SERVICIOS, 'motivosDenuncia': MOTIVOS, 'chipsRapidos': ['Guitarra', 'Piano', 'Teclado', 'Cantante', 'Bajo', 'Batería', 'DJ'],
              'redes': ['instagram', 'youtube', 'spotify', 'tiktok', 'soundcloud']}
 
