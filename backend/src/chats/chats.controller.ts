@@ -104,7 +104,19 @@ export class ChatsController {
     @Param('id') id: string,
     @Body() dto: MensajeDto,
   ) {
-    return this.chats.enviar(id, user.userId, dto.texto);
+    return this.chats.enviar(id, user.userId, { texto: dto.texto });
+  }
+
+  @Post(':id/compartir')
+  @ApiOperation({
+    summary: 'Compartir un perfil en este chat («Perfil compartido»)',
+  })
+  compartir(
+    @CurrentUser() user: AuthUser,
+    @Param('id') id: string,
+    @Body() dto: AbrirDto,
+  ) {
+    return this.chats.enviar(id, user.userId, { perfilId: dto.perfilId });
   }
 
   @Post(':id/leido')

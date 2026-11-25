@@ -12,6 +12,7 @@ import { ChatsService } from './chats/chats.service';
 import { AuthGuard } from './common/auth.guard';
 import { EnvVars, validateEnv } from './config/env.validation';
 import { FavoritesController } from './favorites/favorites.controller';
+import { CompartirController } from './compartir/compartir.controller';
 import { MediaController } from './media/media.controller';
 import { MediaService } from './media/media.service';
 import { MiscController } from './misc.controller';
@@ -55,6 +56,7 @@ import { MeController } from './users/me.controller';
     ChatsController,
     ModerationController,
     MediaController,
+    CompartirController,
   ],
   providers: [
     ChatsService,

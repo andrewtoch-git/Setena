@@ -127,7 +127,11 @@ export class Message {
   @Prop({ type: Types.ObjectId, required: true, index: true })
   conversationId!: Types.ObjectId;
   @Prop({ type: Types.ObjectId, required: true }) de!: Types.ObjectId;
-  @Prop({ required: true, maxlength: 2000 }) texto!: string;
+  /** Vacío si el mensaje es un perfil compartido. */
+  @Prop({ default: '', maxlength: 2000 }) texto!: string;
+  /** Perfil compartido en el chat («Perfil compartido» del wireframe). */
+  @Prop({ type: Types.ObjectId, default: null })
+  perfilId!: Types.ObjectId | null;
   @Prop({ type: Date, default: null }) leidoAt!: Date | null;
   createdAt!: Date;
 }

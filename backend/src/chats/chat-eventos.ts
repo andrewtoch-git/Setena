@@ -3,12 +3,23 @@ import type { Server } from 'socket.io';
 
 export const salaUsuario = (userId: string) => `usuario:${userId}`;
 
+export interface PerfilCompartido {
+  id: string;
+  nombre: string;
+  roles: string[];
+  generos: string[];
+  zona: string;
+  lugar: string;
+  avatarId: string | null;
+}
+
 export interface MensajeEmitido {
   id: string;
   texto: string;
   de: string;
   enviadoAt: Date;
   leidoAt: Date | null;
+  perfil: PerfilCompartido | null;
 }
 
 /**
@@ -34,6 +45,7 @@ export class ChatEventos {
           mio: m.de === userId,
           enviadoAt: m.enviadoAt,
           leidoAt: m.leidoAt,
+          perfil: m.perfil,
         },
       });
     }

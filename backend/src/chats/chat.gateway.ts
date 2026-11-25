@@ -103,7 +103,7 @@ export class ChatGateway
       return { ok: false, error: 'Mensaje no válido', status: 400 };
     }
     return this.ejecutar(socket, (userId) =>
-      this.chats.enviar(cuerpo.conversacionId as string, userId, texto),
+      this.chats.enviar(cuerpo.conversacionId as string, userId, { texto }),
     );
   }
 

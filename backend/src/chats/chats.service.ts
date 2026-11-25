@@ -6,7 +6,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model, Types } from 'mongoose';
 import { ProfilesService } from '../profiles/profiles.service';
-import { ChatEventos } from './chat-eventos';
+import { ChatEventos, PerfilCompartido } from './chat-eventos';
 import {
   Conversation,
   ConversationDoc,
@@ -116,23 +116,78 @@ export class ChatsService {
       .find(filtro)
       .sort({ createdAt: -1 })
       .limit(limite);
-    return docs.reverse().map((m) => this.serializar(m, userId));
+    const perfiles = await this.resumenesPerfil(
+      docs.map((m) => m.perfilId).filter((x): x is Types.ObjectId => !!x),
+    );
+    return docs
+      .reverse()
+      .map((m) =>
+        this.serializar(
+          m,
+          userId,
+          m.perfilId ? (perfiles.get(m.perfilId.toString()) ?? null) : null,
+        ),
+      );
   }
 
-  async enviar(convId: string, userId: string, texto: string) {
+  /** Resumen de los perfiles compartidos (los borrados no aparecen). */
+  private async resumenesPerfil(
+    ids: Types.ObjectId[],
+  ): Promise<Map<string, PerfilCompartido>> {
+    if (!ids.length) return new Map();
+    const docs = await this.perfilesModel.find({ _id: { $in: ids } });
+    return new Map(
+      docs.map((p) => [
+        p._id.toString(),
+        {
+          id: p._id.toString(),
+          nombre: p.nombre,
+          roles: p.roles,
+          generos: p.generos,
+          zona: p.zona,
+          lugar: p.lugar,
+          avatarId: p.avatarId ? p.avatarId.toString() : null,
+        },
+      ]),
+    );
+  }
+
+  /** Envía un texto o comparte un perfil (exactamente uno de los dos). */
+  async enviar(
+    convId: string,
+    userId: string,
+    contenido: { texto?: string; perfilId?: string },
+  ) {
     const c = await this.propia(convId, userId);
     const otroId = this.otro(c, userId);
     if (await this.perfiles.hayBloqueo(userId, otroId))
       throw new ForbiddenException(NO_DISPONIBLE);
+
+    let perfil: PerfilCompartido | null = null;
+    if (contenido.perfilId) {
+      if (!isValidObjectId(contenido.perfilId))
+        throw new NotFoundException('Este perfil no está disponible');
+      perfil =
+        (await this.resumenesPerfil([oid(contenido.perfilId)])).get(
+          contenido.perfilId,
+        ) ?? null;
+      if (!perfil)
+        throw new NotFoundException('Este perfil no está disponible');
+    }
+    const texto = perfil ? '' : (contenido.texto ?? '');
     const m = await this.mensajes.create({
       conversationId: c._id,
       de: oid(userId),
       texto,
+      perfilId: perfil ? oid(perfil.id) : null,
     });
     await this.conversaciones.updateOne(
       { _id: c._id },
       {
-        $set: { ultimoMensaje: texto, ultimoMensajeAt: m.createdAt },
+        $set: {
+          ultimoMensaje: perfil ? `Perfil compartido: ${perfil.nombre}` : texto,
+          ultimoMensajeAt: m.createdAt,
+        },
         $inc: { [`noLeidos.${otroId.toString()}`]: 1 },
       },
     );
@@ -147,9 +202,10 @@ export class ChatsService {
         de: userId,
         enviadoAt: m.createdAt,
         leidoAt: null,
+        perfil,
       },
     );
-    return this.serializar(m, userId);
+    return this.serializar(m, userId, perfil);
   }
 
   async marcarLeido(convId: string, userId: string) {
@@ -174,13 +230,18 @@ export class ChatsService {
     return convs.reduce((n, c) => n + c.noLeidos, 0);
   }
 
-  private serializar(m: MessageDoc, userId: string) {
+  private serializar(
+    m: MessageDoc,
+    userId: string,
+    perfil: PerfilCompartido | null = null,
+  ) {
     return {
       id: m.id as string,
       texto: m.texto,
       mio: m.de.equals(userId),
       enviadoAt: m.createdAt,
       leidoAt: m.leidoAt,
+      perfil,
     };
   }
 }

@@ -155,6 +155,27 @@ describe('perfiles, favoritos, chats y moderación', () => {
     });
   });
 
+  describe('Enlace para compartir', () => {
+    it('/p/:id es una página pública con vista previa y escapa el contenido', async () => {
+      const res = await ctx.http().get(`/p/${laia.perfilId}`).expect(200);
+      expect(res.headers['content-type']).toContain('text/html');
+      expect(res.text).toContain('<h1>Laia Serra</h1>');
+      expect(res.text).toContain(`setena://perfil/${laia.perfilId}`);
+      expect(res.text).toContain('og:title');
+      await ctx.http().get('/p/000000000000000000000000').expect(404);
+    });
+
+    it('no permite inyectar HTML con el nombre', async () => {
+      const malo = await registrar(ctx, {
+        nombre: '<script>alert(1)</script>',
+      });
+      const res = await ctx.http().get(`/p/${malo.perfilId}`).expect(200);
+      expect(res.text).not.toContain('<script>alert(1)</script>');
+      expect(res.text).toContain('&lt;script&gt;');
+      await ctx.http().delete('/me').set(malo.auth).expect(204);
+    });
+  });
+
   describe('Favoritos', () => {
     it('exigen sesión', async () => {
       await ctx.http().get('/favoritos').expect(401);

@@ -195,4 +195,56 @@ describe('chat en tiempo real (socket.io)', () => {
       .set(laia.auth)
       .expect(204);
   });
+
+  it('compartir un perfil: tarjeta en el chat, aviso en tiempo real y vista previa', async () => {
+    const sLaia = await conectar(laia.accessToken);
+    const aviso = esperar<{
+      mensaje: {
+        texto: string;
+        mio: boolean;
+        perfil: { id: string; nombre: string } | null;
+      };
+    }>(sLaia, 'mensaje:nuevo');
+
+    const res = await ctx
+      .http()
+      .post(`/conversaciones/${convId}/compartir`)
+      .set(alex.auth)
+      .send({ perfilId: marc.perfilId })
+      .expect(201);
+    expect(res.body).toMatchObject({
+      texto: '',
+      mio: true,
+      perfil: { id: marc.perfilId, nombre: 'Marc Soler' },
+    });
+
+    expect((await aviso).mensaje).toMatchObject({
+      mio: false,
+      perfil: { nombre: 'Marc Soler' },
+    });
+
+    const lista = await ctx
+      .http()
+      .get('/conversaciones')
+      .set(laia.auth)
+      .expect(200);
+    expect(lista.body[0].ultimoMensaje).toBe('Perfil compartido: Marc Soler');
+
+    const hist = await ctx
+      .http()
+      .get(`/conversaciones/${convId}/mensajes`)
+      .set(laia.auth)
+      .expect(200);
+    expect(hist.body[hist.body.length - 1].perfil).toMatchObject({
+      nombre: 'Marc Soler',
+      roles: ['Guitarra'],
+    });
+
+    await ctx
+      .http()
+      .post(`/conversaciones/${convId}/compartir`)
+      .set(alex.auth)
+      .send({ perfilId: '000000000000000000000000' })
+      .expect(404);
+  });
 });
