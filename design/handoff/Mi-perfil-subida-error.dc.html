@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mi perfil, error al subir un vídeo</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+.logo-puntos{color:var(--palette-primary-40)}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: none; height: 56px; padding: 44px 16px 0; display: flex; align-items: center; gap: 8px"><svg width="27" height="24" viewBox="-105.04 -94.64 210.08 189.28" aria-hidden="true" style="flex: none; display: block"><g class="logo-puntos" fill="currentColor"><circle cx="-38.9" cy="-67.4" r="27.24"></circle><circle cx="38.9" cy="-67.4" r="27.24"></circle><circle cx="-77.8" cy="0" r="27.24"></circle><circle cx="-38.9" cy="67.4" r="27.24"></circle><circle cx="38.9" cy="67.4" r="27.24"></circle></g><g fill="currentColor" style="color: var(--acento)"><circle cx="0" cy="0" r="27.24"></circle><circle cx="77.8" cy="0" r="27.24"></circle><path d="M23.01,-14.59a18.83,18.83 0 0 0 31.82,0L54.83,14.59a18.83,18.83 0 0 0 -31.82,0Z"></path></g></svg><span style="font-family: 'Nunito', var(--font-brand); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: -0.2px; color: var(--on-surface)">setena</span></div>
+<div style="flex: none; padding: 8px 16px 0">
+<div style="display: flex; align-items: center; gap: 8px; height: 44px">
+<h1 style="flex: 1; margin: 0; font-size: 28px; font-weight: 400">Mi perfil</h1>
+<button aria-label="Compartir mi perfil" onClick="{{openShare}}" style="flex: none; width: 40px; height: 40px; box-sizing: border-box; border: none; border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; color: var(--on-surface-variant)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"></path></svg></button>
+<a href="Ajustes.dc.html" aria-label="Ajustes" style="flex: none; width: 40px; height: 40px; box-sizing: border-box; border: none; border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; color: var(--on-surface-variant)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></a>
+</div>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<div style="position: relative">
+<div class="dc-noscroll" ref="{{mediaRef}}" onScroll="{{onMediaScroll}}" aria-label="Fotos y vídeos" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 12px">
+<sc-for list="{{media}}" as="md" hint-placeholder-count="3">
+<div role="group" aria-label="{{md.aria}}" style="flex: none; width: 100%; height: 220px; scroll-snap-align: start; background: var(--surface-container-highest); position: relative; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{md.conImg}}" hint-placeholder-val="{{false}}"><img src="{{md.img}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></sc-if>
+<span style="position: absolute; top: 10px; left: 10px; max-width: 62%; height: 26px; padding: 0 10px 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--surface); display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden"><sc-if value="{{md.principal}}" hint-placeholder-val="{{true}}"><span style="flex: none; height: 20px; padding: 0 8px; border-radius: 999px; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container); display: flex; align-items: center; font-size: 11px; font-weight: 500">Principal</span></sc-if><span style="overflow: hidden; text-overflow: ellipsis">{{md.label}}</span></span>
+<sc-if value="{{md.isVideo}}" hint-placeholder-val="{{true}}"><button aria-label="Reproducir {{md.t}}" style="position: relative; width: 48px; height: 48px; border-radius: 50%; background: var(--surface); border: none; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: inherit"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg></button></sc-if>
+<sc-if value="{{md.isFoto}}" hint-placeholder-val="{{false}}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M21 16l-5-5-8 8"></path></svg></sc-if>
+<div style="position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px"><sc-if value="{{md.canMain}}" hint-placeholder-val="{{false}}"><button onClick="{{md.makeMain}}" style="height: 36px; padding: 0 12px; border: none; border-radius: 999px; background: var(--surface); display: flex; align-items: center; gap: 6px; font: 500 12px var(--font-brand); color: var(--on-surface); cursor: pointer">Marcar como principal</button></sc-if><button onClick="{{md.remove}}" aria-label="Eliminar {{md.aria}}" style="height: 36px; padding: 0 12px; border: none; border-radius: 999px; background: var(--surface); display: flex; align-items: center; gap: 6px; font: 500 12px var(--font-brand); color: var(--on-surface); cursor: pointer">Eliminar</button></div>
+</div>
+</sc-for>
+</div>
+<button onClick="{{openAdd}}" aria-label="Añadir foto o vídeo" style="position: absolute; top: 10px; right: 10px; height: 36px; padding: 0 12px; border: none; border-radius: 999px; background: var(--surface); display: flex; align-items: center; gap: 6px; font: 500 12px var(--font-brand); color: var(--on-surface); cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M12 5v14M5 12h14"></path></svg>Añadir</button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center"><sc-for list="{{dots}}" as="dt" hint-placeholder-count="3"><button aria-label="{{dt.label}}" aria-current="{{dt.on}}" onClick="{{dt.go}}" style="width: 24px; height: 24px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><sc-if value="{{dt.on}}" hint-placeholder-val="{{false}}"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--acento)"></span></sc-if><sc-if value="{{dt.off}}" hint-placeholder-val="{{true}}"><span style="width: 8px; height: 8px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if></button></sc-for></div>
+</div>
+<div style="flex: none; display: flex; align-items: center; gap: 14px">
+<div style="flex: none; width: 80px; height: 80px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{conFotoYo}}" hint-placeholder-val="{{false}}"><img src="{{fotoYo}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{sinFotoYo}}" hint-placeholder-val="{{true}}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></div>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 22px; font-weight: 500">{{me.name}}</h2>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">{{me.line}}</span>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">{{me.ubic}}</span>
+</div>
+</div>
+<div style="flex: none; display: flex; flex-wrap: wrap; gap: 6px">
+<sc-if value="{{me.rem}}" hint-placeholder-val="{{true}}"><span style="height: 24px; padding: 0 10px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="12" r="9"></circle><path d="M15 9a4 4 0 1 0 0 6M7 11h6M7 13h6"></path></svg>Proyectos remunerados</span></sc-if>
+<sc-if value="{{me.col}}" hint-placeholder-val="{{true}}"><span style="height: 24px; padding: 0 10px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="9" cy="8" r="3"></circle><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 14c2 .5 3 2.3 3 5"></path></svg>Colaboraciones gratuitas</span></sc-if>
+</div>
+<a href="Mi-perfil-editar.dc.html" style="flex: none; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Editar perfil</a>
+<div role="tablist" style="flex: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--outline-variant)">
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="true" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">Info</button></sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="false" onClick="{{showInfo}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Info</button></sc-if>
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="false" onClick="{{showTarifas}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Tarifas</button></sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="true" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">Tarifas</button></sc-if>
+</div>
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Sobre mí</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">{{me.about}}</p>
+</div>
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Disponibilidad</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">{{me.disp}}</p>
+</div>
+<div style="flex: none; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Redes sociales</h3>
+<sc-if value="{{me.hasRedes}}" hint-placeholder-val="{{true}}"><div style="display: flex; flex-wrap: wrap; gap: 14px">
+<sc-for list="{{me.redes}}" as="r" hint-placeholder-count="5"><a href="{{r.url}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">{{r.letra}}</span>{{r.name}}</a></sc-for>
+</div></sc-if>
+<sc-if value="{{me.noRedes}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Aún no has añadido redes sociales.</p></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}">
+<sc-if value="{{me.hasT}}" hint-placeholder-val="{{true}}"><div style="flex: none; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Bolo / Directo</span><span style="font-size: 12px; color: var(--on-surface-variant)">Conciertos y eventos</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">{{me.bolo}}</span><span style="font-size: 12px; color: var(--on-surface-variant)">{{me.boloPer}}</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Grabación</span><span style="font-size: 12px; color: var(--on-surface-variant)">Instrumentos y voces</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">{{me.grab}}</span><span style="font-size: 12px; color: var(--on-surface-variant)">{{me.grabPer}}</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Composición</span><span style="font-size: 12px; color: var(--on-surface-variant)">Canciones y melodías</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">{{me.comp}}</span><span style="font-size: 12px; color: var(--on-surface-variant)">{{me.compPer}}</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 9px 0">
+<span style="font-size: 14px; font-weight: 500">Otros</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Servicios adicionales</span>
+<span style="margin-top: 2px; font-size: 14px; color: var(--on-surface)">{{me.otros}}</span>
+</div>
+<p style="margin: 6px 0 0; font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">Precios orientativos. El precio final se acuerda por chat.</p>
+</div></sc-if>
+<sc-if value="{{me.noT}}" hint-placeholder-val="{{false}}"><p style="margin: 4px 0 0; font-size: 14px; color: var(--on-surface-variant)">Aún no has añadido tarifas.</p></sc-if>
+</sc-if>
+</div>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="Chats.dc.html" aria-label="{{navChatsLabel}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg><sc-if value="{{navUnread}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; top: 0; right: 8px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">1</span></sc-if></span>Chats</a>
+<a href="Mi-perfil.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4" fill="currentColor"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7z" fill="currentColor"></path></svg></span>Mi perfil</a>
+</nav>
+<sc-if value="{{sheetShare}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-share-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="pm-share-t" style="margin: 0; font-size: 24px; font-weight: 400">Compartir perfil</h2>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">¿Dónde quieres compartir tu perfil?</p>
+<span style="margin-top: 4px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">EN TUS CHATS</span>
+<button onClick="{{openPick}}" style="height: 40px; border: none; border-radius: 999px; background: var(--surface-container-high); padding: 0 12px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer; display: flex; align-items: center; justify-content: space-between">Enviar a un chat de la app<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><path d="M9 6l6 6-6 6"></path></svg></button>
+<span style="margin-top: 4px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">FUERA DE LA APP</span>
+<button onClick="{{copyLink}}" style="height: 40px; border: none; border-radius: 999px; background: var(--surface-container-high); padding: 0 12px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer; display: flex; align-items: center; gap: 12px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>Copiar enlace</button>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">W</span>WhatsApp</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">I</span>Instagram</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">F</span>Facebook</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">•••</span>Más</button>
+</div>
+<button onClick="{{closeSheet}}" style="margin-top: 6px; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sheetPick}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-pick-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="pm-pick-t" style="margin: 0; font-size: 24px; font-weight: 400">Enviar a un chat</h2>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">Elige con quién quieres compartir tu perfil.</p>
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{chats}}" as="c" hint-placeholder-count="4">
+<button role="checkbox" aria-checked="{{c.on}}" onClick="{{c.toggle}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; display: flex; align-items: center; gap: 12px; padding: 4px 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{c.conFoto}}" hint-placeholder-val="{{false}}"><img src="{{c.avatar}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{c.sinFoto}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></span>
+<span style="flex: 1">{{c.name}}</span>
+<sc-if value="{{c.on}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--acento); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+<sc-if value="{{c.off}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{canSend}}" hint-placeholder-val="{{false}}"><button class="accion" onClick="{{sendShare}}" style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Enviar</button></sc-if>
+<sc-if value="{{cannotSend}}" hint-placeholder-val="{{true}}"><button disabled style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent); font: 500 14px var(--font-brand); color: color-mix(in srgb, var(--on-surface) 38%, transparent)">Enviar</button></sc-if>
+<button onClick="{{openShare}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sheetSent}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-sent-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<span aria-hidden="true" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h2 id="pm-sent-t" style="margin: 4px 0 0; font-size: 24px; font-weight: 400">¡Perfil enviado!</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Has compartido tu perfil en {{sentTo}}.</p>
+<button class="accion" onClick="{{closeSheet}}" style="align-self: stretch; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Aceptar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sheetAddOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="add-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="add-t" style="margin: 0; font-size: 24px; font-weight: 400">Añadir a tu perfil</h2>
+<button onClick="{{uploadVideo}}" style="min-height: 56px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; text-align: left; cursor: pointer"><span style="font: 500 16px var(--font-brand); color: var(--on-surface)">Subir vídeo</span><span style="font: 400 12px var(--font-brand); color: var(--on-surface-variant)">MP4 o MOV, hasta 100 MB</span></button>
+<button onClick="{{uploadFoto}}" style="min-height: 56px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; text-align: left; cursor: pointer"><span style="font: 500 16px var(--font-brand); color: var(--on-surface)">Subir foto</span><span style="font: 400 12px var(--font-brand); color: var(--on-surface-variant)">JPG o PNG, hasta 10 MB</span></button>
+<button onClick="{{closeAdd}}" style="margin-top: 6px; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{confirmOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="del-m-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="del-m-t" style="margin: 0; font-size: 24px; font-weight: 400">{{confirmTitle}}</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">{{confirmText}}</p>
+<button onClick="{{doDelete}}" style="height: 40px; border: none; border-radius: 999px; background: var(--error); font: 500 14px var(--font-brand); color: var(--on-error); cursor: pointer">Eliminar</button>
+<button onClick="{{cancelDelete}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{false}}"><div role="{{toastRole}}" style="position: absolute; left: 16px; right: 16px; bottom: 100px; z-index: 5; background: var(--inverse-surface); color: var(--inverse-on-surface); border-radius: 4px; min-height: 48px; padding: 4px 6px 4px 14px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; box-shadow: var(--elevation-level-3)"><sc-if value="{{toastErr}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg></sc-if><sc-if value="{{toastOk}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{toastWait}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><path d="M12 3a9 9 0 1 1-9 9"></path></svg></sc-if><span style="flex: 1; font-size: 14px; line-height: 1.35; padding: 8px 0">{{toastText}}</span><sc-if value="{{toastAct}}" hint-placeholder-val="{{false}}"><button onClick="{{toastDo}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 10px; font: 500 14px var(--font-brand); color: var(--inverse-on-surface); text-decoration: underline; cursor: pointer">{{toastActText}}</button></sc-if></div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"pestana": {"editor": "enum", "options": ["info", "tarifas"], "default": "info"}, "$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+const __fy = (() => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : '/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00'; } catch (e) { return '/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00'; } })();
+return Object.assign({}, this.__rvBase(), { tema: __tema, fotoYo: __fy, conFotoYo: !!__fy, sinFotoYo: !__fy });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __FOTOS = {"alex": {"avatar": "/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00", "card": "/_blob/9dc44dba1a68a7cc6f5f48589961b5dc", "trio": "/_blob/ae0873fb2c60f8ff15b54b541a1905c2"}, "jordi": {"avatar": "/_blob/1a87e895887b62e75bf43c8f576a6bf4", "card": "/_blob/dff067b37ae614b04301862841e3bdb7"}, "laia": {"avatar": "/_blob/a2e5aa228cee003e66aab951c2b4e1f0", "card": "/_blob/6542538e8c25d8fd6fe88fb9fc023a10"}, "marc": {"avatar": "/_blob/7e985aa8f13bdc6beedb1e392303870b", "card": "/_blob/f570be1a1299774a4564357ac00fb19d"}, "marta": {"avatar": "/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a", "card": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, "nuria": {"avatar": "/_blob/cadad787ba381bc1eac53308fb0acd9b", "card": "/_blob/a5cda7d0b726e50e68f45176743503ad"}, "pau": {"avatar": "/_blob/7159f61c0eb6d33c7676e699feda1f65", "card": "/_blob/d0c90a2a36f57d6be5e8f3556f19767d"}};
+const __FOTO_NOMBRE = {"Marta Ruiz": "marta", "Laia Serra": "laia", "Marc Soler": "marc", "Jordi Puig": "jordi", "Núria Font": "nuria", "Pau Vidal": "pau"};
+const __fotoDe = (n) => { const k = __FOTO_NOMBRE[n]; return k ? __FOTOS[k].avatar : ''; };
+const __fotoYo = () => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : __FOTOS.alex.avatar; } catch (e) { return __FOTOS.alex.avatar; } };
+const __VIDFOTO = { 'directo_trio_jazz.mp4': __FOTOS.alex.trio, 'jam_session.mp4': __FOTOS.alex.card };
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const NAMES = ["Jordi Puig", "Laia Serra", "Pau Vidal", "Núria Font", "Marc Soler"];
+const SHEET0 = '';
+const SEL0 = {};
+const s0 = this.state || {};
+const s = Object.assign({ sheetAdd: false }, s0);
+const tab = s.tab || (this.props.pestana ?? 'info');
+const sheet = s.sheet !== undefined ? s.sheet : SHEET0;
+const sel = s.sel || SEL0;
+const chats = NAMES.map((n) => { const on = !!sel[n]; return { name: n, avatar: __fotoDe(n), conFoto: !!__fotoDe(n), sinFoto: !__fotoDe(n), on: on, off: !on, toggle: () => { const next = Object.assign({}, sel); if (on) { delete next[n]; } else { next[n] = true; } this.setState({ sel: next }); } }; });
+const picked = NAMES.filter((n) => sel[n]);
+const D = { nombre: 'Alex Martín', roles: ['Piano'], generos: ['Jazz', 'Soul'], zona: 'Barcelona ciudad', disp: ['Esta semana', 'El próximo fin de semana'], rem: true, col: true, f: { lugar: 'Eixample', sobre: 'Pianista de jazz y soul. Toco en directo y doy clases. Busco banda para proyectos remunerados.', bolo: '150 €', grab: '35 €', comp: '300 €', otros: 'Clases de piano: 25 € la hora', ig: 'instagram.com/alexmartin.piano', yt: 'youtube.com/@alexmartinpiano', sp: 'open.spotify.com/artist/alexmartin', tt: 'tiktok.com/@alexmartin.piano', sc: 'soundcloud.com/alexmartin' }, videos: [{ t: 'Directo con trío de jazz', file: 'directo_trio_jazz.mp4' }, { t: 'Jam session', file: 'jam_session.mp4' }] };
+const PF = (__ST && __ST.perfil) || null;
+const me = Object.assign({}, D, PF || {});
+me.f = Object.assign({}, PF ? {} : D.f, (PF && PF.f) || {});
+const vt = (v) => (v.t && v.t.trim()) ? v.t : v.file;
+const REDES = [['ig', 'I', 'Instagram', 'https://www.instagram.com/'], ['yt', 'Y', 'YouTube', 'https://www.youtube.com/'], ['sp', 'S', 'Spotify', 'https://open.spotify.com/'], ['tt', 'T', 'TikTok', 'https://www.tiktok.com/'], ['sc', 'SC', 'SoundCloud', 'https://soundcloud.com/']];
+const redes = REDES.filter((r) => (me.f[r[0]] || '').trim() !== '').map((r) => ({ letra: r[1], name: r[2], url: r[3] }));
+const tval = (v) => (v || '').trim();
+const per = (v, p) => (/^[0-9]/.test(tval(v)) ? p : '');
+const hasT = ['bolo', 'grab', 'comp', 'otros'].some((k) => tval(me.f[k]) !== '');
+const ME = { name: me.nombre, line: me.roles.join(', ') + ' · ' + me.generos.join(', '), ubic: tval(me.f.lugar) ? (me.zona === 'Alrededores' ? tval(me.f.lugar) : tval(me.f.lugar) + ', Barcelona') : me.zona, rem: !!me.rem, col: !!me.col, about: tval(me.f.sobre) || 'Aún no has escrito nada sobre ti.', disp: me.disp.length ? me.disp.join(' · ') : 'No indicada', v0: me.videos.length ? vt(me.videos[0]) : 'Sin vídeo', videos: me.videos.map((v, i) => ({ title: vt(v), principal: i === 0 })), redes: redes, hasRedes: redes.length > 0, noRedes: redes.length === 0, hasT: hasT, noT: !hasT, bolo: tval(me.f.bolo) || '—', boloPer: per(me.f.bolo, 'por actuación'), grab: tval(me.f.grab) || '—', grabPer: per(me.f.grab, 'por hora'), comp: tval(me.f.comp) || '—', compPer: per(me.f.comp, 'por proyecto'), otros: tval(me.f.otros) || '—' };
+const toast = s.toast !== undefined ? s.toast : { kind: 'error', text: 'No se ha podido subir el vídeo. Usa un archivo MP4 o MOV de menos de 100 MB.', act: 'video', actText: 'Reintentar' };
+const __toast = (t, ms) => { const id = Date.now() + Math.random(); this.setState({ toast: Object.assign({ id: id }, t) }); if (ms) { setTimeout(() => { const cur = (this.state || {}).toast; if (cur && cur.id === id) { this.setState({ toast: null }); } }, ms); } };
+const FAIL0 = true;
+const PILLS = true;
+const vids = s.vids || me.videos;
+const fotos = s.fotos || (PF && PF.fotos) || ((__ST && __ST.user === 'nuevo') ? [] : [{"t": "Foto en el escenario"}]);
+const MEDIA = vids.map((v) => ({ type: 'video', t: vt(v), img: __fotoYo() ? (__VIDFOTO[v.file] || '') : '' })).concat(fotos.map((f) => ({ type: 'foto', t: f.t })));
+this.__mref = this.__mref || { current: null };
+const mi = Math.max(0, Math.min(s.mi || 0, MEDIA.length - 1));
+const goTo = (i) => { this.setState({ mi: i }); const el = this.__mref.current; if (el && el.scrollTo) { el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' }); } };
+const mediaItems = MEDIA.map((x, i) => ({ t: x.t, img: x.img || '', conImg: !!x.img, principal: i === 0 && x.type === 'video', isVideo: x.type === 'video', isFoto: x.type === 'foto', label: (PILLS && i === 0 && x.type === 'video') ? x.t : (x.type === 'video' ? 'Vídeo · ' : 'Foto · ') + x.t, aria: (x.type === 'video' ? 'vídeo ' : 'foto ') + (i + 1) + ' de ' + MEDIA.length + ': ' + x.t }));
+const saveMedia = (nv, nf) => { this.setState({ vids: nv, fotos: nf }); __save({ perfil: Object.assign({}, me, { videos: nv, fotos: nf }) }); };
+const upload = (type) => { this.setState({ sheetAdd: false }); __toast({ kind: 'wait', text: type === 'video' ? 'Subiendo vídeo…' : 'Subiendo foto…' }); setTimeout(() => { const st = this.state || {}; if (FAIL0 && !st.retried) { this.setState({ retried: true }); __toast({ kind: 'error', text: type === 'video' ? 'No se ha podido subir el vídeo. Usa un archivo MP4 o MOV de menos de 100 MB.' : 'No se ha podido subir la foto. Usa un archivo JPG o PNG de menos de 10 MB.', act: type, actText: 'Reintentar' }); return; } const cv = st.vids || vids; const cf = st.fotos || fotos; let idx; if (type === 'video') { const nv = cv.concat([{ t: 'Vídeo nuevo ' + (cv.length + 1), file: 'video_nuevo_' + (cv.length + 1) + '.mp4' }]); saveMedia(nv, cf); idx = nv.length - 1; } else { const nf = cf.concat([{ t: 'Foto nueva ' + (cf.length + 1) }]); saveMedia(cv, nf); idx = cv.length + nf.length - 1; } __toast({ kind: 'ok', text: type === 'video' ? 'Vídeo subido. Puedes marcarlo como principal.' : 'Foto subida.' }, 3500); setTimeout(() => goTo(idx), 60); }, 1200); };
+const ACTIONS = { video: () => { this.setState({ retried: true }); upload('video'); }, foto: () => { this.setState({ retried: true }); upload('foto'); } };
+const confirmIdx = s.confirm !== undefined ? s.confirm : null;
+const confirmItem = confirmIdx !== null ? MEDIA[confirmIdx] : null;
+return {
+me: ME,
+isInfo: tab === 'info',
+isTarifas: tab === 'tarifas',
+showInfo: () => this.setState({ tab: 'info' }),
+showTarifas: () => this.setState({ tab: 'tarifas' }),
+sheetShare: sheet === 'compartir',
+sheetPick: sheet === 'enviar',
+sheetSent: sheet === 'enviado',
+openShare: () => this.setState({ sheet: 'compartir' }),
+openPick: () => this.setState({ sheet: 'enviar', sel: {} }),
+closeSheet: () => this.setState({ sheet: '', sel: {} }),
+sendShare: () => { const N2K = {"Jordi Puig": "jordi", "Laia Serra": "laia", "Pau Vidal": "pau", "Núria Font": "nuria", "Marc Soler": "marc", "Marta Ruiz": "marta"}; const BASEM = {"marta": [], "jordi": [{"text": "Hola, he visto tu perfil. ¿Te interesa tocar en un concierto el viernes?", "mine": false, "sent": false, "failed": false}, {"text": "¡Hola! Sí, cuéntame más.", "mine": true, "sent": true, "failed": false}, {"text": "Es en la sala Apolo, repertorio de rock. Es un proyecto remunerado.", "mine": false, "sent": false, "failed": false}, {"text": "Perfecto. ¿Tienes disponibilidad el sábado para ensayar?", "mine": true, "sent": true, "failed": false}], "laia": [{"text": "Te paso las partituras esta tarde", "mine": false, "sent": false, "failed": false}], "pau": [{"text": "Gracias, te escribo cuando tenga la fecha del ensayo", "mine": false, "sent": false, "failed": false}], "nuria": [{"text": "¿Cuánto cobras por bolo?", "mine": false, "sent": false, "failed": false}], "marc": [{"text": "Nos vemos en el ensayo", "mine": false, "sent": false, "failed": false}]}; const CARD = { name: ME.name, line: ME.line, ubic: ME.ubic, href: 'Mi-perfil.dc.html' }; const all = (__ST && __ST.chats) || {}; const nuevo = !!(__ST && __ST.user === 'nuevo'); const next = Object.assign({}, all); picked.forEach((n) => { const k = N2K[n]; if (!k || __blocked.indexOf(k) >= 0) { return; } const prev = next[k] || (nuevo ? [] : (BASEM[k] || [])); next[k] = prev.concat([{ text: 'Perfil compartido: ' + CARD.name, mine: true, sent: true, failed: false, card: CARD }]); }); __save({ chats: next }); this.setState({ sheet: 'enviado' }); },
+copyLink: () => { this.setState({ sheet: '', sel: {} }); __toast({ kind: 'ok', text: 'Enlace copiado' }, 2500); },
+chats: chats,
+canSend: picked.length > 0,
+cannotSend: picked.length === 0,
+sentTo: picked.length === 0 ? 'tus chats' : (picked.length === 1 ? 'el chat con ' + picked[0] : picked.length + ' chats'),
+dots: MEDIA.map((x, i) => ({ on: i === mi, off: i !== mi, go: () => goTo(i), label: 'Ver ' + (x.type === 'video' ? 'vídeo' : 'foto') + ' ' + (i + 1) + ' de ' + MEDIA.length })),
+hasPrev: mi > 0,
+hasNext: mi < MEDIA.length - 1,
+prev: () => goTo(mi - 1),
+next: () => goTo(mi + 1),
+onMediaScroll: (e) => { const el = e.target; const i = Math.round(el.scrollLeft / Math.max(1, el.clientWidth)); if (i !== mi) { this.setState({ mi: i }); } },
+mediaRef: this.__mref,
+media: mediaItems.map((x, i) => Object.assign({}, x, { canMain: x.isVideo && i > 0, makeMain: () => { saveMedia([vids[i]].concat(vids.filter((v, j) => j !== i)), fotos); goTo(0); __toast({ kind: 'ok', text: 'Vídeo principal actualizado.' }, 2500); }, remove: () => { if (x.isVideo && vids.length === 1) { __toast({ kind: 'error', text: 'Tu perfil necesita al menos un vídeo. Sube otro antes de eliminar este.' }, 4500); return; } this.setState({ confirm: i }); } })),
+openAdd: () => this.setState({ sheetAdd: true }),
+closeAdd: () => this.setState({ sheetAdd: false }),
+sheetAddOpen: !!s.sheetAdd,
+uploadVideo: () => upload('video'),
+uploadFoto: () => upload('foto'),
+confirmOpen: !!confirmItem,
+confirmTitle: confirmItem ? (confirmItem.type === 'video' ? '¿Eliminar este vídeo?' : '¿Eliminar esta foto?') : '',
+confirmText: confirmItem ? '«' + confirmItem.t + '» dejará de verse en tu perfil.' : '',
+cancelDelete: () => this.setState({ confirm: null }),
+doDelete: () => { const i = confirmIdx; const isV = i < vids.length; const nv = isV ? vids.filter((v, j) => j !== i) : vids; const nf = isV ? fotos : fotos.filter((f, j) => j !== i - vids.length); saveMedia(nv, nf); this.setState({ confirm: null, mi: Math.max(0, Math.min(mi, nv.length + nf.length - 1)) }); __toast({ kind: 'ok', text: isV ? 'Vídeo eliminado.' : 'Foto eliminada.' }, 2500); },
+toastOn: !!toast,
+toastErr: !!toast && toast.kind === 'error',
+toastOk: !!toast && toast.kind === 'ok',
+toastWait: !!toast && toast.kind === 'wait',
+toastText: toast ? toast.text : '',
+toastAct: !!(toast && toast.act),
+toastActText: (toast && toast.actText) || '',
+toastDo: () => { if (toast && toast.act && ACTIONS[toast.act]) { ACTIONS[toast.act](); } },
+toastRole: toast && toast.kind === 'error' ? 'alert' : 'status',
+};
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

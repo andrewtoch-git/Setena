@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ajustes, eliminar cuenta</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: none; padding: 64px 16px 0">
+<div style="display: flex; align-items: center; gap: 8px; height: 44px">
+<a href="Mi-perfil.dc.html" aria-label="Volver" style="flex: none; width: 28px; height: 44px; display: flex; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; font-size: 24px; font-weight: 400">Ajustes</h1>
+</div>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px 16px; display: flex; flex-direction: column">
+<span style="margin-top: 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">CUENTA</span>
+<div style="min-height: 52px; border-bottom: 1px solid var(--outline-variant); display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 16px">Correo electrónico</span><span style="font-size: 12px; color: var(--on-surface-variant)">alex@correo.com</span></div>
+<a href="Ajustes-contrasena.dc.html" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; font: 400 16px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<span style="flex: 1">Cambiar contraseña</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><path d="M9 6l6 6-6 6"></path></svg>
+</a>
+<span style="margin-top: 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">NOTIFICACIONES</span>
+<button role="switch" aria-checked="{{mensajes}}" onClick="{{toggle_mensajes}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span>Mensajes nuevos</span><span style="font-size: 12px; color: var(--on-surface-variant)">Aviso cuando alguien te escribe</span></span>
+<sc-if value="{{mensajes}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 44px; height: 26px; box-sizing: border-box; border-radius: 999px; background: var(--acento); padding: 3px; display: flex; justify-content: flex-end"><span style="width: 20px; height: 20px; border-radius: 50%; background: var(--surface)"></span></span></sc-if>
+<sc-if value="{{no_mensajes}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 44px; height: 26px; box-sizing: border-box; border-radius: 999px; background: var(--outline); padding: 3px; display: flex; justify-content: flex-start"><span style="width: 20px; height: 20px; border-radius: 50%; background: var(--surface)"></span></span></sc-if>
+</button>
+<button role="switch" aria-checked="{{novedades}}" onClick="{{toggle_novedades}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span>Novedades de la app</span><span style="font-size: 12px; color: var(--on-surface-variant)">Consejos y nuevas funciones</span></span>
+<sc-if value="{{novedades}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 44px; height: 26px; box-sizing: border-box; border-radius: 999px; background: var(--acento); padding: 3px; display: flex; justify-content: flex-end"><span style="width: 20px; height: 20px; border-radius: 50%; background: var(--surface)"></span></span></sc-if>
+<sc-if value="{{no_novedades}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 44px; height: 26px; box-sizing: border-box; border-radius: 999px; background: var(--outline); padding: 3px; display: flex; justify-content: flex-start"><span style="width: 20px; height: 20px; border-radius: 50%; background: var(--surface)"></span></span></sc-if>
+</button>
+<span style="margin-top: 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">SESIÓN</span>
+<button onClick="{{askLogout}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10"></path></svg><span>Cerrar sesión</span></button>
+<button onClick="{{askDelete}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; display: flex; align-items: center; gap: 12px; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg><span>Eliminar cuenta</span></button>
+</div>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="Chats.dc.html" aria-label="{{navChatsLabel}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg><sc-if value="{{navUnread}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; top: 0; right: 8px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">1</span></sc-if></span>Chats</a>
+<a href="Mi-perfil.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4" fill="currentColor"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7z" fill="currentColor"></path></svg></span>Mi perfil</a>
+</nav>
+<sc-if value="{{dLogout}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="lo-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="lo-t" style="margin: 0; font-size: 24px; font-weight: 400">¿Cerrar sesión?</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Podrás volver a entrar con tu correo y tu contraseña cuando quieras.</p>
+<a href="Inicio.dc.html" style="height: 40px; border-radius: 999px; background: var(--error); color: var(--on-error); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Cerrar sesión</a>
+<button onClick="{{closeDialog}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dDelete}}" hint-placeholder-val="{{true}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="del-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="del-t" style="margin: 0; font-size: 24px; font-weight: 400">¿Eliminar tu cuenta?</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Se borrarán tu perfil, tus favoritos y tus chats. Esta acción no se puede deshacer.</p>
+<a href="Inicio.dc.html" onClick="{{borrarCuenta}}" style="height: 40px; border-radius: 999px; background: var(--error); color: var(--on-error); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Eliminar cuenta</a>
+<button onClick="{{closeDialog}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const s = this.state || {};
+const dialog = s.dialog !== undefined ? s.dialog : 'delete';
+const mensajes = s.mensajes !== undefined ? s.mensajes : true;
+const novedades = s.novedades !== undefined ? s.novedades : false;
+return {
+mensajes: mensajes, no_mensajes: !mensajes, toggle_mensajes: () => this.setState({ mensajes: !mensajes }),
+novedades: novedades, no_novedades: !novedades, toggle_novedades: () => this.setState({ novedades: !novedades }),
+dLogout: dialog === 'logout', dDelete: dialog === 'delete',
+askLogout: () => this.setState({ dialog: 'logout' }),
+askDelete: () => this.setState({ dialog: 'delete' }),
+closeDialog: () => this.setState({ dialog: '' }),
+borrarCuenta: () => __save({ user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null })
+};
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

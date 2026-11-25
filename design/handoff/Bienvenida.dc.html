@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Bienvenida</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: 1; min-height: 0; padding: 64px 24px 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; text-align: center">
+<span aria-hidden="true" style="align-self: center; width: 72px; height: 72px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h1 style="margin: 8px 0 0; font-size: 24px; font-weight: 400">{{saludo}}</h1>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: var(--on-surface-variant)">Ya formas parte de la comunidad. Puedes ver perfiles completos, guardar músicos en Favoritos y escribir a quien te interese.</p>
+<div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px; text-align: left">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--surface-container-high)"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></span><span style="font-size: 14px; line-height: 1.35">Busca por instrumento, estilo, zona o disponibilidad.</span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--surface-container-high)"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span><span style="font-size: 14px; line-height: 1.35">Guarda en Favoritos a los músicos que te interesen.</span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--surface-container-high)"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg></span><span style="font-size: 14px; line-height: 1.35">Escríbeles por chat para proponerles un proyecto.</span></div>
+</div>
+<a class="accion" href="Explorar.dc.html" style="margin-top: 18px; height: 40px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Empezar a explorar</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const nombre = (__ST && __ST.perfil && __ST.perfil.nombre) ? __ST.perfil.nombre.trim().split(' ')[0] : '';
+return { saludo: nombre ? '¡Tu cuenta está lista, ' + nombre + '!' : '¡Tu cuenta está lista!' };
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

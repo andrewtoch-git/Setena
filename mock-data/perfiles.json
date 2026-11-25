@@ -1,0 +1,1861 @@
+[
+  {
+    "clave": "alex",
+    "nombre": "Alex Martín",
+    "roles": [
+      "Piano"
+    ],
+    "generos": [
+      "Jazz",
+      "Soul"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Eixample",
+    "disponibilidad": [
+      "Esta semana",
+      "El próximo fin de semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Pianista de jazz y soul. Toco en directo y doy clases. Busco banda para proyectos remunerados.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 150,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 35,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Clases de piano: 25 € la hora"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/alexmartin.piano",
+      "youtube": "https://example.com/youtube/alexmartinpiano",
+      "spotify": "https://example.com/spotify/alexmartin",
+      "tiktok": "https://example.com/tiktok/alexmartin.piano",
+      "soundcloud": "https://example.com/soundcloud/alexmartin"
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo con trío de jazz",
+        "miniatura": "alex-martin-trio-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Jam session",
+        "miniatura": "alex-martin-card.jpg",
+        "principal": false
+      }
+    ],
+    "avatar": "alex-martin-avatar.jpg",
+    "ultimaActividadMin": 0,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "laia",
+    "nombre": "Laia Serra",
+    "roles": [
+      "Cantante"
+    ],
+    "generos": [
+      "Pop",
+      "Soul"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sant Martí",
+    "disponibilidad": [
+      "Esta semana",
+      "El próximo fin de semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Cantante de pop y soul. Hago directos con banda y colaboro en grabaciones de estudio.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 150,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 35,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Coros para grabaciones: 40 € por canción"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/laiaserra",
+      "youtube": "https://example.com/youtube/laiaserra",
+      "spotify": "https://example.com/spotify/laiaserra",
+      "tiktok": "https://example.com/tiktok/laiaserra",
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo con banda",
+        "miniatura": "laia-serra-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Versión acústica",
+        "miniatura": null,
+        "principal": false
+      },
+      {
+        "tipo": "foto",
+        "titulo": "Foto en el escenario",
+        "miniatura": null,
+        "principal": false
+      }
+    ],
+    "avatar": "laia-serra-avatar.jpg",
+    "ultimaActividadMin": 60,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "marc",
+    "nombre": "Marc Soler",
+    "roles": [
+      "Piano"
+    ],
+    "generos": [
+      "Jazz",
+      "Clásica"
+    ],
+    "zona": "Alrededores",
+    "lugar": "L'Hospitalet de Llobregat",
+    "disponibilidad": [
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Pianista de formación clásica. Toco jazz en trío y acompaño a cantantes en directo.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 180,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 40,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 350,
+        "unidad": "por proyecto",
+        "texto": null
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Acompañamiento en bodas: a consultar"
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": "https://example.com/youtube/marcsoler",
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": "https://example.com/soundcloud/marcsoler"
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Trío de jazz en directo",
+        "miniatura": "marc-soler-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Pieza clásica",
+        "miniatura": null,
+        "principal": false
+      },
+      {
+        "tipo": "foto",
+        "titulo": "Foto en el estudio",
+        "miniatura": null,
+        "principal": false
+      }
+    ],
+    "avatar": "marc-soler-avatar.jpg",
+    "ultimaActividadMin": 1440,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "marta",
+    "nombre": "Marta Ruiz",
+    "roles": [
+      "Guitarra"
+    ],
+    "generos": [
+      "Rock",
+      "Indie"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Gràcia",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Guitarrista con diez años tocando en bandas de rock e indie. Disponible para directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 120,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 250,
+        "unidad": "por proyecto",
+        "texto": null
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Clases de guitarra: 20 € la hora"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/martaruiz.guitar",
+      "youtube": "https://example.com/youtube/martaruiz",
+      "spotify": "https://example.com/spotify/martaruiz",
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo con banda",
+        "miniatura": "marta-ruiz-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Ensayo en el local",
+        "miniatura": null,
+        "principal": false
+      },
+      {
+        "tipo": "foto",
+        "titulo": "Foto con su guitarra",
+        "miniatura": null,
+        "principal": false
+      }
+    ],
+    "avatar": "marta-ruiz-avatar.jpg",
+    "ultimaActividadMin": 120,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "jordi",
+    "nombre": "Jordi Puig",
+    "roles": [
+      "Batería"
+    ],
+    "generos": [
+      "Rock",
+      "Funk"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sants-Montjuïc",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Batería de rock y funk. Toco con dos bandas y hago sustituciones de última hora.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 130,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Ensayos con banda: 15 € la hora"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/jordipuig.drums",
+      "youtube": "https://example.com/youtube/jordipuig",
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Solo de batería",
+        "miniatura": "jordi-puig-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Directo con banda de funk",
+        "miniatura": null,
+        "principal": false
+      },
+      {
+        "tipo": "foto",
+        "titulo": "Foto en el local de ensayo",
+        "miniatura": null,
+        "principal": false
+      }
+    ],
+    "avatar": "jordi-puig-avatar.jpg",
+    "ultimaActividadMin": 10,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "nuria",
+    "nombre": "Núria Font",
+    "roles": [
+      "DJ"
+    ],
+    "generos": [
+      "Electrónica",
+      "House"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Cornellà de Llobregat",
+    "disponibilidad": [
+      "Inmediata",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "DJ de electrónica y house. Pincho en fiestas y eventos privados y produzco mis propios temas.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 200,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 40,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      },
+      {
+        "servicio": "otros",
+        "precio": null,
+        "unidad": null,
+        "texto": "Remezclas: a consultar"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/nuriafont.dj",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": "https://example.com/tiktok/nuriafont",
+      "soundcloud": "https://example.com/soundcloud/nuriafont"
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Sesión en directo",
+        "miniatura": "nuria-font-card.jpg",
+        "principal": true
+      },
+      {
+        "tipo": "video",
+        "titulo": "Mezcla en el estudio",
+        "miniatura": null,
+        "principal": false
+      },
+      {
+        "tipo": "foto",
+        "titulo": "Foto pinchando en una fiesta",
+        "miniatura": null,
+        "principal": false
+      }
+    ],
+    "avatar": "nuria-font-avatar.jpg",
+    "ultimaActividadMin": 180,
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "pau",
+    "nombre": "Pau Vidal",
+    "roles": [
+      "Teclado"
+    ],
+    "generos": [
+      "Pop",
+      "Electrónica"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Badalona",
+    "disponibilidad": [],
+    "remunerados": false,
+    "colaboraciones": true,
+    "sobreMi": null,
+    "tarifas": [],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Vídeo de presentación",
+        "miniatura": "pau-vidal-card.jpg",
+        "principal": true
+      }
+    ],
+    "avatar": "pau-vidal-avatar.jpg",
+    "ultimaActividadMin": 7200,
+    "nota": "Perfil mínimo del wireframe (Perfil-musico-incompleto): sin «Sobre mí», disponibilidad, redes ni tarifas.",
+    "origen": "wireframe",
+    "ficticio": true
+  },
+  {
+    "clave": "clara1",
+    "nombre": "Clara Bosch",
+    "roles": [
+      "Guitarra"
+    ],
+    "generos": [
+      "Blues",
+      "Rock"
+    ],
+    "zona": "Alrededores",
+    "lugar": "L'Hospitalet de Llobregat",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana"
+    ],
+    "remunerados": false,
+    "colaboraciones": true,
+    "sobreMi": "Guitarrista de blues y rock. Me interesa colaborar con bandas nuevas.",
+    "tarifas": [],
+    "redes": {
+      "instagram": "https://example.com/instagram/clara1",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Versión acústica",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 30,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "pol2",
+    "nombre": "Pol Ferrer",
+    "roles": [
+      "Guitarra",
+      "Compositor/a"
+    ],
+    "generos": [
+      "Flamenco"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sant Andreu",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana",
+      "La próxima semana"
+    ],
+    "remunerados": false,
+    "colaboraciones": true,
+    "sobreMi": "Guitarrista de flamenco. Busco proyectos estables en Barcelona.",
+    "tarifas": [],
+    "redes": {
+      "instagram": "https://example.com/instagram/pol2",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Concierto al aire libre",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 90,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "aina3",
+    "nombre": "Aina Roca",
+    "roles": [
+      "Bajo"
+    ],
+    "generos": [
+      "Funk",
+      "Soul"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Sant Cugat del Vallès",
+    "disponibilidad": [
+      "Esta semana",
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Bajista de funk y soul. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 180,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/aina3",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 10080,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "biel4",
+    "nombre": "Biel Costa",
+    "roles": [
+      "Bajo"
+    ],
+    "generos": [
+      "Jazz"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Gràcia",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Bajista de jazz. Hago directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 90,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 40,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/biel4",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo en sala",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 30,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "julia5",
+    "nombre": "Júlia Mas",
+    "roles": [
+      "Bajo",
+      "Contrabajo"
+    ],
+    "generos": [
+      "Jazz",
+      "Blues"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Les Corts",
+    "disponibilidad": [
+      "Esta semana",
+      "Este mes"
+    ],
+    "remunerados": false,
+    "colaboraciones": true,
+    "sobreMi": "Bajista de jazz y blues. Me interesa colaborar con bandas nuevas.",
+    "tarifas": [],
+    "redes": {
+      "instagram": "https://example.com/instagram/julia5",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 600,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "oriol6",
+    "nombre": "Oriol Vila",
+    "roles": [
+      "Batería"
+    ],
+    "generos": [
+      "Metal",
+      "Punk"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Eixample",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Batería de metal y punk. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 40,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Versión acústica",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 30,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "carla7",
+    "nombre": "Carla Pons",
+    "roles": [
+      "Batería",
+      "Percusión"
+    ],
+    "generos": [
+      "Salsa",
+      "Cumbia"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sant Martí",
+    "disponibilidad": [
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Batería de salsa y cumbia. Toco en bodas, fiestas y eventos.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 90,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 20,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 90,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "arnau8",
+    "nombre": "Arnau Soler",
+    "roles": [
+      "Cantante"
+    ],
+    "generos": [
+      "R&B",
+      "Soul"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Sant Cugat del Vallès",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Cantante de R&B y soul. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 160,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 25,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 200,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/arnau8",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 5,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "mireia9",
+    "nombre": "Mireia Camps",
+    "roles": [
+      "Cantante",
+      "Corista"
+    ],
+    "generos": [
+      "Gospel",
+      "Pop"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sant Andreu",
+    "disponibilidad": [
+      "Inmediata",
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Cantante de gospel y pop. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 20,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 250,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/mireia9",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 1440,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "sergi10",
+    "nombre": "Sergi Riera",
+    "roles": [
+      "Teclado"
+    ],
+    "generos": [
+      "Funk",
+      "Disco"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Badalona",
+    "disponibilidad": [
+      "El próximo fin de semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Teclista de funk y disco. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 25,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 2880,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "ona11",
+    "nombre": "Ona Puig",
+    "roles": [
+      "Teclado",
+      "Arreglista"
+    ],
+    "generos": [
+      "Pop",
+      "Latin Pop"
+    ],
+    "zona": "Alrededores",
+    "lugar": "El Prat de Llobregat",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Teclista de pop y latin pop. Busco proyectos estables en Barcelona.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 45,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/ona11",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 5,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "dani12",
+    "nombre": "Dani Torres",
+    "roles": [
+      "DJ"
+    ],
+    "generos": [
+      "Techno"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Horta-Guinardó",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "DJ de techno. Hago directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/dani12",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Grabación en casa",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 90,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "lucia13",
+    "nombre": "Lucía Romero",
+    "roles": [
+      "DJ",
+      "Productor/a musical"
+    ],
+    "generos": [
+      "Drum & Bass",
+      "Electrónica"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sarrià-Sant Gervasi",
+    "disponibilidad": [
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "DJ de drum & bass y electrónica. Me interesa colaborar con bandas nuevas.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 35,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 10080,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "ivan14",
+    "nombre": "Iván Navarro",
+    "roles": [
+      "Piano"
+    ],
+    "generos": [
+      "Clásica"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Sant Cugat del Vallès",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Pianista de clásica. Me interesa colaborar con bandas nuevas.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 160,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 45,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 30,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "irene15",
+    "nombre": "Irene Molina",
+    "roles": [
+      "Saxofón"
+    ],
+    "generos": [
+      "Jazz",
+      "Funk"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Eixample",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Saxofonista de jazz y funk. Busco proyectos estables en Barcelona.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 120,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 45,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/irene15",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 240,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "hugo16",
+    "nombre": "Hugo Ortega",
+    "roles": [
+      "Trompeta"
+    ],
+    "generos": [
+      "Ska",
+      "Reggae"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sants-Montjuïc",
+    "disponibilidad": [
+      "Inmediata",
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Trompetista de ska y reggae. Me interesa colaborar con bandas nuevas.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 25,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/hugo16",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo en sala",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 90,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "elena17",
+    "nombre": "Elena Castro",
+    "roles": [
+      "Violín"
+    ],
+    "generos": [
+      "Folk",
+      "Clásica"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sarrià-Sant Gervasi",
+    "disponibilidad": [
+      "Inmediata",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Violinista de folk y clásica. Busco proyectos estables en Barcelona.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": null,
+        "unidad": "por proyecto",
+        "texto": "A convenir"
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/elena17",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Versión acústica",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 10080,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "alvaro18",
+    "nombre": "Álvaro Gil",
+    "roles": [
+      "Violonchelo"
+    ],
+    "generos": [
+      "Clásica",
+      "Música experimental"
+    ],
+    "zona": "Alrededores",
+    "lugar": "Santa Coloma de Gramenet",
+    "disponibilidad": [
+      "Inmediata",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Violonchelista de clásica y música experimental. Toco en bodas, fiestas y eventos.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 140,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 25,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/alvaro18",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo en sala",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 5,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "noa19",
+    "nombre": "Noa Sanz",
+    "roles": [
+      "Beatmaker"
+    ],
+    "generos": [
+      "Hip-Hop",
+      "Rap"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Nou Barris",
+    "disponibilidad": [
+      "Inmediata",
+      "El próximo fin de semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Beatmaker de Hip-Hop y rap. Hago directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 180,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Versión acústica",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 1440,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "ruben20",
+    "nombre": "Rubén Marín",
+    "roles": [
+      "Flauta",
+      "Clarinete"
+    ],
+    "generos": [
+      "Folk",
+      "Jazz"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sants-Montjuïc",
+    "disponibilidad": [
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Flautista de folk y jazz. Toco en bodas, fiestas y eventos.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 220,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 45,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 200,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Directo en sala",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 2880,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "paula21",
+    "nombre": "Paula Ibáñez",
+    "roles": [
+      "Acordeón"
+    ],
+    "generos": [
+      "Tango",
+      "Folk"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sarrià-Sant Gervasi",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": true,
+    "colaboraciones": true,
+    "sobreMi": "Acordeonista de tango y folk. Disponible para sustituciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 160,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 35,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Sesión de estudio",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 5,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "marti22",
+    "nombre": "Martí Valls",
+    "roles": [
+      "Productor/a musical"
+    ],
+    "generos": [
+      "Reguetón",
+      "Dancehall"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Sants-Montjuïc",
+    "disponibilidad": [
+      "Inmediata",
+      "El próximo fin de semana",
+      "Esta semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Productor/a de reguetón y dancehall. Hago directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 120,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 25,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 400,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/marti22",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Concierto al aire libre",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 240,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "bruna23",
+    "nombre": "Bruna Sala",
+    "roles": [
+      "Cantante"
+    ],
+    "generos": [
+      "Flamenco",
+      "Bachata"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Les Corts",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "Esta semana",
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Cantante de flamenco y bachata. Busco proyectos estables en Barcelona.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 140,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 20,
+        "unidad": "por hora",
+        "texto": null
+      },
+      {
+        "servicio": "composicion",
+        "precio": 300,
+        "unidad": "por proyecto",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Concierto al aire libre",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 10080,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "gerard24",
+    "nombre": "Gerard Font",
+    "roles": [
+      "Trombón"
+    ],
+    "generos": [
+      "Salsa",
+      "Ska"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Nou Barris",
+    "disponibilidad": [
+      "La próxima semana",
+      "Este mes"
+    ],
+    "remunerados": false,
+    "colaboraciones": true,
+    "sobreMi": "Trombonista de salsa y ska. Disponible para sustituciones.",
+    "tarifas": [],
+    "redes": {
+      "instagram": null,
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 2880,
+    "origen": "generado",
+    "ficticio": true
+  },
+  {
+    "clave": "sofia25",
+    "nombre": "Sofía Herrera",
+    "roles": [
+      "Guitarra"
+    ],
+    "generos": [
+      "Indie",
+      "Alternativo"
+    ],
+    "zona": "Barcelona ciudad",
+    "lugar": "Horta-Guinardó",
+    "disponibilidad": [
+      "El próximo fin de semana",
+      "La próxima semana"
+    ],
+    "remunerados": true,
+    "colaboraciones": false,
+    "sobreMi": "Guitarrista de indie y alternativo. Hago directos y grabaciones.",
+    "tarifas": [
+      {
+        "servicio": "bolo",
+        "precio": 90,
+        "unidad": "por actuación",
+        "texto": null
+      },
+      {
+        "servicio": "grabacion",
+        "precio": 30,
+        "unidad": "por hora",
+        "texto": null
+      }
+    ],
+    "redes": {
+      "instagram": "https://example.com/instagram/sofia25",
+      "youtube": null,
+      "spotify": null,
+      "tiktok": null,
+      "soundcloud": null
+    },
+    "media": [
+      {
+        "tipo": "video",
+        "titulo": "Ensayo con banda",
+        "miniatura": null,
+        "principal": true
+      }
+    ],
+    "avatar": null,
+    "ultimaActividadMin": 90,
+    "origen": "generado",
+    "ficticio": true
+  }
+]

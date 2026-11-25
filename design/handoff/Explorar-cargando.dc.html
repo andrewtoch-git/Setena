@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Explorar, cargando</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+.logo-puntos{color:var(--palette-primary-40)}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden">
+<sc-if value="{{isFiltros}}" hint-placeholder-val="{{false}}">
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 64px 16px 16px; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 8px; height: 44px">
+<button aria-label="Volver sin aplicar" onClick="{{cancelFiltros}}" style="flex: none; width: 28px; height: 44px; border: none; background: transparent; display: flex; align-items: center; padding: 0; cursor: pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+<h1 style="flex: 1; margin: 0; font-size: 24px; font-weight: 400">Filtros</h1>
+<button onClick="{{clearDraft}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 4px; font: 500 14px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Borrar filtros</button>
+</div>
+<sc-for list="{{sections}}" as="sec" hint-placeholder-count="5">
+<section style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 500">{{sec.title}}</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{sec.chips}}" as="chip" hint-placeholder-count="6">
+<sc-if value="{{chip.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{chip.name}}</button></sc-if>
+<sc-if value="{{chip.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{chip.name}}</button></sc-if>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+<div style="flex: none; border-top: 1px solid var(--outline-variant); padding: 10px 16px">
+<button class="accion" onClick="{{applyFiltros}}" style="width: 100%; height: 56px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 16px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">{{applyText}}</button>
+</div>
+</sc-if>
+<sc-if value="{{notFiltros}}" hint-placeholder-val="{{true}}">
+<div style="flex: none; height: 56px; padding: 44px 16px 0; display: flex; align-items: center; gap: 8px"><svg width="27" height="24" viewBox="-105.04 -94.64 210.08 189.28" aria-hidden="true" style="flex: none; display: block"><g class="logo-puntos" fill="currentColor"><circle cx="-38.9" cy="-67.4" r="27.24"></circle><circle cx="38.9" cy="-67.4" r="27.24"></circle><circle cx="-77.8" cy="0" r="27.24"></circle><circle cx="-38.9" cy="67.4" r="27.24"></circle><circle cx="38.9" cy="67.4" r="27.24"></circle></g><g fill="currentColor" style="color: var(--acento)"><circle cx="0" cy="0" r="27.24"></circle><circle cx="77.8" cy="0" r="27.24"></circle><path d="M23.01,-14.59a18.83,18.83 0 0 0 31.82,0L54.83,14.59a18.83,18.83 0 0 0 -31.82,0Z"></path></g></svg><span style="font-family: 'Nunito', var(--font-brand); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: -0.2px; color: var(--on-surface)">setena</span></div>
+<div style="flex: none; padding: 8px 16px 0; display: flex; flex-direction: column; gap: 12px">
+<div style="height: 56px; border-radius: 999px; background: var(--surface-container-high); display: flex; align-items: center; gap: 8px; padding: 0 6px 0 14px; color: var(--on-surface-variant)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<a href="Explorar-busqueda.dc.html" style="flex: 1; min-width: 0; height: 44px; display: flex; align-items: center; font-size: 14px; color: var(--on-surface-variant)">Buscar músicos</a>
+<button aria-label="{{filtrosLabel}}" onClick="{{openFiltros}}" style="flex: none; position: relative; width: 36px; height: 36px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg><sc-if value="{{hasFilters}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="position: absolute; top: 0; right: -2px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">{{nFilters}}</span></sc-if></button>
+</div>
+<div class="dc-noscroll" style="display: flex; gap: 6px; overflow-x: auto; white-space: nowrap; margin: 0 -16px; padding: 0 16px">
+<sc-for list="{{quick}}" as="q" hint-placeholder-count="7">
+<sc-if value="{{q.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{q.toggle}}" style="flex: none; height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{q.name}}</button></sc-if>
+<sc-if value="{{q.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{q.toggle}}" style="flex: none; height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{q.name}}</button></sc-if>
+</sc-for>
+</div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 16px 0 8px">
+<h1 style="margin: 0; font-size: 28px; font-weight: 400">Explorar</h1>
+<sc-if value="{{showList}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: var(--on-surface-variant)">{{countText}}</span></sc-if>
+<sc-if value="{{isCargando}}" hint-placeholder-val="{{true}}"><span role="status" style="font-size: 12px; color: var(--on-surface-variant)">Cargando músicos…</span></sc-if>
+</div>
+<sc-if value="{{hasFilters}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px">
+<sc-for list="{{applied}}" as="c" hint-placeholder-count="1">
+<span style="height: 32px; padding: 0 0 0 12px; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); display: flex; align-items: center; gap: 0; font: 500 14px var(--font-brand); color: var(--on-secondary-container)">{{c.label}}<button aria-label="Quitar filtro {{c.label}}" onClick="{{c.remove}}" style="width: 40px; height: 40px; margin: -4px -4px -4px -6px; border: none; border-radius: 999px; background: transparent; color: inherit; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></span>
+</sc-for>
+<button onClick="{{clearAll}}" style="min-height: 44px; border: none; background: transparent; padding: 0 6px; font: 500 14px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Borrar todo</button>
+</div>
+</sc-if>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{isError}}" hint-placeholder-val="{{false}}">
+<div role="alert" style="display: flex; flex-direction: column"><div style="flex: none; background: var(--surface-container-high); border-radius: 12px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>
+<span style="font-size: 16px; font-weight: 500">No se ha podido cargar el catálogo</span>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">Revisa tu conexión a internet e inténtalo de nuevo.</span>
+<button class="accion" onClick="{{retry}}" style="margin-top: 8px; height: 40px; padding: 0 28px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Reintentar</button>
+</div></div>
+</sc-if>
+<sc-if value="{{isCargando}}" hint-placeholder-val="{{true}}">
+<div aria-hidden="true" style="flex: none; border: 1px solid var(--outline-variant); border-radius: 12px; overflow: hidden"><div style="height: 196px; background: var(--surface-container-high)"></div><div style="padding: 12px; display: flex; flex-direction: column; gap: 8px"><div style="width: 40%; height: 12px; border-radius: 6px; background: var(--surface-container-high)"></div><div style="width: 70%; height: 10px; border-radius: 5px; background: var(--surface-container-high)"></div><div style="width: 55%; height: 10px; border-radius: 5px; background: var(--surface-container-high)"></div><div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 6px"><div style="height: 40px; border-radius: 999px; background: var(--surface-container-high)"></div><div style="height: 40px; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent)"></div></div></div></div>
+<div aria-hidden="true" style="flex: none; border: 1px solid var(--outline-variant); border-radius: 12px; overflow: hidden"><div style="height: 196px; background: var(--surface-container-high)"></div><div style="padding: 12px; display: flex; flex-direction: column; gap: 8px"><div style="width: 40%; height: 12px; border-radius: 6px; background: var(--surface-container-high)"></div><div style="width: 70%; height: 10px; border-radius: 5px; background: var(--surface-container-high)"></div><div style="width: 55%; height: 10px; border-radius: 5px; background: var(--surface-container-high)"></div><div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 6px"><div style="height: 40px; border-radius: 999px; background: var(--surface-container-high)"></div><div style="height: 40px; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent)"></div></div></div></div>
+</sc-if>
+<sc-if value="{{favHit}}" hint-placeholder-val="{{false}}"><div role="note" style="flex: none; display: flex; align-items: center; gap: 10px; padding: 0 8px 0 12px; border-radius: 12px; background: var(--surface-container-high); color: var(--on-surface); font-size: 14px; line-height: 1.35"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"></path></svg><span style="flex: 1; padding: 10px 0">{{favHitText}}</span><a href="Favoritos.dc.html" style="flex: none; min-height: 44px; padding: 0 4px; display: flex; align-items: center; font-weight: 500; text-decoration: underline">Ver Favoritos</a></div></sc-if>
+<sc-if value="{{showEmpty}}" hint-placeholder-val="{{false}}">
+<div style="flex: none; background: var(--surface-container-high); border-radius: 12px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<span style="font-size: 16px; font-weight: 500">No hay músicos con estos filtros</span>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">Prueba a quitar algún filtro o a elegir otro instrumento.</span>
+<button onClick="{{clearAll}}" style="margin-top: 8px; height: 40px; padding: 0 24px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Quitar filtros</button>
+</div>
+</sc-if>
+<sc-for list="{{results}}" as="r" hint-placeholder-count="0">
+<article style="flex: none; border: 1px solid var(--outline-variant); border-radius: 12px; overflow: hidden">
+<div style="height: 196px; background: var(--surface-container-highest); position: relative; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{r.conFoto}}" hint-placeholder-val="{{false}}"><img src="{{r.card}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></sc-if>
+<a href="{{r.perfilHref}}" onClick="{{r.go}}" aria-label="Ver perfil de {{r.name}}" style="position: absolute; inset: 0"></a>
+<a href="{{r.perfilHref}}" onClick="{{r.go}}" style="position: absolute; top: 10px; left: 10px; background: var(--surface); border-radius: 999px; padding: 4px 12px 4px 4px; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500"><span style="width: 24px; height: 24px; border-radius: 50%; background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{r.conFoto}}" hint-placeholder-val="{{false}}"><img src="{{r.avatar}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{r.sinFoto}}" hint-placeholder-val="{{true}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></span>{{r.name}}</a>
+<button aria-label="Reproducir vídeo de {{r.name}}" style="position: relative; width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: none; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: inherit"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg></button>
+</div>
+<div style="padding: 12px; display: flex; flex-direction: column; gap: 4px">
+<a href="{{r.perfilHref}}" onClick="{{r.go}}" style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 14px; font-weight: 500">{{r.rol}}</span><span style="font-size: 12px; color: var(--on-surface-variant)">Última actividad: {{r.act}}</span></div>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Géneros: {{r.generos}}</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Ubicación: {{r.ubic}}</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Disponibilidad: {{r.disp}}</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px">
+<sc-if value="{{r.rem}}" hint-placeholder-val="{{true}}"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="12" r="9"></circle><path d="M15 9a4 4 0 1 0 0 6M7 11h6M7 13h6"></path></svg>Proyectos remunerados</span></sc-if>
+<sc-if value="{{r.col}}" hint-placeholder-val="{{true}}"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="9" cy="8" r="3"></circle><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 14c2 .5 3 2.3 3 5"></path></svg>Colaboraciones gratuitas</span></sc-if>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 8px">
+<a href="{{r.chatHref}}" onClick="{{r.go}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Chat</a>
+<a class="accion" href="{{r.perfilHref}}" onClick="{{r.go}}" style="height: 40px; background: var(--accion-destacada); color: var(--on-accion-destacada); border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Ver perfil</a>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</sc-if>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="Chats.dc.html" aria-label="{{navChatsLabel}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg><sc-if value="{{navUnread}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; top: 0; right: 8px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">1</span></sc-if></span>Chats</a>
+<a href="Mi-perfil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span>Mi perfil</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"vista": {"editor": "enum", "options": ["lista", "filtros", "error", "cargando"], "default": "cargando"}, "$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __FOTOS = {"alex": {"avatar": "/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00", "card": "/_blob/9dc44dba1a68a7cc6f5f48589961b5dc", "trio": "/_blob/ae0873fb2c60f8ff15b54b541a1905c2"}, "jordi": {"avatar": "/_blob/1a87e895887b62e75bf43c8f576a6bf4", "card": "/_blob/dff067b37ae614b04301862841e3bdb7"}, "laia": {"avatar": "/_blob/a2e5aa228cee003e66aab951c2b4e1f0", "card": "/_blob/6542538e8c25d8fd6fe88fb9fc023a10"}, "marc": {"avatar": "/_blob/7e985aa8f13bdc6beedb1e392303870b", "card": "/_blob/f570be1a1299774a4564357ac00fb19d"}, "marta": {"avatar": "/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a", "card": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, "nuria": {"avatar": "/_blob/cadad787ba381bc1eac53308fb0acd9b", "card": "/_blob/a5cda7d0b726e50e68f45176743503ad"}, "pau": {"avatar": "/_blob/7159f61c0eb6d33c7676e699feda1f65", "card": "/_blob/d0c90a2a36f57d6be5e8f3556f19767d"}};
+const __FOTO_NOMBRE = {"Marta Ruiz": "marta", "Laia Serra": "laia", "Marc Soler": "marc", "Jordi Puig": "jordi", "Núria Font": "nuria", "Pau Vidal": "pau"};
+const __fotoDe = (n) => { const k = __FOTO_NOMBRE[n]; return k ? __FOTOS[k].avatar : ''; };
+const __fotoYo = () => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : __FOTOS.alex.avatar; } catch (e) { return __FOTOS.alex.avatar; } };
+const __VIDFOTO = { 'directo_trio_jazz.mp4': __FOTOS.alex.trio, 'jam_session.mp4': __FOTOS.alex.card };
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const __favs = (__ST && __ST.favs) || [];
+const CATALOGO_ALL = [{"key": "laia", "name": "Laia Serra", "rol": "Cantante", "generos": "Pop · Soul", "ubic": "Sant Martí, Barcelona", "disp": "Esta semana · El próximo fin de semana", "act": "hace 1 h", "rem": true, "col": true, "perfilHref": "Perfil-laia.dc.html", "chatHref": "Chat-laia.dc.html", "attrs": {"instrumento": ["Cantante"], "estilo": ["Pop", "Soul"], "ubicacion": ["Barcelona ciudad"], "disponibilidad": ["Esta semana", "El próximo fin de semana"], "tipo": ["Proyectos remunerados", "Colaboraciones gratuitas"]}}, {"key": "marc", "name": "Marc Soler", "rol": "Piano", "generos": "Jazz · Clásica", "ubic": "L'Hospitalet de Llobregat", "disp": "La próxima semana · Este mes", "act": "hace 1 día", "rem": true, "col": true, "perfilHref": "Perfil-marc.dc.html", "chatHref": "Chat-marc.dc.html", "attrs": {"instrumento": ["Piano"], "estilo": ["Jazz", "Clásica"], "ubicacion": ["Alrededores"], "disponibilidad": ["La próxima semana", "Este mes"], "tipo": ["Proyectos remunerados", "Colaboraciones gratuitas"]}}, {"key": "marta", "name": "Marta Ruiz", "rol": "Guitarra", "generos": "Rock · Indie", "ubic": "Gràcia, Barcelona", "disp": "El próximo fin de semana · Este mes", "act": "hace 2 h", "rem": true, "col": true, "perfilHref": "Perfil-musico.dc.html", "chatHref": "Chat-marta-vacio.dc.html", "attrs": {"instrumento": ["Guitarra"], "estilo": ["Rock", "Indie"], "ubicacion": ["Barcelona ciudad"], "disponibilidad": ["El próximo fin de semana", "Este mes"], "tipo": ["Proyectos remunerados", "Colaboraciones gratuitas"]}}, {"key": "jordi", "name": "Jordi Puig", "rol": "Batería", "generos": "Rock · Funk", "ubic": "Sants-Montjuïc, Barcelona", "disp": "Inmediata · Esta semana", "act": "hace 10 min", "rem": true, "col": false, "perfilHref": "Perfil-jordi.dc.html", "chatHref": "Chat-jordi.dc.html", "attrs": {"instrumento": ["Batería"], "estilo": ["Rock", "Funk"], "ubicacion": ["Barcelona ciudad"], "disponibilidad": ["Inmediata", "Esta semana"], "tipo": ["Proyectos remunerados"]}}, {"key": "nuria", "name": "Núria Font", "rol": "DJ", "generos": "Electrónica · House", "ubic": "Cornellà de Llobregat", "disp": "Inmediata · Este mes", "act": "hace 3 h", "rem": true, "col": true, "perfilHref": "Perfil-nuria.dc.html", "chatHref": "Chat-nuria.dc.html", "attrs": {"instrumento": ["DJ"], "estilo": ["Electrónica", "House"], "ubicacion": ["Alrededores"], "disponibilidad": ["Inmediata", "Este mes"], "tipo": ["Proyectos remunerados", "Colaboraciones gratuitas"]}}, {"key": "pau", "name": "Pau Vidal", "rol": "Teclado", "generos": "Pop · Electrónica", "ubic": "Badalona", "disp": "No indicada", "act": "hace 5 días", "rem": false, "col": true, "perfilHref": "Perfil-musico-incompleto.dc.html", "chatHref": "Chat-pau.dc.html", "attrs": {"instrumento": ["Teclado"], "estilo": ["Pop", "Electrónica"], "ubicacion": ["Alrededores"], "disponibilidad": [], "tipo": ["Colaboraciones gratuitas"]}}].filter((m) => __blocked.indexOf(m.key) < 0);
+CATALOGO_ALL.forEach((m) => { const f = __FOTOS[m.key]; m.conFoto = !!f; m.sinFoto = !f; m.avatar = f ? f.avatar : ''; m.card = f ? f.card : ''; });
+const CATALOGO = CATALOGO_ALL.filter((m) => __favs.indexOf(m.key) < 0);
+const __favCat = CATALOGO_ALL.filter((m) => __favs.indexOf(m.key) >= 0);
+const QUICK = ["Guitarra", "Piano", "Teclado", "Cantante", "Bajo", "Batería", "DJ"];
+const SECTIONS = [{"key": "instrumento", "title": "Instrumento o rol", "items": ["Cantante", "Corista", "Piano", "Teclado", "Guitarra", "Bajo", "Batería", "Percusión", "Saxofón", "Trompeta", "Trombón", "Flauta", "Clarinete", "Violín", "Violonchelo", "Contrabajo", "Acordeón", "Arpa", "DJ", "Productor/a musical", "Beatmaker", "Compositor/a", "Arreglista", "Otros"]}, {"key": "estilo", "title": "Estilo musical", "items": ["Pop", "Rock", "Indie", "Alternativo", "Metal", "Punk", "Reggae", "Ska", "Dub", "Dancehall", "Soul", "R&B", "Funk", "Jazz", "Blues", "Hip-Hop", "Rap", "Electrónica", "House", "Techno", "Drum & Bass", "Disco", "Clásica", "Flamenco", "Salsa", "Merengue", "Bachata", "Reguetón", "Latin Pop", "Cumbia", "Tango", "Folk", "Country", "Gospel", "Música experimental", "Otros"]}, {"key": "ubicacion", "title": "Ubicación", "items": ["Barcelona ciudad", "Alrededores"]}, {"key": "disponibilidad", "title": "Disponibilidad", "items": ["Inmediata", "El próximo fin de semana", "Esta semana", "La próxima semana", "Este mes"]}, {"key": "tipo", "title": "Tipo de proyecto", "items": ["Proyectos remunerados", "Colaboraciones gratuitas"]}];
+const INIT = {};
+const s = this.state || {};
+const vista = s.vista || (this.props.vista ?? 'cargando');
+const sel = s.sel || INIT;
+const draft = s.draft || sel;
+const has = (o, c, v) => (o[c] || []).indexOf(v) >= 0;
+const toggleIn = (o, c, v) => { const n = Object.assign({}, o); const arr = n[c] || []; n[c] = has(o, c, v) ? arr.filter((x) => x !== v) : arr.concat([v]); if (n[c].length === 0) { delete n[c]; } return n; };
+const match = (m, o) => Object.keys(o).every((c) => { const vals = o[c] || []; return vals.length === 0 || vals.some((v) => (m.attrs[c] || []).indexOf(v) >= 0); });
+const applied = [];
+SECTIONS.forEach((sec) => (sel[sec.key] || []).forEach((v) => applied.push({ label: v, remove: () => this.setState({ sel: toggleIn(sel, sec.key, v) }) })));
+const plural = (n) => (n === 1 ? '1 músico' : n + ' músicos');
+const go = () => __save({ from: 'Explorar-cargando.dc.html', exp: { sel: sel } });
+const results = CATALOGO.filter((m) => match(m, sel)).map((m) => Object.assign({}, m, { go: go }));
+const nDraft = CATALOGO.filter((m) => match(m, draft)).length;
+const __favN = (vista === 'lista' && applied.length > 0) ? __favCat.filter((m) => match(m, sel)).length : 0;
+return {
+favHit: __favN > 0,
+favHitText: __favN === 1 ? '1 músico de tus Favoritos también coincide.' : __favN + ' músicos de tus Favoritos también coinciden.',
+isFiltros: vista === 'filtros',
+notFiltros: vista !== 'filtros',
+applied: applied,
+hasFilters: applied.length > 0,
+nFilters: applied.length,
+filtrosLabel: applied.length > 0 ? 'Filtros de búsqueda (' + applied.length + ' aplicados)' : 'Filtros de búsqueda',
+sections: SECTIONS.map((sec) => ({ title: sec.title, chips: sec.items.map((name) => { const on = has(draft, sec.key, name); return { name: name, on: on, off: !on, toggle: () => this.setState({ draft: toggleIn(draft, sec.key, name) }) }; }) })),
+applyText: nDraft === 0 ? 'Aplicar filtros (sin resultados)' : 'Mostrar ' + plural(nDraft),
+openFiltros: () => this.setState({ vista: 'filtros', draft: sel }),
+cancelFiltros: () => this.setState({ vista: 'lista', draft: null }),
+applyFiltros: () => this.setState({ sel: draft, vista: 'lista', draft: null }),
+clearDraft: () => this.setState({ draft: {} }),
+clearAll: () => this.setState({ sel: {} }),
+isError: vista === 'error',
+isCargando: vista === 'cargando',
+showList: vista === 'lista',
+showEmpty: vista === 'lista' && results.length === 0,
+results: vista === 'lista' ? results : [],
+countText: plural(results.length),
+quick: QUICK.map((q) => { const on = has(sel, 'instrumento', q); return { name: q, on: on, off: !on, toggle: () => { const n = Object.assign({}, sel); if (on) { n.instrumento = (sel.instrumento || []).filter((x) => x !== q); if (n.instrumento.length === 0) { delete n.instrumento; } } else { n.instrumento = [q]; } this.setState({ sel: n, vista: 'lista' }); } }; }),
+retry: () => this.setState({ vista: 'lista' })
+};
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

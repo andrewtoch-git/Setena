@@ -1,0 +1,1170 @@
+{
+ "v": 3,
+ "attachments": {},
+ "boards": {
+  "Inicio.dc.html": {
+   "h": 874,
+   "title": "Inicio — bienvenida (pantalla de entrada de la app)",
+   "w": 402,
+   "x": 0,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Explorar-sin-registro.dc.html": {
+   "h": 874,
+   "title": "Explorar — sin registro (entrada)",
+   "w": 402,
+   "x": 482,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Favoritos-sin-registro.dc.html": {
+   "h": 874,
+   "title": "Favoritos — sin registro (ventana de registro)",
+   "w": 402,
+   "x": 964,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Chats-sin-registro.dc.html": {
+   "h": 874,
+   "title": "Chats — sin registro (ventana de registro)",
+   "w": 402,
+   "x": 1446,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Mi-perfil-registro.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — sin registro (ventana de registro)",
+   "w": 402,
+   "x": 1928,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Registro.dc.html": {
+   "h": 874,
+   "title": "Registro",
+   "w": 402,
+   "x": 2410,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Registro-error.dc.html": {
+   "h": 874,
+   "title": "Registro — campos obligatorios",
+   "w": 402,
+   "x": 2892,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Registro-correo-existe.dc.html": {
+   "h": 874,
+   "title": "Registro — correo ya registrado",
+   "w": 402,
+   "x": 3374,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Bienvenida.dc.html": {
+   "h": 874,
+   "title": "Bienvenida (tras registrarse)",
+   "w": 402,
+   "x": 3856,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Iniciar-sesion.dc.html": {
+   "h": 874,
+   "title": "Iniciar sesión",
+   "w": 402,
+   "x": 4338,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Iniciar-sesion-error.dc.html": {
+   "h": 874,
+   "title": "Iniciar sesión — datos incorrectos",
+   "w": 402,
+   "x": 4820,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Recuperar-contrasena.dc.html": {
+   "h": 874,
+   "title": "Recuperar contraseña",
+   "w": 402,
+   "x": 5302,
+   "y": 0,
+   "is_interactive": true
+  },
+  "Explorar-busqueda-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — búsqueda por texto (sin registro)",
+   "w": 402,
+   "x": 0,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-guitarra-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Guitarra (sin registro)",
+   "w": 402,
+   "x": 482,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-pianista-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Piano (sin registro)",
+   "w": 402,
+   "x": 964,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-cantante-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Cantante (sin registro)",
+   "w": 402,
+   "x": 1446,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-bateria-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Batería (sin registro)",
+   "w": 402,
+   "x": 1928,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-dj-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro DJ (sin registro)",
+   "w": 402,
+   "x": 2410,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-sin-resultados-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — sin resultados, filtro Bajo (sin registro)",
+   "w": 402,
+   "x": 2892,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar-filtrado-sr.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtros aplicados (sin registro)",
+   "w": 402,
+   "x": 3374,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Filtros-sr.dc.html": {
+   "h": 874,
+   "title": "Filtros de búsqueda (sin registro)",
+   "w": 402,
+   "x": 3856,
+   "y": 1454,
+   "is_interactive": true
+  },
+  "Explorar.dc.html": {
+   "h": 874,
+   "title": "Explorar",
+   "w": 402,
+   "x": 0,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-busqueda.dc.html": {
+   "h": 874,
+   "title": "Explorar — búsqueda por texto",
+   "w": 402,
+   "x": 482,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-guitarra.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Guitarra",
+   "w": 402,
+   "x": 964,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-pianista.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Piano",
+   "w": 402,
+   "x": 1446,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-cantante.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Cantante",
+   "w": 402,
+   "x": 1928,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-bateria.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro Batería",
+   "w": 402,
+   "x": 2410,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-dj.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtro DJ",
+   "w": 402,
+   "x": 2892,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-sin-resultados.dc.html": {
+   "h": 874,
+   "title": "Explorar — sin resultados (filtro Bajo)",
+   "w": 402,
+   "x": 3374,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-filtrado.dc.html": {
+   "h": 874,
+   "title": "Explorar — filtros aplicados (Guitarra · Rock · El próximo fin de semana)",
+   "w": 402,
+   "x": 3856,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Filtros.dc.html": {
+   "h": 874,
+   "title": "Filtros de búsqueda",
+   "w": 402,
+   "x": 4338,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-cargando.dc.html": {
+   "h": 874,
+   "title": "Explorar — cargando (estado del sistema)",
+   "w": 402,
+   "x": 4820,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Explorar-error.dc.html": {
+   "h": 874,
+   "title": "Explorar — error de carga (estado del sistema)",
+   "w": 402,
+   "x": 5302,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Sesion-caducada.dc.html": {
+   "h": 874,
+   "title": "Explorar — sesión caducada (estado del sistema)",
+   "w": 402,
+   "x": 5784,
+   "y": 2908,
+   "is_interactive": true
+  },
+  "Perfil-musico.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz (desde Explorar, guardada)",
+   "w": 402,
+   "x": 0,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-tarifas.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, pestaña Tarifas",
+   "w": 402,
+   "x": 482,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-compartir.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, compartir",
+   "w": 402,
+   "x": 964,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-compartir-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, enviar a un chat",
+   "w": 402,
+   "x": 1446,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-compartir-enviado.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, perfil enviado",
+   "w": 402,
+   "x": 1928,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-opciones.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, más opciones",
+   "w": 402,
+   "x": 2410,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-denunciar.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, denunciar",
+   "w": 402,
+   "x": 2892,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-bloquear.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, bloquear",
+   "w": 402,
+   "x": 3374,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-laia.dc.html": {
+   "h": 874,
+   "title": "Perfil — Laia Serra (desde Explorar)",
+   "w": 402,
+   "x": 3856,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-marc.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marc Soler (desde Explorar)",
+   "w": 402,
+   "x": 4338,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-jordi.dc.html": {
+   "h": 874,
+   "title": "Perfil — Jordi Puig (desde Explorar)",
+   "w": 402,
+   "x": 4820,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-nuria.dc.html": {
+   "h": 874,
+   "title": "Perfil — Núria Font (desde Explorar)",
+   "w": 402,
+   "x": 5302,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-incompleto.dc.html": {
+   "h": 874,
+   "title": "Perfil — Pau Vidal, perfil mínimo (solo campos obligatorios)",
+   "w": 402,
+   "x": 5784,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-marta-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz (desde Favoritos)",
+   "w": 402,
+   "x": 6266,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-laia-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Laia Serra (desde Favoritos)",
+   "w": 402,
+   "x": 6748,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-marc-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marc Soler (desde Favoritos)",
+   "w": 402,
+   "x": 7230,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-jordi-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Jordi Puig (desde Favoritos)",
+   "w": 402,
+   "x": 7712,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-nuria-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Núria Font (desde Favoritos)",
+   "w": 402,
+   "x": 8194,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-pau-fav.dc.html": {
+   "h": 874,
+   "title": "Perfil — Pau Vidal (desde Favoritos)",
+   "w": 402,
+   "x": 8676,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-no-disponible.dc.html": {
+   "h": 874,
+   "title": "Perfil — no disponible (estado del sistema)",
+   "w": 402,
+   "x": 9158,
+   "y": 4362,
+   "is_interactive": true
+  },
+  "Perfil-musico-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz, sin registro",
+   "w": 402,
+   "x": 0,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-laia-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Laia Serra, sin registro",
+   "w": 402,
+   "x": 482,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-marc-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marc Soler, sin registro",
+   "w": 402,
+   "x": 964,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-jordi-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Jordi Puig, sin registro",
+   "w": 402,
+   "x": 1446,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-nuria-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Núria Font, sin registro",
+   "w": 402,
+   "x": 1928,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-pau-registro.dc.html": {
+   "h": 874,
+   "title": "Perfil — Pau Vidal, sin registro",
+   "w": 402,
+   "x": 2410,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-marta-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marta Ruiz (desde el chat)",
+   "w": 402,
+   "x": 2892,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-laia-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Laia Serra (desde el chat)",
+   "w": 402,
+   "x": 3374,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-marc-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Marc Soler (desde el chat)",
+   "w": 402,
+   "x": 3856,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-jordi-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Jordi Puig (desde el chat)",
+   "w": 402,
+   "x": 4338,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-nuria-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Núria Font (desde el chat)",
+   "w": 402,
+   "x": 4820,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Perfil-pau-chat.dc.html": {
+   "h": 874,
+   "title": "Perfil — Pau Vidal (desde el chat)",
+   "w": 402,
+   "x": 5302,
+   "y": 5816,
+   "is_interactive": true
+  },
+  "Favoritos.dc.html": {
+   "h": 874,
+   "title": "Favoritos",
+   "w": 402,
+   "x": 0,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Favoritos-vacio.dc.html": {
+   "h": 874,
+   "title": "Favoritos — vacío (estado del sistema)",
+   "w": 402,
+   "x": 482,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chats.dc.html": {
+   "h": 874,
+   "title": "Chats",
+   "w": 402,
+   "x": 964,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chats-vacio.dc.html": {
+   "h": 874,
+   "title": "Chats — vacío (estado del sistema)",
+   "w": 402,
+   "x": 1446,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chats-marta.dc.html": {
+   "h": 874,
+   "title": "Chats — con la conversación nueva de Marta",
+   "w": 402,
+   "x": 1928,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-jordi.dc.html": {
+   "h": 874,
+   "title": "Chat — Jordi Puig",
+   "w": 402,
+   "x": 2410,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-jordi-error.dc.html": {
+   "h": 874,
+   "title": "Chat — Jordi Puig, mensaje no enviado (estado del sistema)",
+   "w": 402,
+   "x": 2892,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-laia.dc.html": {
+   "h": 874,
+   "title": "Chat — Laia Serra",
+   "w": 402,
+   "x": 3374,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-pau.dc.html": {
+   "h": 874,
+   "title": "Chat — Pau Vidal",
+   "w": 402,
+   "x": 3856,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-nuria.dc.html": {
+   "h": 874,
+   "title": "Chat — Núria Font",
+   "w": 402,
+   "x": 4338,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-marc.dc.html": {
+   "h": 874,
+   "title": "Chat — Marc Soler",
+   "w": 402,
+   "x": 4820,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-marta-vacio.dc.html": {
+   "h": 874,
+   "title": "Chat — Marta Ruiz, sin mensajes",
+   "w": 402,
+   "x": 5302,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Chat-marta-enviado.dc.html": {
+   "h": 874,
+   "title": "Chat — Marta Ruiz, mensaje enviado",
+   "w": 402,
+   "x": 5784,
+   "y": 7270,
+   "is_interactive": true
+  },
+  "Mi-perfil.dc.html": {
+   "h": 874,
+   "title": "Mi perfil",
+   "w": 402,
+   "x": 0,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-tarifas.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — tarifas",
+   "w": 402,
+   "x": 482,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-compartir.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — compartir",
+   "w": 402,
+   "x": 964,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-compartir-chat.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — enviar a un chat",
+   "w": 402,
+   "x": 1446,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-compartir-enviado.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — perfil enviado",
+   "w": 402,
+   "x": 1928,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-anadir.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — añadir foto o vídeo",
+   "w": 402,
+   "x": 2410,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-subida-error.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — error al subir un vídeo",
+   "w": 402,
+   "x": 2892,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-editar.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — editar",
+   "w": 402,
+   "x": 3374,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-editar-error.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — editar, falta el vídeo",
+   "w": 402,
+   "x": 3856,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-editar-instrumento.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — editar, instrumento o rol",
+   "w": 402,
+   "x": 4338,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-editar-generos.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — editar, géneros musicales",
+   "w": 402,
+   "x": 4820,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Mi-perfil-editar-guardar-error.dc.html": {
+   "h": 874,
+   "title": "Mi perfil — editar, error al guardar",
+   "w": 402,
+   "x": 5302,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ajustes.dc.html": {
+   "h": 874,
+   "title": "Ajustes",
+   "w": 402,
+   "x": 5784,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ajustes-contrasena.dc.html": {
+   "h": 874,
+   "title": "Ajustes — cambiar contraseña",
+   "w": 402,
+   "x": 6266,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ajustes-contrasena-error.dc.html": {
+   "h": 874,
+   "title": "Ajustes — contraseña actual incorrecta",
+   "w": 402,
+   "x": 6748,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ajustes-cerrar-sesion.dc.html": {
+   "h": 874,
+   "title": "Ajustes — cerrar sesión",
+   "w": 402,
+   "x": 7230,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ajustes-eliminar-cuenta.dc.html": {
+   "h": 874,
+   "title": "Ajustes — eliminar cuenta",
+   "w": 402,
+   "x": 7712,
+   "y": 8724,
+   "is_interactive": true
+  },
+  "Ref-Registro.dc.html": {
+   "h": 1640,
+   "title": "Referencia — Registro completo",
+   "w": 402,
+   "x": 0,
+   "y": 10178
+  },
+  "Ref-Mi-perfil-editar.dc.html": {
+   "h": 2090,
+   "title": "Referencia — Editar perfil completo",
+   "w": 402,
+   "x": 482,
+   "y": 10178
+  },
+  "Ref-Filtros.dc.html": {
+   "h": 1340,
+   "title": "Referencia — Filtros completo",
+   "w": 402,
+   "x": 964,
+   "y": 10178
+  },
+  "Ref-Perfil-musico.dc.html": {
+   "h": 900,
+   "title": "Referencia — Perfil de músico completo",
+   "w": 402,
+   "x": 1446,
+   "y": 10178
+  },
+  "Ref-Perfil-musico-incompleto.dc.html": {
+   "h": 874,
+   "title": "Referencia — Perfil mínimo completo",
+   "w": 402,
+   "x": 1928,
+   "y": 10178
+  },
+  "Ref-Mi-perfil.dc.html": {
+   "h": 960,
+   "title": "Referencia — Mi perfil completo",
+   "w": 402,
+   "x": 2410,
+   "y": 10178
+  },
+  "Componentes.dc.html": {
+   "h": 3390,
+   "title": "Componentes",
+   "w": 1700,
+   "x": 0,
+   "y": 12848
+  },
+  "Guia-visual.dc.html": {
+   "h": 1730,
+   "title": "Guía visual",
+   "w": 1600,
+   "x": 1800,
+   "y": 12848
+  }
+ },
+ "createdOnFiles": {
+  "at": "2026-11-09T08:45:00Z",
+  "v": 1
+ },
+ "designSystems": [
+  {
+   "title": "App Music",
+   "namespace": "appmusic",
+   "artifact": "https://claude.ai/artifact/Vj37imfv1upHTkCUd2BFTq",
+   "version": "1794478315-52b8",
+   "copiedAt": "2026-11-12T10:20:00Z"
+  }
+ ],
+ "launch": {
+  "view": "canvas"
+ },
+ "noteOrder": [
+  "t_inicio",
+  "decisiones_1011",
+  "t_explorar_sr",
+  "t_explorar",
+  "t_perfil",
+  "t_guardados",
+  "t_miperfil",
+  "cambios_revision2",
+  "limitaciones",
+  "estados_sistema",
+  "t_perfil2",
+  "t_componentes",
+  "persona",
+  "fuera_prototipo",
+  "regla_sin_registro",
+  "contenido_ejemplo",
+  "cambios_revision3",
+  "t_referencia",
+  "cambios_revision4",
+  "cambios_revision5",
+  "fidelidad_media",
+  "cambios_iteracion6",
+  "cambios_iteracion7",
+  "animacion_entrada"
+ ],
+ "notes": {
+  "animacion_entrada": {
+   "x": 12264,
+   "y": 0,
+   "w": 440,
+   "fill": "blue",
+   "text": "ANIMACIÓN DE ENTRADA EN «INICIO» (18/11)\nPropuesta aplicada, pendiente de validar por el equipo\n\n· 25/11: la animación pasa a durar unos 1 s y se simplifica: aparecen los cinco puntos y los dos círculos lima, el par se une en la marca y «setena» aparece debajo y se desvanece (≈0,4 s).\n· Al final entra la foto de músicos con un degradado oscuro de la paleta, y el logo se reduce (62 %) y sube al sitio del antiguo icono lima.\n· Después aparecen la X, el título, el texto y los botones (0,85–1,1 s).\n· Quitados el icono lima y el recuadro de imagen: el logo y la foto ocupan su lugar. El título y los botones no se mueven.\n· La animación se ve hasta que se pulsa la X, «Regístrate gratis» o «Iniciar sesión»; al volver a «Inicio» en esa sesión se muestra el estado final. Con «reducir movimiento» activado, también.\n\n\nDecidido:\n· 18/11: nombre «setena» en Nunito Bold bajo la marca.\n· 25/11: morado de los puntos del logo #5C48CB (palette-primary-40), igual que en la barra superior.\n· 25/11: duración de 1 s, versión simplificada (sin el compás 4/4 ni los nodos que se alejan)."
+  },
+  "cambios_revision2": {
+   "fill": "gray",
+   "size": 24,
+   "text": "CAMBIOS DE LA 2ª REVISIÓN (10/11)\nPropuestas aplicadas, pendientes de validar por el equipo\n\n· Explorar, filtros y búsqueda usan un único catálogo de 6 músicos. Jordi y Núria pasan a tener perfil.\n· Los filtros se aplican y se quitan en la misma pantalla. Se ven como chips y se pueden borrar.\n· Registro: foto (opcional), tipo de proyecto (obligatorio), zona + barrio o municipio, aceptar condiciones.\n· Iniciar sesión valida los campos; nuevo «¿Has olvidado tu contraseña?» y «Cerrar sesión» en Mi perfil.\n· El perfil muestra un vídeo principal (sin carrusel) y la última actividad; la tarjeta muestra la disponibilidad.\n· Desde la cabecera del chat se abre el perfil de esa persona.",
+   "w": 440,
+   "x": 7324,
+   "y": 0
+  },
+  "decisiones_1011": {
+   "fill": "gray",
+   "size": 24,
+   "text": "DECISIONES DEL EQUIPO (10/11)\n\n· El vídeo es obligatorio y se pide en el Registro. Sin vídeo no se puede registrar ni guardar el perfil.\n· Disponibilidad: campo sencillo y opcional (Inmediata, El próximo fin de semana, Esta semana, La próxima semana, Este mes). «Inmediata» = disponible en cuanto le contacten; cubre en parte la necesidad de «Búsqueda urgente». en Registro, Editar perfil y perfil. Los filtros y la búsqueda usan las mismas opciones.\n· 'Perfil incompleto' pasa a ser 'perfil mínimo': solo campos obligatorios.",
+   "w": 440,
+   "x": 6824,
+   "y": 0
+  },
+  "estados_sistema": {
+   "fill": "gray",
+   "size": 24,
+   "text": "ESTADOS Y TABLEROS DE REFERENCIA\n\nEstados del sistema. Ningún botón lleva a ellos; en una prueba se abren directamente desde el lienzo:\n· Explorar — cargando, error de carga y sesión caducada\n· Perfil — no disponible\n· Favoritos — vacío\n· Chats — vacío\n· Chat — mensaje no enviado\n· Iniciar sesión — datos incorrectos\n· Mi perfil — error al subir un vídeo\n· Editar perfil — error al guardar\n· Ajustes — contraseña actual incorrecta\n\nFotos de un estado. Muestran un momento de una pantalla que ya funciona sola (filtros, Tarifas, Compartir, Más opciones, Añadir foto o vídeo, Registro y Editar con errores, Ajustes): en Play se llega desde la propia pantalla.\n\nPantallas completas. Solo para ver todo el contenido de una pantalla larga; no se usan en la prueba.",
+   "w": 440,
+   "x": 9824,
+   "y": 0
+  },
+  "limitaciones": {
+   "fill": "gray",
+   "size": 24,
+   "text": "LIMITACIONES DEL PROTOTIPO\n\n· Los datos se recuerdan desde la primera pantalla que se abre, y solo en ese navegador. «Inicio» los devuelve al contenido de ejemplo. Si el navegador no permite guardar datos, cada pantalla funciona por separado.\n· Las pantallas principales del lienzo muestran los datos de la última sesión. Para volver al contenido de ejemplo, abre «Inicio» y pulsa cualquier opción.\n· Los tableros de estado (filtros por instrumento, Compartir, Más opciones, errores, vacíos…) no cambian: muestran siempre su estado.\n· Sin acción: reproducir vídeo, compartir fuera de la app y redes sociales (abren la web de la red). «Copiar enlace» solo muestra el aviso «Enlace copiado». Subir fotos y vídeos y «Cambiar foto» solo se simulan.\n· El correo y la contraseña no se comprueban de verdad. Para ver el error de correo ya registrado, regístrate con alex@correo.com.",
+   "w": 440,
+   "x": 9324,
+   "y": 0
+  },
+  "t_componentes": {
+   "kind": "title1",
+   "maxW": 3420,
+   "text": "Componentes y guía visual",
+   "w": 240,
+   "x": 0,
+   "y": 12568
+  },
+  "t_explorar": {
+   "kind": "title1",
+   "maxW": 6186,
+   "text": "Explorar y filtros de búsqueda",
+   "w": 240,
+   "x": 0,
+   "y": 2628
+  },
+  "t_explorar_sr": {
+   "kind": "title1",
+   "maxW": 4258,
+   "text": "Sin registro: explorar, búsqueda y filtros",
+   "w": 240,
+   "x": 0,
+   "y": 1174
+  },
+  "t_guardados": {
+   "kind": "title1",
+   "maxW": 6186,
+   "text": "Favoritos y chats",
+   "w": 240,
+   "x": 0,
+   "y": 6990
+  },
+  "t_inicio": {
+   "kind": "title1",
+   "maxW": 5704,
+   "text": "Sin registro: entrada, registro e inicio de sesión",
+   "w": 240,
+   "x": 0,
+   "y": -280
+  },
+  "t_miperfil": {
+   "kind": "title1",
+   "maxW": 8114,
+   "text": "Mi perfil y ajustes",
+   "w": 240,
+   "x": 0,
+   "y": 8444
+  },
+  "t_perfil": {
+   "kind": "title1",
+   "maxW": 9560,
+   "text": "Perfil de músico: desde Explorar y desde Favoritos",
+   "w": 240,
+   "x": 0,
+   "y": 4082
+  },
+  "t_perfil2": {
+   "kind": "title1",
+   "maxW": 5704,
+   "text": "Perfil de músico: sin registro y desde un chat",
+   "w": 240,
+   "x": 0,
+   "y": 5536
+  },
+  "fuera_prototipo": {
+   "fill": "gray",
+   "size": 24,
+   "text": "FUERA DEL PROTOTIPO\n(arquitectura de la información, 05/11)\n\n· Búsqueda urgente\n· Mi disponibilidad (sección completa)\n· Mis contactos\n\nDecisión del equipo (10/11): no se dibujan por ahora.",
+   "w": 440,
+   "x": 6324,
+   "y": 0
+  },
+  "regla_sin_registro": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 4378,
+   "y": 1454,
+   "text": "REGLA SIN REGISTRO (decisión 10/11)\n\nSin cuenta solo se puede usar Explorar, la barra de búsqueda y los filtros.\n\nPerfil de músico, Chat, Favoritos, Chats y Mi perfil abren la ventana de registro (Regístrate gratis / Iniciar sesión).\n\nDesde esa ventana se puede iniciar sesión sin salir y, al entrar, se vuelve a lo que se quería ver."
+  },
+  "contenido_ejemplo": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 10324,
+   "y": 0,
+   "text": "CONTENIDO DE EJEMPLO\n\nNombres, textos, enlaces y títulos de vídeo son de ejemplo para poder hacer la prueba. No salen de la investigación.\n\nLas tarifas las escribe cada músico en su perfil (decisión del equipo, 11/11). Los importes que se ven son solo un ejemplo.\n\nLas letras I, Y, S, T, SC, W y F marcan dónde irán los iconos oficiales de cada red. En la fidelidad media se descargan del kit de marca de cada red."
+  },
+  "persona": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 5824,
+   "y": 0,
+   "text": "PERSONA DEL PROTOTIPO\n\nCada sesión de prueba empieza en «Inicio». Al pulsar «Regístrate gratis», «Iniciar sesión» o la X, se borran los datos de la sesión anterior y las pantallas empiezan a recordar lo que hace la persona participante.\n\n· Con cuenta: es la de Alex Martín (sirve cualquier correo con formato válido y cualquier contraseña).\n· Si la persona se registra, la app pasa a ser la suya: su perfil con los datos del registro, sin favoritos ni chats. El vídeo que sube en el registro es su vídeo principal.\n· Cerrar sesión y Eliminar cuenta vuelven a «Inicio»."
+  },
+  "cambios_revision3": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 7824,
+   "y": 0,
+   "text": "CAMBIOS DE LA 3ª REVISIÓN (11/11)\nPropuestas aplicadas, pendientes de validar por el equipo\n\n· Todas las pantallas de la prueba miden como un móvil (402 × 874). Las largas tienen una versión completa en la fila «Pantallas completas».\n· Favoritos, Chats y Mi perfil: título y sin flecha atrás. Favoritos permite quitar y deshacer.\n· Búsqueda por texto con acceso a Filtros.\n· Chips de instrumento: uno cada vez (Filtros permite varios). Se quita «Cualquier ubicación».\n· Mensajes sin leer (Núria) y «Enviado» solo en el último mensaje.\n· Denunciar y bloquear desde el perfil y el chat.\n· Ajustes: cambiar contraseña, notificaciones, cerrar sesión y eliminar cuenta.\n· Registro → Bienvenida. Contraseña de 8 caracteres como mínimo.\n· Editar perfil: título de cada vídeo, vídeo principal, tarifas con texto («A convenir»), aviso al salir sin guardar y confirmación al guardar.\n· Estados nuevos: Explorar cargando y mensaje no enviado."
+  },
+  "t_referencia": {
+   "kind": "title1",
+   "maxW": 2812,
+   "text": "Pantallas completas (referencia para la fidelidad media; no son para la prueba)",
+   "w": 240,
+   "x": 0,
+   "y": 9898
+  },
+  "cambios_revision4": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 8324,
+   "y": 0,
+   "text": "CAMBIOS DE LA 4ª REVISIÓN (11/11)\n\n· Las pantallas comparten datos durante una prueba: favoritos, mensajes, mensajes leídos, bloqueos, cambios de Editar perfil y registro.\n· Al volver de un perfil se regresa a Explorar con los filtros puestos, o a la búsqueda con el texto escrito.\n· Tras recuperar la contraseña se vuelve a lo que se quería ver.\n· Nuevos perfiles desde Favoritos: Jordi, Núria y Pau.\n· Nuevo tablero «Inicio de la prueba».\n· Hoja de Componentes rehecha con las piezas reales de las pantallas."
+  },
+  "cambios_revision5": {
+   "fill": "gray",
+   "size": 24,
+   "w": 440,
+   "x": 8824,
+   "y": 0,
+   "text": "CAMBIOS DE LA 5ª REVISIÓN (12/11)\n\n· «Inicio» sustituye a «Inicio de la prueba»: bienvenida con «Regístrate gratis» e «Iniciar sesión». La X lleva a Explorar sin cuenta.\n· Los perfiles muestran fotos y vídeos en un carrusel: se desliza a izquierda y derecha, con flechas y puntos (el punto relleno es la posición actual). El primero es siempre el vídeo principal.\n· En Mi perfil se edita sobre el propio carrusel: «Añadir» (subir vídeo o foto), «Marcar como principal» y «Eliminar». Si no se marca ninguno, el principal es el vídeo del registro.\n· Nuevos errores y avisos: correo ya registrado, correo con formato no válido, error al subir, al guardar el perfil, contraseña actual incorrecta, sesión caducada y perfil no disponible. Avisos breves al guardar o quitar de Favoritos y al subir o eliminar.\n\nAjustes del 12/11 (tarde):\n· El corazón del perfil dice «Añadir a Favoritos» / «Favorito».\n· Ubicación con dos pestañas: «Barcelona ciudad» (10 distritos) y «Alrededores» (10 municipios cercanos). Se elige una opción; es obligatoria. La lista es una propuesta pendiente de validar por el equipo.\n· Registro: nuevo campo «Repite la contraseña».\n· La etiqueta «Principal» solo se ve en Mi perfil."
+  },
+  "fidelidad_media": {
+   "x": 10824,
+   "y": 0,
+   "w": 440,
+   "fill": "blue",
+   "text": "FIDELIDAD MEDIA (12/11)\nPropuesta aplicada, pendiente de validar por el equipo\nEl color se sustituyó el 17/11: ver «Cambios de la 7ª iteración».\n\n· Todas las pantallas usan el design system «App Music»: colores del JSON de Material Theme Builder (roles M3; desde el 25/11, solo modo oscuro), Roboto con la escala M3 y formas M3 Expressive.\n· Iconos en SVG integrado con trazo redondeado (estilo Material Symbols Rounded); relleno = seleccionado. El lienzo no carga la fuente Material Symbols, por eso no se usa la fuente de iconos.\n· Barra inferior M3: indicador en píldora; insignia de no leídos en rojo (rol error).\n· Botones redondos de 40 dp (acción principal fija al pie: 56 dp); chips de 32 dp con esquinas de 8 dp; campos de 56 dp con esquinas de 4 dp y etiqueta flotante; ventanas con esquinas de 28 dp.\n· Errores de campo en rojo (borde de 2 dp + texto), además de texto e icono.\n· Sin cambios de contenido, textos, flujos ni lógica de la prueba.\n· Botón Favorito: con contorno («Añadir a Favoritos») / relleno y cuadrado («Favorito»), para que el estado marcado se distinga con la paleta gris.\n· Chips seleccionados con check, además del color.\n· «Guía visual» rehecha con los valores de fidelidad media.\n· Pendiente: iconos oficiales de redes sociales (kit de marca de cada red)."
+  },
+  "cambios_iteracion6": {
+   "x": 11304,
+   "y": 0,
+   "w": 440,
+   "fill": "blue",
+   "text": "CAMBIOS DE LA 6ª ITERACIÓN (13/11)\nPropuestas aplicadas, pendientes de validar por el equipo\n\n· Compartir en un chat de la app envía una tarjeta del perfil (nombre, rol, zona y «Ver perfil»). Funciona desde los perfiles de músico y desde Mi perfil. Al abrir el perfil desde la tarjeta, «Volver» regresa al chat.\n· Compartir: nueva opción «Copiar enlace» con el aviso «Enlace copiado».\n· Chips de filtros aplicados y de «Detectado en tu búsqueda»: solo la X los quita; pulsar el texto no hace nada.\n· Explorar (con cuenta) no muestra los músicos guardados en Favoritos. Si alguno coincide con la búsqueda o los filtros, un aviso lo indica con el enlace «Ver Favoritos».\n· Disponibilidad obligatoria en Registro y en Editar perfil («Elige al menos una opción»). En Registro, el desplazamiento automático también lleva a este campo.\n\nPendiente de decidir:\n· Con los favoritos de partida de Alex (Laia, Marc y Marta), Explorar empieza con 3 músicos y las búsquedas de guitarra, piano y cantante solo muestran el aviso de Favoritos.\n· Pau sigue con «Disponibilidad: No indicada» (perfil mínimo), que ya no sería posible con el registro nuevo."
+  },
+  "cambios_iteracion7": {
+   "x": 11784,
+   "y": 0,
+   "w": 440,
+   "fill": "blue",
+   "text": "CAMBIOS DE LA 7ª ITERACIÓN (17/11) · SISTEMA DE COLOR\nDecisiones del equipo aplicadas tal cual\n\n· 25/11: se elimina el modo claro; la app solo tiene modo oscuro. Las menciones al claro de esta nota son historia (17/11).\n· Colores del JSON nuevo de Material Theme Builder (semilla #5540C4) con los ajustes manuales del equipo. El export original está en ds/appmusic/material-theme.json y cada ajuste está anotado en tokens.json.\n· Botón principal (uno por pantalla o ventana): lima en oscuro, índigo en claro (accion-destacada). Acciones destructivas en rojo (error).\n· Seleccionado = tonal con degradado violeta: «Ver perfil», «Favorito», chips seleccionados y de filtros activos, indicador de la barra inferior, etiqueta «Principal».\n· «Activo» en acento (lima en oscuro, índigo en claro): pestañas, punto del carrusel, interruptores, casillas, foco de campos, insignias, corazones de Favoritos, contorno de «Añadir a Favoritos» y círculos de confirmación.\n· Avisos flotantes en inverse-surface; su icono y su acción en inverse-on-surface.\n· Carrusel sin flechas: se navega deslizando y con los puntos.\n· Decidido el 17/11: paletas tonales regeneradas del JSON nuevo; chips «Detectado en tu búsqueda» en tonal; muestras de esquinas y espaciado de la Guía visual en neutro.\n\nPendiente de decidir:\n· Anotar en el dossier de color que el lima pasa a ser el color de acción en oscuro (antes era solo la etiqueta «Inmediata»).\n· Nombre del botón: «Favorito» / «Añadir a Favoritos» en las pantallas, «Guardado» en la Guía visual.\n· «Reintentar», «Regístrate» (aviso de Explorar sin registro) y el botón de enviar del chat no van fijos al pie con 56 dp: solo cambia su color.\n· Fila antigua de botones de icono con corazón en Componentes («Perfil (cabecera…)»), que no usa ninguna pantalla.\n· El design system «App Music» (artefacto aparte) sigue con los colores anteriores."
+  }
+ },
+ "order": [
+  "Inicio.dc.html",
+  "Explorar-sin-registro.dc.html",
+  "Favoritos-sin-registro.dc.html",
+  "Chats-sin-registro.dc.html",
+  "Mi-perfil-registro.dc.html",
+  "Registro.dc.html",
+  "Registro-error.dc.html",
+  "Registro-correo-existe.dc.html",
+  "Bienvenida.dc.html",
+  "Iniciar-sesion.dc.html",
+  "Iniciar-sesion-error.dc.html",
+  "Recuperar-contrasena.dc.html",
+  "Explorar-busqueda-sr.dc.html",
+  "Explorar-guitarra-sr.dc.html",
+  "Explorar-pianista-sr.dc.html",
+  "Explorar-cantante-sr.dc.html",
+  "Explorar-bateria-sr.dc.html",
+  "Explorar-dj-sr.dc.html",
+  "Explorar-sin-resultados-sr.dc.html",
+  "Explorar-filtrado-sr.dc.html",
+  "Filtros-sr.dc.html",
+  "Explorar.dc.html",
+  "Explorar-busqueda.dc.html",
+  "Explorar-guitarra.dc.html",
+  "Explorar-pianista.dc.html",
+  "Explorar-cantante.dc.html",
+  "Explorar-bateria.dc.html",
+  "Explorar-dj.dc.html",
+  "Explorar-sin-resultados.dc.html",
+  "Explorar-filtrado.dc.html",
+  "Filtros.dc.html",
+  "Explorar-cargando.dc.html",
+  "Explorar-error.dc.html",
+  "Sesion-caducada.dc.html",
+  "Perfil-musico.dc.html",
+  "Perfil-musico-tarifas.dc.html",
+  "Perfil-musico-compartir.dc.html",
+  "Perfil-musico-compartir-chat.dc.html",
+  "Perfil-musico-compartir-enviado.dc.html",
+  "Perfil-musico-opciones.dc.html",
+  "Perfil-musico-denunciar.dc.html",
+  "Perfil-musico-bloquear.dc.html",
+  "Perfil-laia.dc.html",
+  "Perfil-marc.dc.html",
+  "Perfil-jordi.dc.html",
+  "Perfil-nuria.dc.html",
+  "Perfil-musico-incompleto.dc.html",
+  "Perfil-marta-fav.dc.html",
+  "Perfil-laia-fav.dc.html",
+  "Perfil-marc-fav.dc.html",
+  "Perfil-jordi-fav.dc.html",
+  "Perfil-nuria-fav.dc.html",
+  "Perfil-pau-fav.dc.html",
+  "Perfil-no-disponible.dc.html",
+  "Perfil-musico-registro.dc.html",
+  "Perfil-laia-registro.dc.html",
+  "Perfil-marc-registro.dc.html",
+  "Perfil-jordi-registro.dc.html",
+  "Perfil-nuria-registro.dc.html",
+  "Perfil-pau-registro.dc.html",
+  "Perfil-marta-chat.dc.html",
+  "Perfil-laia-chat.dc.html",
+  "Perfil-marc-chat.dc.html",
+  "Perfil-jordi-chat.dc.html",
+  "Perfil-nuria-chat.dc.html",
+  "Perfil-pau-chat.dc.html",
+  "Favoritos.dc.html",
+  "Favoritos-vacio.dc.html",
+  "Chats.dc.html",
+  "Chats-vacio.dc.html",
+  "Chats-marta.dc.html",
+  "Chat-jordi.dc.html",
+  "Chat-jordi-error.dc.html",
+  "Chat-laia.dc.html",
+  "Chat-pau.dc.html",
+  "Chat-nuria.dc.html",
+  "Chat-marc.dc.html",
+  "Chat-marta-vacio.dc.html",
+  "Chat-marta-enviado.dc.html",
+  "Mi-perfil.dc.html",
+  "Mi-perfil-tarifas.dc.html",
+  "Mi-perfil-compartir.dc.html",
+  "Mi-perfil-compartir-chat.dc.html",
+  "Mi-perfil-compartir-enviado.dc.html",
+  "Mi-perfil-anadir.dc.html",
+  "Mi-perfil-subida-error.dc.html",
+  "Mi-perfil-editar.dc.html",
+  "Mi-perfil-editar-error.dc.html",
+  "Mi-perfil-editar-instrumento.dc.html",
+  "Mi-perfil-editar-generos.dc.html",
+  "Mi-perfil-editar-guardar-error.dc.html",
+  "Ajustes.dc.html",
+  "Ajustes-contrasena.dc.html",
+  "Ajustes-contrasena-error.dc.html",
+  "Ajustes-cerrar-sesion.dc.html",
+  "Ajustes-eliminar-cuenta.dc.html",
+  "Ref-Registro.dc.html",
+  "Ref-Mi-perfil-editar.dc.html",
+  "Ref-Filtros.dc.html",
+  "Ref-Perfil-musico.dc.html",
+  "Ref-Perfil-musico-incompleto.dc.html",
+  "Ref-Mi-perfil.dc.html",
+  "Componentes.dc.html",
+  "Guia-visual.dc.html"
+ ],
+ "pages": [],
+ "title": "Wireframe setena (FIDELIDAD MEDIA)"
+}

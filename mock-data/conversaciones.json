@@ -1,0 +1,90 @@
+[
+  {
+    "participantes": [
+      "alex",
+      "jordi"
+    ],
+    "mensajes": [
+      {
+        "de": "jordi",
+        "texto": "Hola, he visto tu perfil. ¿Te interesa tocar en un concierto el viernes?",
+        "haceMin": 50,
+        "leido": true
+      },
+      {
+        "de": "alex",
+        "texto": "¡Hola! Sí, cuéntame más.",
+        "haceMin": 45,
+        "leido": true
+      },
+      {
+        "de": "jordi",
+        "texto": "Es en la sala Apolo, repertorio de rock. Es un proyecto remunerado.",
+        "haceMin": 40,
+        "leido": true
+      },
+      {
+        "de": "alex",
+        "texto": "Perfecto. ¿Tienes disponibilidad el sábado para ensayar?",
+        "haceMin": 36,
+        "leido": true
+      }
+    ]
+  },
+  {
+    "participantes": [
+      "alex",
+      "nuria"
+    ],
+    "mensajes": [
+      {
+        "de": "nuria",
+        "texto": "¿Cuánto cobras por bolo?",
+        "haceMin": 20,
+        "leido": false
+      }
+    ]
+  },
+  {
+    "participantes": [
+      "alex",
+      "laia"
+    ],
+    "mensajes": [
+      {
+        "de": "laia",
+        "texto": "Te paso las partituras esta tarde",
+        "haceMin": 300,
+        "leido": true
+      }
+    ]
+  },
+  {
+    "participantes": [
+      "alex",
+      "marc"
+    ],
+    "mensajes": [
+      {
+        "de": "marc",
+        "texto": "Nos vemos en el ensayo",
+        "haceMin": 1500,
+        "leido": true
+      }
+    ]
+  },
+  {
+    "participantes": [
+      "alex",
+      "pau"
+    ],
+    "mensajes": [
+      {
+        "de": "pau",
+        "texto": "Gracias, te escribo cuando tenga la fecha del ensayo",
+        "haceMin": 4320,
+        "leido": true
+      }
+    ]
+  }
+]

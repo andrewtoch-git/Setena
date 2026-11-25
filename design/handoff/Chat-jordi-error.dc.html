@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Chat con Jordi Puig, mensaje no enviado</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: none; padding: 64px 16px 0">
+<div style="display: flex; align-items: center; gap: 8px; min-height: 44px">
+<a href="{{backHref}}" aria-label="Volver a Chats" style="flex: none; width: 28px; height: 44px; display: flex; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<a href="Perfil-jordi-chat.dc.html" aria-label="Ver el perfil de Jordi Puig" style="flex: 1; min-width: 0; min-height: 44px; display: flex; align-items: center; gap: 10px"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><img src="/_blob/1a87e895887b62e75bf43c8f576a6bf4" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="display: flex; flex-direction: column"><span style="font-size: 16px; font-weight: 500">Jordi Puig</span><span style="font-size: 12px; color: var(--on-surface-variant)">Ver perfil</span></span></a>
+<button aria-label="Más opciones" onClick="{{openMod}}" style="flex: none; width: 40px; height: 40px; box-sizing: border-box; border: none; border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; color: var(--on-surface-variant)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="5" r="1.4" fill="currentColor"></circle><circle cx="12" cy="12" r="1.4" fill="currentColor"></circle><circle cx="12" cy="19" r="1.4" fill="currentColor"></circle></svg></button>
+</div>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px">
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><div role="status" style="flex: none; background: var(--surface-container-high); border-radius: 12px; padding: 8px 8px 8px 14px; display: flex; align-items: center; gap: 10px"><span style="flex: 1; font-size: 14px; line-height: 1.35">Has bloqueado a Jordi Puig. No podéis enviaros mensajes.</span><button onClick="{{unblock}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 6px; font: 500 14px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Desbloquear</button></div></sc-if>
+<sc-for list="{{msgs}}" as="m" hint-placeholder-count="5">
+<sc-if value="{{m.theirs}}" hint-placeholder-val="{{true}}"><div style="align-self: flex-start; max-width: 70%; background: var(--surface-container-high); border-radius: 12px; padding: 9px 12px; font-size: 14px; line-height: 1.35">{{m.text}}</div></sc-if>
+<sc-if value="{{m.mine}}" hint-placeholder-val="{{false}}"><div style="align-self: flex-end; max-width: 70%; display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><sc-if value="{{m.isText}}" hint-placeholder-val="{{true}}"><div style="background: var(--surface-container-highest); border-radius: 12px; padding: 9px 12px; font-size: 14px; line-height: 1.35">{{m.text}}</div></sc-if><sc-if value="{{m.isCard}}" hint-placeholder-val="{{false}}"><a href="{{m.cardHref}}" onClick="{{m.openCard}}" aria-label="Perfil compartido: {{m.cardName}}. Ver perfil" style="width: 240px; box-sizing: border-box; border: 1px solid var(--outline-variant); border-radius: 12px; overflow: hidden; background: var(--surface); color: var(--on-surface); display: flex; flex-direction: column; text-decoration: none"><span style="padding: 10px 12px 0; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)">Perfil compartido</span><span style="display: flex; align-items: center; gap: 12px; padding: 8px 12px 12px"><span style="flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--surface-container-highest); color: var(--on-surface-variant); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{m.cardConFoto}}" hint-placeholder-val="{{false}}"><img src="{{m.cardFoto}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{m.cardSinFoto}}" hint-placeholder-val="{{true}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font: 500 16px/24px var(--font-brand)">{{m.cardName}}</span><span style="font: 400 14px/20px var(--font-brand); color: var(--on-surface-variant)">{{m.cardLine}}</span><span style="font: 400 12px/16px var(--font-brand); color: var(--on-surface-variant)">{{m.cardUbic}}</span></span></span><span style="border-top: 1px solid var(--outline-variant); padding: 0 8px 0 12px; min-height: 44px; display: flex; align-items: center; justify-content: space-between; font: 500 14px var(--font-brand); color: var(--acento)">Ver perfil<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M9 6l6 6-6 6"></path></svg></span></a></sc-if><sc-if value="{{m.showSent}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 500; color: var(--on-surface-variant)">Enviado</span></sc-if><sc-if value="{{m.failed}}" hint-placeholder-val="{{false}}"><span role="alert" style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 400; color: var(--error)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>No se ha enviado<button onClick="{{m.retry}}" style="min-height: 32px; border: none; background: transparent; padding: 0 4px; font: 500 12px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Reintentar</button></span></sc-if></div></sc-if>
+</sc-for>
+</div>
+<sc-if value="{{notBlocked}}" hint-placeholder-val="{{true}}"><div style="flex: none; padding: 10px 16px 8px; display: flex; align-items: center; gap: 8px">
+<input aria-label="Escribe un mensaje" placeholder="Escribe un mensaje" value="{{draft}}" onChange="{{onType}}" onKeyDown="{{onKey}}" style="flex: 1; min-width: 0; height: 48px; box-sizing: border-box; border: none; border-radius: 999px; padding: 0 16px; font: 400 16px var(--font-brand); background: var(--surface-container-high); color: var(--on-surface)">
+<button class="accion" aria-label="Enviar mensaje" onClick="{{send}}" style="flex: none; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--accion-destacada); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-accion-destacada)"><path d="M4 20l17-8L4 4l2.5 8z"></path><path d="M6.5 12H12"></path></svg></button>
+</div></sc-if>
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><div style="flex: none; padding: 14px 16px; font-size: 14px; color: var(--on-surface-variant); text-align: center">No puedes enviar mensajes a una persona bloqueada.</div></sc-if>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="{{chatsHref}}" aria-current="page" aria-label="{{navChatsLabel}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" fill="currentColor"></path></svg><sc-if value="{{navUnread}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; top: 0; right: 8px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">1</span></sc-if></span>Chats</a>
+<a href="Mi-perfil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span>Mi perfil</a>
+</nav>
+<sc-if value="{{modOpciones}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="mod-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="mod-t" style="margin: 0; font-size: 24px; font-weight: 400">Más opciones</h2>
+<button onClick="{{goDenunciar}}" style="min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Denunciar perfil</button>
+<sc-if value="{{notBlocked}}" hint-placeholder-val="{{true}}"><button onClick="{{goBloquear}}" style="width: 100%; min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Bloquear a Jordi Puig</button></sc-if>
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><button onClick="{{unblock}}" style="width: 100%; min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Desbloquear a Jordi Puig</button></sc-if>
+<button onClick="{{closeMod}}" style="margin-top: 6px; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modDenunciar}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="den-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="den-t" style="margin: 0; font-size: 24px; font-weight: 400">Denunciar perfil</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">¿Por qué quieres denunciar a Jordi Puig? No le diremos quién ha enviado la denuncia.</p>
+<div role="radiogroup" aria-labelledby="den-t" style="display: flex; flex-direction: column">
+<sc-for list="{{motivos}}" as="mo" hint-placeholder-count="4">
+<button role="radio" aria-checked="{{mo.on}}" onClick="{{mo.pick}}" style="min-height: 44px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; display: flex; align-items: center; gap: 12px; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{mo.on}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 6px solid var(--outline)"></span></sc-if>
+<sc-if value="{{mo.off}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if>
+<span>{{mo.name}}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{canDenunciar}}" hint-placeholder-val="{{false}}"><button onClick="{{enviarDenuncia}}" style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: var(--error); font: 500 14px var(--font-brand); color: var(--on-error); cursor: pointer">Enviar denuncia</button></sc-if>
+<sc-if value="{{cannotDenunciar}}" hint-placeholder-val="{{true}}"><button disabled style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent); font: 500 14px var(--font-brand); color: color-mix(in srgb, var(--on-surface) 38%, transparent)">Enviar denuncia</button></sc-if>
+<button onClick="{{closeMod}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modDenunciado}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="dok-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<span aria-hidden="true" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h2 id="dok-t" style="margin: 4px 0 0; font-size: 24px; font-weight: 400">Gracias por avisarnos</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Revisaremos el perfil de Jordi Puig. Si incumple las normas de la comunidad, tomaremos medidas.</p>
+<button class="accion" onClick="{{closeMod}}" style="align-self: stretch; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Aceptar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modBloquear}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="blq-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="blq-t" style="margin: 0; font-size: 24px; font-weight: 400">¿Bloquear a Jordi Puig?</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">No podrá enviarte mensajes ni ver tu perfil. No le avisaremos de que le has bloqueado.</p>
+<button onClick="{{confirmBloquear}}" style="height: 40px; border: none; border-radius: 999px; background: var(--error); font: 500 14px var(--font-brand); color: var(--on-error); cursor: pointer">Bloquear</button>
+<button onClick="{{closeMod}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modBloqueado}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="bok-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="bok-t" style="margin: 0; font-size: 24px; font-weight: 400">Has bloqueado a Jordi Puig</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Ya no podrá escribirte ni ver tu perfil.</p>
+<a class="accion" href="Chats.dc.html" style="height: 40px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Aceptar</a>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __FOTOS = {"alex": {"avatar": "/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00", "card": "/_blob/9dc44dba1a68a7cc6f5f48589961b5dc", "trio": "/_blob/ae0873fb2c60f8ff15b54b541a1905c2"}, "jordi": {"avatar": "/_blob/1a87e895887b62e75bf43c8f576a6bf4", "card": "/_blob/dff067b37ae614b04301862841e3bdb7"}, "laia": {"avatar": "/_blob/a2e5aa228cee003e66aab951c2b4e1f0", "card": "/_blob/6542538e8c25d8fd6fe88fb9fc023a10"}, "marc": {"avatar": "/_blob/7e985aa8f13bdc6beedb1e392303870b", "card": "/_blob/f570be1a1299774a4564357ac00fb19d"}, "marta": {"avatar": "/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a", "card": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, "nuria": {"avatar": "/_blob/cadad787ba381bc1eac53308fb0acd9b", "card": "/_blob/a5cda7d0b726e50e68f45176743503ad"}, "pau": {"avatar": "/_blob/7159f61c0eb6d33c7676e699feda1f65", "card": "/_blob/d0c90a2a36f57d6be5e8f3556f19767d"}};
+const __FOTO_NOMBRE = {"Marta Ruiz": "marta", "Laia Serra": "laia", "Marc Soler": "marc", "Jordi Puig": "jordi", "Núria Font": "nuria", "Pau Vidal": "pau"};
+const __fotoDe = (n) => { const k = __FOTO_NOMBRE[n]; return k ? __FOTOS[k].avatar : ''; };
+const __fotoYo = () => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : __FOTOS.alex.avatar; } catch (e) { return __FOTOS.alex.avatar; } };
+const __VIDFOTO = { 'directo_trio_jazz.mp4': __FOTOS.alex.trio, 'jam_session.mp4': __FOTOS.alex.card };
+const __fotoCard = (c) => { if (!c) { return ''; } if (c.href === 'Mi-perfil.dc.html') { return __fotoYo(); } return __fotoDe(c.name); };
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const INITIAL = [{"text": "Hola, he visto tu perfil. ¿Te interesa tocar en un concierto el viernes?", "mine": false, "sent": false, "failed": false}, {"text": "¡Hola! Sí, cuéntame más.", "mine": true, "sent": true, "failed": false}, {"text": "Es en la sala Apolo, repertorio de rock. Es un proyecto remunerado.", "mine": false, "sent": false, "failed": false}, {"text": "Perfecto. ¿Tienes disponibilidad el sábado para ensayar?", "mine": true, "sent": true, "failed": false}, {"text": "¿Te va bien a las 18:00 en el local de Sants?", "mine": true, "sent": false, "failed": true}];
+const LIVE = false;
+const KEYC = 'jordi';
+const s = this.state || {};
+const allChats = (LIVE && __ST && __ST.chats) || {};
+const base0 = (LIVE && __ST && __ST.user === 'nuevo') ? [] : INITIAL;
+const msgs = (LIVE && __ST && allChats[KEYC]) || s.msgs || base0;
+const draft = s.draft || '';
+const store = (ms) => { if (LIVE) { const patch = { chats: Object.assign({}, allChats, { [KEYC]: ms }) }; if (KEYC === 'nuria') { patch.read = Object.assign({}, (__ST && __ST.read) || {}, { nuria: true }); } __save(patch); } };
+const send = () => { const t = draft.trim(); if (!t) { return; } const ms = msgs.concat([{ text: t, mine: true, sent: true, failed: false }]); this.setState({ msgs: ms, draft: '' }); store(ms); };
+const chatsHref = 'Chats.dc.html';
+let lastMine = -1; msgs.forEach((m, i) => { if (m.mine && m.sent) { lastMine = i; } });
+const MOTIVOS = ["Perfil falso o suplantación", "Contenido inapropiado", "Spam o publicidad", "Otro motivo"];
+const mod = s.mod !== undefined ? s.mod : '';
+const motivo = s.motivo || '';
+const KEY = 'jordi';
+const isBlocked = s.bl !== undefined ? s.bl : __blocked.indexOf(KEY) >= 0;
+const doBlock = () => { this.setState({ mod: 'bloqueado', bl: true }); __save({ blocked: __blocked.filter((x) => x !== KEY).concat([KEY]) }); };
+const doUnblock = () => { this.setState({ mod: '', bl: false }); __save({ blocked: __blocked.filter((x) => x !== KEY) }); };
+return {
+msgs: msgs.map((m, i) => ({ text: m.text, mine: !!m.mine, theirs: !m.mine, isCard: !!m.card, isText: !m.card, cardName: m.card ? m.card.name : '', cardFoto: __fotoCard(m.card), cardConFoto: !!__fotoCard(m.card), cardSinFoto: !__fotoCard(m.card), cardLine: m.card ? m.card.line : '', cardUbic: m.card ? m.card.ubic : '', cardHref: m.card ? m.card.href : '', openCard: () => { if (m.card && m.card.href !== 'Mi-perfil.dc.html') { __save({ from: 'Chat-jordi-error.dc.html' }); } }, showSent: i === lastMine, failed: !!m.failed, retry: () => { const ms = msgs.map((x, j) => (j === i ? Object.assign({}, x, { sent: true, failed: false }) : x)); this.setState({ msgs: ms }); store(ms); } })),
+isEmpty: msgs.length === 0,
+draft: draft,
+onType: (e) => this.setState({ draft: e.target.value }),
+onKey: (e) => { if (e.key === 'Enter') { send(); } },
+send: send,
+useSuggestion: () => this.setState({ draft: "Hola, he visto tu perfil y me interesa colaborar contigo. ¿Hablamos?" }),
+backHref: chatsHref,
+chatsHref: chatsHref,
+modOpciones: mod === 'opciones',
+modDenunciar: mod === 'denunciar',
+modDenunciado: mod === 'denunciado',
+modBloquear: mod === 'bloquear',
+modBloqueado: mod === 'bloqueado',
+openMod: () => this.setState({ mod: 'opciones' }),
+closeMod: () => this.setState({ mod: '', motivo: '' }),
+goDenunciar: () => this.setState({ mod: 'denunciar', motivo: '' }),
+goBloquear: () => this.setState({ mod: 'bloquear' }),
+enviarDenuncia: () => this.setState({ mod: 'denunciado' }),
+confirmBloquear: doBlock,
+unblock: doUnblock,
+isBlocked: isBlocked,
+notBlocked: !isBlocked,
+motivos: MOTIVOS.map((x) => ({ name: x, on: motivo === x, off: motivo !== x, pick: () => this.setState({ motivo: x }) })),
+canDenunciar: motivo !== '',
+cannotDenunciar: motivo === '',
+};
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

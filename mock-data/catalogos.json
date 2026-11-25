@@ -1,0 +1,129 @@
+{
+  "roles": [
+    "Cantante",
+    "Corista",
+    "Piano",
+    "Teclado",
+    "Guitarra",
+    "Bajo",
+    "Batería",
+    "Percusión",
+    "Saxofón",
+    "Trompeta",
+    "Trombón",
+    "Flauta",
+    "Clarinete",
+    "Violín",
+    "Violonchelo",
+    "Contrabajo",
+    "Acordeón",
+    "Arpa",
+    "DJ",
+    "Productor/a musical",
+    "Beatmaker",
+    "Compositor/a",
+    "Arreglista",
+    "Otros"
+  ],
+  "generos": [
+    "Pop",
+    "Rock",
+    "Indie",
+    "Alternativo",
+    "Metal",
+    "Punk",
+    "Reggae",
+    "Ska",
+    "Dub",
+    "Dancehall",
+    "Soul",
+    "R&B",
+    "Funk",
+    "Jazz",
+    "Blues",
+    "Hip-Hop",
+    "Rap",
+    "Electrónica",
+    "House",
+    "Techno",
+    "Drum & Bass",
+    "Disco",
+    "Clásica",
+    "Flamenco",
+    "Salsa",
+    "Merengue",
+    "Bachata",
+    "Reguetón",
+    "Latin Pop",
+    "Cumbia",
+    "Tango",
+    "Folk",
+    "Country",
+    "Gospel",
+    "Música experimental",
+    "Otros"
+  ],
+  "disponibilidad": [
+    "Inmediata",
+    "El próximo fin de semana",
+    "Esta semana",
+    "La próxima semana",
+    "Este mes"
+  ],
+  "zonas": [
+    "Barcelona ciudad",
+    "Alrededores"
+  ],
+  "tiposProyecto": [
+    "Proyectos remunerados",
+    "Colaboraciones gratuitas"
+  ],
+  "servicios": [
+    {
+      "clave": "bolo",
+      "nombre": "Bolo / Directo",
+      "descripcion": "Conciertos y eventos",
+      "unidad": "por actuación"
+    },
+    {
+      "clave": "grabacion",
+      "nombre": "Grabación",
+      "descripcion": "Instrumentos y voces",
+      "unidad": "por hora"
+    },
+    {
+      "clave": "composicion",
+      "nombre": "Composición",
+      "descripcion": "Canciones y melodías",
+      "unidad": "por proyecto"
+    },
+    {
+      "clave": "otros",
+      "nombre": "Otros",
+      "descripcion": "Servicios adicionales",
+      "unidad": null
+    }
+  ],
+  "motivosDenuncia": [
+    "Perfil falso o suplantación",
+    "Contenido inapropiado",
+    "Spam o publicidad",
+    "Otro motivo"
+  ],
+  "chipsRapidos": [
+    "Guitarra",
+    "Piano",
+    "Teclado",
+    "Cantante",
+    "Bajo",
+    "Batería",
+    "DJ"
+  ],
+  "redes": [
+    "instagram",
+    "youtube",
+    "spotify",
+    "tiktok",
+    "soundcloud"
+  ]
+}

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Editar mi perfil</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder{color:var(--on-surface-variant)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 64px 16px 16px; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; height: 44px">
+<sc-if value="{{clean}}" hint-placeholder-val="{{true}}"><a href="Mi-perfil.dc.html" aria-label="Volver" style="width: 28px; height: 44px; display: flex; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a></sc-if><sc-if value="{{dirty}}" hint-placeholder-val="{{false}}"><button aria-label="Volver" onClick="{{askLeave}}" style="width: 28px; height: 44px; border: none; background: transparent; display: flex; align-items: center; padding: 0; cursor: pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button></sc-if>
+</div>
+<h1 style="margin: 6px 0 0; font-size: 24px; font-weight: 400">Editar perfil</h1>
+<sc-if value="{{showBanner}}" hint-placeholder-val="{{false}}"><div role="alert" style="margin-top: 12px; background: var(--error-container); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; line-height: 1.25"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg><span>{{bannerText}}</span></div></sc-if>
+<div style="margin-top: 12px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 14px">
+<div style="flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{conFotoYo}}" hint-placeholder-val="{{false}}"><img src="{{fotoYo}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{sinFotoYo}}" hint-placeholder-val="{{true}}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 500">Foto de perfil</span><button onClick="{{changeFoto}}" style="height: 40px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 999px; background: var(--surface); font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cambiar foto</button><sc-if value="{{fotoCambiada}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: var(--on-surface-variant)">Nueva foto seleccionada</span></sc-if></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 5px; position: relative">
+<span id="ed-rol-l" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Instrumento o rol</span>
+<button aria-labelledby="ed-rol-l" aria-haspopup="dialog" aria-invalid="{{eroles}}" onClick="{{openRoles}}" style="min-height: 56px; box-sizing: border-box; border: {{broles}}; border-radius: 4px; padding: 12px 12px 12px 16px; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: left; font: 400 16px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{hasRoles}}" hint-placeholder-val="{{true}}"><span style="flex: 1; line-height: 1.35">{{rolesText}}</span></sc-if>
+<sc-if value="{{noRoles}}" hint-placeholder-val="{{false}}"><span style="flex: 1; color: var(--on-surface-variant)">Elige uno o varios</span></sc-if>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><path d="M7 10l5 5 5-5z" fill="currentColor"></path></svg>
+</button>
+<sc-if value="{{eroles}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 5px; position: relative">
+<span id="ed-gen-l" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Géneros musicales</span>
+<button aria-labelledby="ed-gen-l" aria-haspopup="dialog" aria-invalid="{{egeneros}}" onClick="{{openGeneros}}" style="min-height: 56px; box-sizing: border-box; border: {{bgeneros}}; border-radius: 4px; padding: 12px 12px 12px 16px; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: left; font: 400 16px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{hasGeneros}}" hint-placeholder-val="{{true}}"><span style="flex: 1; line-height: 1.35">{{generosText}}</span></sc-if>
+<sc-if value="{{noGeneros}}" hint-placeholder-val="{{false}}"><span style="flex: 1; color: var(--on-surface-variant)">Elige tus estilos</span></sc-if>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><path d="M7 10l5 5 5-5z" fill="currentColor"></path></svg>
+</button>
+<sc-if value="{{egeneros}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 500">Tipo de proyecto</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-if value="{{remOn}}" hint-placeholder-val="{{true}}"><button aria-pressed="true" onClick="{{toggleRem}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Proyectos remunerados</button></sc-if>
+<sc-if value="{{remOff}}" hint-placeholder-val="{{false}}"><button aria-pressed="false" onClick="{{toggleRem}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Proyectos remunerados</button></sc-if>
+<sc-if value="{{colOn}}" hint-placeholder-val="{{true}}"><button aria-pressed="true" onClick="{{toggleCol}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Colaboraciones gratuitas</button></sc-if>
+<sc-if value="{{colOff}}" hint-placeholder-val="{{false}}"><button aria-pressed="false" onClick="{{toggleCol}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Colaboraciones gratuitas</button></sc-if>
+</div>
+<sc-if value="{{etipo}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Elige al menos un tipo de proyecto</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span id="mp-zona-l" style="font-size: 12px; font-weight: 500">Ubicación</span>
+<div role="tablist" aria-labelledby="mp-zona-l" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--outline-variant)">
+<sc-for list="{{zonaTabs}}" as="t" hint-placeholder-count="2"><sc-if value="{{t.on}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="true" onClick="{{t.pick}}" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">{{t.name}}</button></sc-if><sc-if value="{{t.off}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="false" onClick="{{t.pick}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{t.name}}</button></sc-if></sc-for>
+</div>
+<span style="margin-top: 4px; font-size: 12px; color: var(--on-surface-variant)">{{lugarHelp}}</span>
+<div role="radiogroup" aria-label="{{lugarHelp}}" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{lugares}}" as="o" hint-placeholder-count="10"><sc-if value="{{o.on}}" hint-placeholder-val="{{false}}"><button role="radio" aria-checked="true" onClick="{{o.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{o.name}}</button></sc-if><sc-if value="{{o.off}}" hint-placeholder-val="{{true}}"><button role="radio" aria-checked="false" onClick="{{o.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{o.name}}</button></sc-if></sc-for>
+</div>
+<sc-if value="{{hasUbicSel}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: var(--on-surface)">Tu ubicación: <b>{{ubicSel}}</b></span></sc-if>
+<sc-if value="{{ezona}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Elige tu distrito o municipio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 500">Disponibilidad</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{disp}}" as="d" hint-placeholder-count="5">
+<sc-if value="{{d.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{d.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{d.name}}</button></sc-if>
+<sc-if value="{{d.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{d.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{d.name}}</button></sc-if>
+</sc-for>
+</div>
+<sc-if value="{{edisp}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Elige al menos una opción</span></sc-if>
+<span style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">«Inmediata»: disponible en cuanto te contacten.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 5px; position: relative">
+<label for="mp-sobre" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Sobre mí</label>
+<textarea id="mp-sobre" rows="4" placeholder="¡Cuéntale a la comunidad sobre ti, tu experiencia y tu perfil musical!" style="height: 96px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 16px; font: 400 16px/1.4 var(--font-brand); color: var(--on-surface); resize: none; background: transparent" value="{{f_sobre}}" onChange="{{on_sobre}}"></textarea>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 500">Tarifas <span style="font-weight: 400; color: var(--on-surface-variant)">(opcional)</span></span>
+<span style="margin-top: -4px; font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">Escribe un precio o «A convenir».</span>
+<div style="border: 1px solid var(--outline-variant); border-radius: 12px; padding: 0 12px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--outline-variant)">
+<label for="t-bolo" style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14px; font-weight: 500">Bolo / Directo</span><span style="font-size: 12px; color: var(--on-surface-variant)">Conciertos y eventos</span></label>
+<div style="flex: none; display: flex; align-items: center; gap: 6px"><input id="t-bolo" value="{{f_bolo}}" onChange="{{on_bolo}}" placeholder="Ej.: 120 €" style="width: 104px; height: 34px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 8px; font: 400 16px var(--font-brand); text-align: right; background: transparent; color: var(--on-surface)"><span style="width: 78px; font-size: 12px; color: var(--on-surface-variant)">por actuación</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--outline-variant)">
+<label for="t-grab" style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14px; font-weight: 500">Grabación</span><span style="font-size: 12px; color: var(--on-surface-variant)">Instrumentos y voces</span></label>
+<div style="flex: none; display: flex; align-items: center; gap: 6px"><input id="t-grab" value="{{f_grab}}" onChange="{{on_grab}}" placeholder="Ej.: 120 €" style="width: 104px; height: 34px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 8px; font: 400 16px var(--font-brand); text-align: right; background: transparent; color: var(--on-surface)"><span style="width: 78px; font-size: 12px; color: var(--on-surface-variant)">por hora</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--outline-variant)">
+<label for="t-comp" style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14px; font-weight: 500">Composición</span><span style="font-size: 12px; color: var(--on-surface-variant)">Canciones y melodías</span></label>
+<div style="flex: none; display: flex; align-items: center; gap: 6px"><input id="t-comp" value="{{f_comp}}" onChange="{{on_comp}}" placeholder="Ej.: 120 €" style="width: 104px; height: 34px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 8px; font: 400 16px var(--font-brand); text-align: right; background: transparent; color: var(--on-surface)"><span style="width: 78px; font-size: 12px; color: var(--on-surface-variant)">por proyecto</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 8px 0">
+<label for="t-otros" style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14px; font-weight: 500">Otros</span><span style="font-size: 12px; color: var(--on-surface-variant)">Servicios adicionales</span></label>
+<input id="t-otros" value="{{f_otros}}" onChange="{{on_otros}}" placeholder="Especificar" style="height: 34px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 10px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)">
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 500">Redes sociales</span>
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">I</span><input aria-label="Enlace de Instagram" value="{{f_ig}}" onChange="{{on_ig}}" placeholder="Enlace a tu Instagram" style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"></div>
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">Y</span><input aria-label="Enlace de YouTube" value="{{f_yt}}" onChange="{{on_yt}}" placeholder="Enlace a tu YouTube" style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"></div>
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">S</span><input aria-label="Enlace de Spotify" value="{{f_sp}}" onChange="{{on_sp}}" placeholder="Enlace a tu Spotify" style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"></div>
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">T</span><input aria-label="Enlace de TikTok" value="{{f_tt}}" onChange="{{on_tt}}" placeholder="Enlace a tu TikTok" style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"></div>
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700">SC</span><input aria-label="Enlace de SoundCloud" value="{{f_sc}}" onChange="{{on_sc}}" placeholder="Enlace a tu SoundCloud" style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 500">Vídeo <span style="font-weight: 400; color: var(--on-surface-variant)">(obligatorio)</span></span>
+<sc-for list="{{videos}}" as="v" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 10px; border: 1px solid var(--outline); border-radius: 12px; padding: 8px">
+<span aria-hidden="true" style="flex: none; width: 64px; height: 40px; border-radius: 6px; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: inherit"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px"><input aria-label="Título del vídeo {{v.n}}" placeholder="Título del vídeo" value="{{v.title}}" onChange="{{v.onTitle}}" style="min-width: 0; height: 36px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 8px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"><span style="display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 12px; color: var(--on-surface-variant)"><sc-if value="{{v.principal}}" hint-placeholder-val="{{true}}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 999px; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container); display: flex; align-items: center; font-size: 11px; font-weight: 500">Principal</span></sc-if><sc-if value="{{v.notPrincipal}}" hint-placeholder-val="{{false}}"><button onClick="{{v.makeMain}}" style="flex: none; min-height: 28px; border: none; background: transparent; padding: 0; font: 500 12px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Hacer principal</button></sc-if><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{v.file}}</span></span></span>
+<button onClick="{{v.remove}}" style="flex: none; height: 40px; padding: 0 12px; border: 1px solid var(--outline); border-radius: 999px; background: var(--surface); font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Quitar</button>
+</div>
+</sc-for>
+<button aria-invalid="{{evideo}}" aria-describedby="video-ayuda" onClick="{{addVideo}}" style="height: 40px; border: {{bvideo}}; border-radius: 999px; background: var(--surface); display: flex; align-items: center; justify-content: center; gap: 8px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M12 5v14M5 12h14"></path></svg>Añadir vídeo</button>
+<sc-if value="{{evideo}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+<span style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">El vídeo marcado como «Principal» es el que se ve arriba en tu perfil.</span>
+<span id="video-ayuda" style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant); text-align: center">¡Elige ese vídeo que te encanta y comparte tu talento con la comunidad!</span>
+</div>
+<sc-if value="{{valid}}" hint-placeholder-val="{{true}}"><button class="accion" onClick="{{saveOk}}" style="width: 100%; height: 56px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 16px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Guardar cambios</button></sc-if>
+<sc-if value="{{invalid}}" hint-placeholder-val="{{false}}"><button class="accion" onClick="{{submit}}" style="width: 100%; height: 56px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 16px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Guardar cambios</button></sc-if>
+</div>
+</div>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="Chats.dc.html" aria-label="{{navChatsLabel}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg><sc-if value="{{navUnread}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="position: absolute; top: 0; right: 8px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/16px var(--font-brand); text-align: center">1</span></sc-if></span>Chats</a>
+<a href="Mi-perfil.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4" fill="currentColor"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7z" fill="currentColor"></path></svg></span>Mi perfil</a>
+</nav>
+<sc-if value="{{modalOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="sel-t" style="width: 100%; max-height: 760px; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h2 id="sel-t" style="margin: 0; font-size: 24px; font-weight: 400">{{modalTitle}}</h2>
+<button aria-label="Cerrar" onClick="{{closeModal}}" style="flex: none; width: 36px; height: 36px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">Marca todas las opciones que quieras.</p>
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px">
+<sc-for list="{{chips}}" as="chip" hint-placeholder-count="12">
+<sc-if value="{{chip.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{chip.name}}</button></sc-if>
+<sc-if value="{{chip.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{chip.name}}</button></sc-if>
+</sc-for>
+</div>
+<button class="accion" onClick="{{saveModal}}" style="flex: none; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Guardar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{savedOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="ok-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<span aria-hidden="true" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h2 id="ok-t" style="margin: 4px 0 0; font-size: 24px; font-weight: 400">Cambios guardados</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Tu perfil ya muestra la información actualizada.</p>
+<a class="accion" href="Mi-perfil.dc.html" style="align-self: stretch; height: 40px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Ver mi perfil</a>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{saveErrOn}}" hint-placeholder-val="{{false}}"><div role="alert" style="position: absolute; left: 16px; right: 16px; bottom: 100px; z-index: 5; background: var(--inverse-surface); color: var(--inverse-on-surface); border-radius: 4px; min-height: 48px; padding: 4px 6px 4px 14px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; box-shadow: var(--elevation-level-3)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg><span style="flex: 1; font-size: 14px; line-height: 1.35; padding: 8px 0">No se han podido guardar los cambios. Revisa tu conexión e inténtalo de nuevo.</span><button onClick="{{retrySave}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 10px; font: 500 14px var(--font-brand); color: var(--inverse-on-surface); text-decoration: underline; cursor: pointer">Reintentar</button></div></sc-if>
+<sc-if value="{{leaveOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="lv-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="lv-t" style="margin: 0; font-size: 24px; font-weight: 400">¿Salir sin guardar?</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Perderás los cambios que no hayas guardado.</p>
+<button class="accion" onClick="{{stay}}" style="height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Seguir editando</button>
+<a href="Mi-perfil.dc.html" style="height: 40px; border-radius: 999px; background: transparent; color: var(--error); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Salir sin guardar</a>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ventana":{"editor":"enum","options":["ninguna","instrumento","generos"],"default":"ninguna"},"estado":{"editor":"enum","options":["normal","falta_video","error_guardar"],"default":"normal"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+const __fy = (() => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : '/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00'; } catch (e) { return '/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00'; } })();
+return Object.assign({}, this.__rvBase(), { tema: __tema, fotoYo: __fy, conFotoYo: !!__fy, sinFotoYo: !__fy });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const ROLES = ['Cantante', 'Corista', 'Piano', 'Teclado', 'Guitarra', 'Bajo', 'Batería', 'Percusión', 'Saxofón', 'Trompeta', 'Trombón', 'Flauta', 'Clarinete', 'Violín', 'Violonchelo', 'Contrabajo', 'Acordeón', 'Arpa', 'DJ', 'Productor/a musical', 'Beatmaker', 'Compositor/a', 'Arreglista', 'Otros'];
+const GENEROS = ['Pop', 'Rock', 'Indie', 'Alternativo', 'Metal', 'Punk', 'Reggae', 'Ska', 'Dub', 'Dancehall', 'Soul', 'R&B', 'Funk', 'Jazz', 'Blues', 'Hip-Hop', 'Rap', 'Electrónica', 'House', 'Techno', 'Drum & Bass', 'Disco', 'Clásica', 'Flamenco', 'Salsa', 'Merengue', 'Bachata', 'Reguetón', 'Latin Pop', 'Cumbia', 'Tango', 'Folk', 'Country', 'Gospel', 'Música experimental', 'Otros'];
+const s = this.state || {};
+const __PF = true ? ((__ST && __ST.perfil) || null) : null;
+const open = s.open !== undefined ? s.open : (this.props.ventana ?? 'ninguna');
+const roles = s.roles || (__PF ? __PF.roles : ['Piano']);
+const generos = s.generos || (__PF ? __PF.generos : ['Jazz', 'Soul']);
+const draft = s.draft || (open === 'instrumento' ? roles : (open === 'generos' ? generos : []));
+const list = open === 'generos' ? GENEROS : ROLES;
+const chips = list.map((name) => {
+const on = draft.indexOf(name) >= 0;
+return {
+name: name,
+on: on,
+off: !on,
+toggle: () => this.setState({ draft: on ? draft.filter((x) => x !== name) : draft.concat([name]) })
+};
+});
+const zona = s.zona !== undefined ? s.zona : (__PF ? __PF.zona : 'Barcelona ciudad');
+const F0 = { lugar: 'Eixample', sobre: 'Pianista de jazz y soul. Toco en directo y doy clases. Busco banda para proyectos remunerados.', bolo: '150 €', grab: '35 €', comp: '300 €', otros: 'Clases de piano: 25 € la hora', ig: 'instagram.com/alexmartin.piano', yt: 'youtube.com/@alexmartinpiano', sp: 'open.spotify.com/artist/alexmartin', tt: 'tiktok.com/@alexmartin.piano', sc: 'soundcloud.com/alexmartin' };
+const f = Object.assign({}, F0, (__PF && __PF.f) || {}, s.f || {});
+const faltaVideo = (this.props.estado ?? 'normal') === 'falta_video';
+const ERRG = (this.props.estado ?? 'normal') === 'error_guardar';
+const saveErr = s.saveErr !== undefined ? s.saveErr : ERRG;
+const DISP = ['Inmediata', 'El próximo fin de semana', 'Esta semana', 'La próxima semana', 'Este mes'];
+const disp = s.disp || (__PF ? __PF.disp : ['Esta semana', 'El próximo fin de semana']);
+const videos = s.videos || (__PF ? __PF.videos : null) || (faltaVideo ? [] : [{ t: 'Directo con trío de jazz', file: 'directo_trio_jazz.mp4' }, { t: 'Jam session', file: 'jam_session.mp4' }]);
+const enviado = s.enviado !== undefined ? s.enviado : faltaVideo;
+const col0 = (s.col !== undefined) ? s.col : (__PF ? __PF.col : true);
+const rem0 = (s.rem !== undefined) ? s.rem : (__PF ? __PF.rem : true);
+const missing = { roles: roles.length === 0, generos: generos.length === 0, tipo: !rem0 && !col0, zona: !zona || !f.lugar, disp: disp.length === 0, video: videos.length === 0 };
+const nMissing = Object.keys(missing).filter((k) => missing[k]).length;
+const valid = nMissing === 0;
+const rem = (s.rem !== undefined) ? s.rem : (__PF ? __PF.rem : true);
+const col = (s.col !== undefined) ? s.col : (__PF ? __PF.col : true);
+const dirty = ['roles', 'generos', 'disp', 'zona', 'rem', 'col', 'f', 'videos', 'foto'].some((k) => s[k] !== undefined);
+const LUG = { 'Barcelona ciudad': ['Ciutat Vella', 'Eixample', 'Sants-Montjuïc', 'Les Corts', 'Sarrià-Sant Gervasi', 'Gràcia', 'Horta-Guinardó', 'Nou Barris', 'Sant Andreu', 'Sant Martí'], 'Alrededores': ['L\'Hospitalet de Llobregat', 'Badalona', 'Santa Coloma de Gramenet', 'Sant Adrià de Besòs', 'Esplugues de Llobregat', 'Cornellà de Llobregat', 'El Prat de Llobregat', 'Sant Just Desvern', 'Montcada i Reixac', 'Sant Cugat del Vallès'] };
+const tabZ = LUG[s.tabZ] ? s.tabZ : (LUG[zona] ? zona : 'Barcelona ciudad');
+const __lug = f.lugar;
+const __ubic = { zonaTabs: Object.keys(LUG).map((z) => ({ name: z, on: z === tabZ, off: z !== tabZ, pick: () => this.setState({ tabZ: z }) })), lugarHelp: tabZ === 'Barcelona ciudad' ? 'Elige tu distrito' : 'Elige tu municipio', lugares: LUG[tabZ].map((n) => { const on = zona === tabZ && __lug === n; return { name: n, on: on, off: !on, toggle: () => this.setState(on ? { zona: '', f: Object.assign({}, f, { lugar: '' }) } : { zona: tabZ, f: Object.assign({}, f, { lugar: n }) }) }; }), hasUbicSel: !!(zona && __lug), ubicSel: __lug ? (zona === 'Alrededores' ? __lug : __lug + ', Barcelona') : '' };
+const out = Object.assign(__ubic, {
+dirty: dirty, clean: !dirty,
+askLeave: () => this.setState({ leave: true }),
+stay: () => this.setState({ leave: false }),
+leaveOpen: !!s.leave,
+saveOk: () => { if (ERRG && !s.retry) { this.setState({ saveErr: true, retry: true }); return; } this.setState({ saved: true, saveErr: false }); __save({ perfil: { fotos: (__PF && __PF.fotos) || undefined, nombre: (__PF && __PF.nombre) || 'Alex Martín', roles: roles, generos: generos, zona: zona, disp: disp, rem: rem, col: col, f: f, videos: videos } }); },
+retrySave: () => { this.setState({ saved: true, saveErr: false, retry: true }); __save({ perfil: { fotos: (__PF && __PF.fotos) || undefined, nombre: (__PF && __PF.nombre) || 'Alex Martín', roles: roles, generos: generos, zona: zona, disp: disp, rem: rem, col: col, f: f, videos: videos } }); },
+saveErrOn: saveErr && !s.saved,
+savedOpen: !!s.saved,
+changeFoto: () => this.setState({ foto: true }),
+fotoCambiada: !!s.foto,
+disp: DISP.map((d) => { const on = disp.indexOf(d) >= 0; return { name: d, on: on, off: !on, toggle: () => this.setState({ disp: on ? disp.filter((x) => x !== d) : disp.concat([d]) }) }; }),
+videos: videos.map((v, i) => ({ title: v.t, file: v.file, n: i + 1, principal: i === 0, notPrincipal: i > 0, onTitle: (e) => this.setState({ videos: videos.map((x, j) => (j === i ? Object.assign({}, x, { t: e.target.value }) : x)) }), makeMain: () => this.setState({ videos: [videos[i]].concat(videos.filter((x, j) => j !== i)) }), remove: () => this.setState({ videos: videos.filter((x, j) => j !== i) }) })),
+addVideo: () => this.setState({ videos: videos.concat([{ t: '', file: 'nuevo_video_' + (videos.length + 1) + '.mp4' }]) }),
+valid: valid,
+invalid: !valid,
+submit: () => this.setState({ enviado: true }),
+showBanner: enviado && !valid,
+bannerText: (nMissing === 1 && missing.video) ? 'Falta añadir un vídeo. Es obligatorio para guardar tu perfil.' : 'Faltan campos obligatorios. Revisa los campos marcados.',
+remOn: rem,
+remOff: !rem,
+colOn: col,
+colOff: !col,
+toggleRem: () => this.setState({ rem: !rem }),
+toggleCol: () => this.setState({ col: !col }),
+rolesText: roles.join(', '),
+hasRoles: roles.length > 0,
+noRoles: roles.length === 0,
+generosText: generos.join(', '),
+hasGeneros: generos.length > 0,
+noGeneros: generos.length === 0,
+modalOpen: open !== 'ninguna',
+modalTitle: open === 'generos' ? 'Géneros musicales' : 'Instrumento o rol',
+chips: chips,
+openRoles: () => this.setState({ open: 'instrumento', draft: roles.slice() }),
+openGeneros: () => this.setState({ open: 'generos', draft: generos.slice() }),
+closeModal: () => this.setState({ open: 'ninguna', draft: null }),
+saveModal: () => this.setState(open === 'generos' ? { generos: draft, open: 'ninguna', draft: null } : { roles: draft, open: 'ninguna', draft: null })
+});
+Object.keys(F0).forEach((k) => { out['f_' + k] = f[k]; out['on_' + k] = (e) => this.setState({ f: Object.assign({}, f, { [k]: e.target.value }) }); });
+Object.keys(missing).forEach((k) => {
+const err = enviado && missing[k];
+out['e' + k] = err;
+out['b' + k] = err ? '2px solid var(--error)' : (k === 'video' ? '1px dashed var(--outline)' : '1px solid var(--outline)');
+});
+return out;
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

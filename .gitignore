@@ -1,0 +1,26 @@
+# Dependencias y builds
+node_modules/
+dist/
+build/
+www/
+.angular/
+coverage/
+
+# Android / Capacitor
+android/app/build/
+android/.gradle/
+*.keystore
+*.jks
+local.properties
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Sistema y editores
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log

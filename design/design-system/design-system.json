@@ -1,0 +1,157 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-12T10:45:00Z"
+  },
+  "title": "setena",
+  "namespace": "setena",
+  "libraries": [],
+  "sections": {},
+  "groups": [
+    "Logo",
+    "Fotos"
+  ],
+  "assetGroups": {
+    "Logo": {
+      "name": "Logo",
+      "tile": "m",
+      "order": [
+        "setena-simbolo.svg"
+      ],
+      "files": {
+        "setena-simbolo.svg": {
+          "name": "setena-simbolo.svg",
+          "blob": "a6a16907224bcb1407c3ae33e26342a8",
+          "size": 533,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Fotos": {
+      "name": "Fotos",
+      "tile": "s",
+      "order": [
+        "alex-martin-avatar.jpg",
+        "alex-martin-card.jpg",
+        "alex-martin-trio-card.jpg",
+        "jordi-puig-avatar.jpg",
+        "jordi-puig-card.jpg",
+        "laia-serra-avatar.jpg",
+        "laia-serra-card.jpg",
+        "marc-soler-avatar.jpg",
+        "marc-soler-card.jpg",
+        "marta-ruiz-avatar.jpg",
+        "marta-ruiz-card.jpg",
+        "nuria-font-avatar.jpg",
+        "nuria-font-card.jpg",
+        "pau-vidal-avatar.jpg",
+        "pau-vidal-card.jpg"
+      ],
+      "files": {
+        "alex-martin-avatar.jpg": {
+          "name": "alex-martin-avatar.jpg",
+          "blob": "0e19da6ce6e509afaa895609898b36e8",
+          "size": 22830,
+          "type": "image/jpeg"
+        },
+        "alex-martin-card.jpg": {
+          "name": "alex-martin-card.jpg",
+          "blob": "3938a2ccf8db64e6b6127681b5e724ba",
+          "size": 80999,
+          "type": "image/jpeg"
+        },
+        "alex-martin-trio-card.jpg": {
+          "name": "alex-martin-trio-card.jpg",
+          "blob": "99c8672ea46fdb3ff01ff330a85eb297",
+          "size": 120995,
+          "type": "image/jpeg"
+        },
+        "jordi-puig-avatar.jpg": {
+          "name": "jordi-puig-avatar.jpg",
+          "blob": "ed65da41b9f8f2470a77ae7c1b89275d",
+          "size": 27899,
+          "type": "image/jpeg"
+        },
+        "jordi-puig-card.jpg": {
+          "name": "jordi-puig-card.jpg",
+          "blob": "3f0c83b54322fe1e9120366077cf018b",
+          "size": 92645,
+          "type": "image/jpeg"
+        },
+        "laia-serra-avatar.jpg": {
+          "name": "laia-serra-avatar.jpg",
+          "blob": "9a84d9cd19bd763cce6f96c0fe7b5b0a",
+          "size": 30943,
+          "type": "image/jpeg"
+        },
+        "laia-serra-card.jpg": {
+          "name": "laia-serra-card.jpg",
+          "blob": "1883e61f94cdcdf2d1e9e17e353fc5f5",
+          "size": 87640,
+          "type": "image/jpeg"
+        },
+        "marc-soler-avatar.jpg": {
+          "name": "marc-soler-avatar.jpg",
+          "blob": "a61af944073555612eeb94ddf393e95d",
+          "size": 27470,
+          "type": "image/jpeg"
+        },
+        "marc-soler-card.jpg": {
+          "name": "marc-soler-card.jpg",
+          "blob": "eb9fb0c7207c75bcfa3d29893936fa5c",
+          "size": 88540,
+          "type": "image/jpeg"
+        },
+        "marta-ruiz-avatar.jpg": {
+          "name": "marta-ruiz-avatar.jpg",
+          "blob": "0eb1d79508bc1fc2f67fdd93fb0395d8",
+          "size": 27173,
+          "type": "image/jpeg"
+        },
+        "marta-ruiz-card.jpg": {
+          "name": "marta-ruiz-card.jpg",
+          "blob": "5251342c3d373b6640ef26f85f84de8e",
+          "size": 91382,
+          "type": "image/jpeg"
+        },
+        "nuria-font-avatar.jpg": {
+          "name": "nuria-font-avatar.jpg",
+          "blob": "4049a5dab7237dbfc66b3093c96b6bd8",
+          "size": 28310,
+          "type": "image/jpeg"
+        },
+        "nuria-font-card.jpg": {
+          "name": "nuria-font-card.jpg",
+          "blob": "0cf4a3bd7243816e449bc4bf089a020b",
+          "size": 93006,
+          "type": "image/jpeg"
+        },
+        "pau-vidal-avatar.jpg": {
+          "name": "pau-vidal-avatar.jpg",
+          "blob": "54fd459deeebcdda1d02debc0f49a51a",
+          "size": 32038,
+          "type": "image/jpeg"
+        },
+        "pau-vidal-card.jpg": {
+          "name": "pau-vidal-card.jpg",
+          "blob": "460fbade46db9dc997c1916cc8fe9d40",
+          "size": 99818,
+          "type": "image/jpeg"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-11-25T09:08:10Z",
+    "via": "Claude Code",
+    "note": "Pendientes al día con el lienzo (animación de 1 s, Favoritos renombrados, selector de tema eliminado, insignias revisadas, C8 y C9); namespace y notas de tokens de «App Music» a «setena»."
+  }
+}

@@ -1,0 +1,354 @@
+[
+  {
+    "clave": "alex",
+    "email": "alex.martin@example.com",
+    "nombre": "Alex Martín",
+    "proveedor": "email",
+    "demo": true,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "laia",
+    "email": "laia.serra@example.com",
+    "nombre": "Laia Serra",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "marc",
+    "email": "marc.soler@example.com",
+    "nombre": "Marc Soler",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "marta",
+    "email": "marta.ruiz@example.com",
+    "nombre": "Marta Ruiz",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "jordi",
+    "email": "jordi.puig@example.com",
+    "nombre": "Jordi Puig",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "nuria",
+    "email": "nuria.font@example.com",
+    "nombre": "Núria Font",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "pau",
+    "email": "pau.vidal@example.com",
+    "nombre": "Pau Vidal",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "clara1",
+    "email": "clara1@example.com",
+    "nombre": "Clara Bosch",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "pol2",
+    "email": "pol2@example.com",
+    "nombre": "Pol Ferrer",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "aina3",
+    "email": "aina3@example.com",
+    "nombre": "Aina Roca",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "biel4",
+    "email": "biel4@example.com",
+    "nombre": "Biel Costa",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "julia5",
+    "email": "julia5@example.com",
+    "nombre": "Júlia Mas",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "oriol6",
+    "email": "oriol6@example.com",
+    "nombre": "Oriol Vila",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "carla7",
+    "email": "carla7@example.com",
+    "nombre": "Carla Pons",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "arnau8",
+    "email": "arnau8@example.com",
+    "nombre": "Arnau Soler",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "mireia9",
+    "email": "mireia9@example.com",
+    "nombre": "Mireia Camps",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "sergi10",
+    "email": "sergi10@example.com",
+    "nombre": "Sergi Riera",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "ona11",
+    "email": "ona11@example.com",
+    "nombre": "Ona Puig",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "dani12",
+    "email": "dani12@example.com",
+    "nombre": "Dani Torres",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "lucia13",
+    "email": "lucia13@example.com",
+    "nombre": "Lucía Romero",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "ivan14",
+    "email": "ivan14@example.com",
+    "nombre": "Iván Navarro",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "irene15",
+    "email": "irene15@example.com",
+    "nombre": "Irene Molina",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "hugo16",
+    "email": "hugo16@example.com",
+    "nombre": "Hugo Ortega",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "elena17",
+    "email": "elena17@example.com",
+    "nombre": "Elena Castro",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "alvaro18",
+    "email": "alvaro18@example.com",
+    "nombre": "Álvaro Gil",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "noa19",
+    "email": "noa19@example.com",
+    "nombre": "Noa Sanz",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "ruben20",
+    "email": "ruben20@example.com",
+    "nombre": "Rubén Marín",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "paula21",
+    "email": "paula21@example.com",
+    "nombre": "Paula Ibáñez",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "marti22",
+    "email": "marti22@example.com",
+    "nombre": "Martí Valls",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "bruna23",
+    "email": "bruna23@example.com",
+    "nombre": "Bruna Sala",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "gerard24",
+    "email": "gerard24@example.com",
+    "nombre": "Gerard Font",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  },
+  {
+    "clave": "sofia25",
+    "email": "sofia25@example.com",
+    "nombre": "Sofía Herrera",
+    "proveedor": "email",
+    "demo": false,
+    "ajustes": {
+      "notifMensajes": true,
+      "notifNovedades": false
+    }
+  }
+]

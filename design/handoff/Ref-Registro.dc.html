@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Registro (referencia completa)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder{color:var(--on-surface-variant)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 1640px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div ref="{{formRef}}" style="flex: 1; min-height: 0; overflow-y: auto; padding: 64px 16px 24px; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; height: 44px">
+<a href="Explorar-sin-registro.dc.html" aria-label="Volver" style="width: 28px; height: 44px; display: flex; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+</div>
+<h1 style="margin: 6px 0 0; font-size: 24px; font-weight: 400">Crear cuenta</h1>
+<sc-if value="{{showBanner}}" hint-placeholder-val="{{false}}"><div role="alert" style="margin: 18px 0 14px; background: var(--error-container); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; line-height: 1.25"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg><span>{{bannerText}}</span></div></sc-if>
+<sc-if value="{{noBanner}}" hint-placeholder-val="{{true}}"><p style="margin: 18px 0 14px; font-size: 14px; line-height: 1.25; color: var(--on-surface-variant)">Crea tu cuenta para ver los perfiles completos y contactar con otros músicos.</p></sc-if>
+<div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px">
+<div style="flex: none; width: 64px; height: 64px; border-radius: 50%; background: {{fotoBg}}; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px"><span style="font-size: 14px; font-weight: 500">Foto de perfil <span style="font-weight: 400; color: var(--on-surface-variant)">(opcional)</span></span>
+<button onClick="{{addFoto}}" style="height: 40px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 999px; background: var(--surface); font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">{{fotoLabel}}</button></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<label for="r-nombre" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Nombre</label>
+<input id="r-nombre" placeholder="Escribe tu nombre" value="{{nombre}}" onChange="{{on_nombre}}" aria-invalid="{{enombre}}" style="height: 56px; box-sizing: border-box; border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); border: {{bnombre}}; background: transparent; color: var(--on-surface)">
+<sc-if value="{{enombre}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<label for="r-correo" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Correo electrónico</label>
+<input id="r-correo" type="email" placeholder="nombre@correo.com" value="{{correo}}" onChange="{{on_correo}}" aria-invalid="{{ecorreo}}" style="height: 56px; box-sizing: border-box; border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); border: {{bcorreo}}; background: transparent; color: var(--on-surface)">
+<sc-if value="{{ecorreo}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">{{correoMsg}}</span></sc-if>
+<sc-if value="{{correoTaken}}" hint-placeholder-val="{{false}}"><a href="Iniciar-sesion.dc.html" style="align-self: flex-start; min-height: 32px; display: flex; align-items: center; font-size: 14px; font-weight: 500; text-decoration: underline">Iniciar sesión con este correo</a></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<label for="r-pass" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Contraseña</label>
+<input id="r-pass" type="password" placeholder="Crea una contraseña" value="{{pass}}" onChange="{{on_pass}}" aria-invalid="{{epass}}" style="height: 56px; box-sizing: border-box; border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); border: {{bpass}}; background: transparent; color: var(--on-surface)">
+<sc-if value="{{epass}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">{{passMsg}}</span></sc-if><sc-if value="{{noEpass}}" hint-placeholder-val="{{true}}"><span style="font-size: 12px; color: var(--on-surface-variant)">Mínimo 8 caracteres.</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<label for="r-pass2" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Repite la contraseña</label>
+<input id="r-pass2" type="password" placeholder="Escribe la contraseña otra vez" value="{{pass2}}" onChange="{{on_pass2}}" aria-invalid="{{epass2}}" style="height: 56px; box-sizing: border-box; border-radius: 4px; padding: 0 16px; font: 400 16px var(--font-brand); border: {{bpass2}}; background: transparent; color: var(--on-surface)">
+<sc-if value="{{epass2}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">{{pass2Msg}}</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<span id="r-roles-l" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Instrumento o rol</span>
+<button aria-labelledby="r-roles-l" aria-haspopup="dialog" aria-invalid="{{eroles}}" onClick="{{openRoles}}" style="min-height: 56px; box-sizing: border-box; border: {{broles}}; border-radius: 4px; padding: 12px 12px 12px 16px; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: left; font: 400 16px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{hasRoles}}" hint-placeholder-val="{{false}}"><span style="flex: 1; line-height: 1.35">{{rolesText}}</span></sc-if>
+<sc-if value="{{noRoles}}" hint-placeholder-val="{{true}}"><span style="flex: 1; color: var(--on-surface-variant)">Elige uno o varios</span></sc-if>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><path d="M7 10l5 5 5-5z" fill="currentColor"></path></svg>
+</button>
+<sc-if value="{{eroles}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; position: relative">
+<span id="r-generos-l" style="position: absolute; top: -8px; left: 12px; z-index: 1; padding: 0 4px; background: var(--field-bg, var(--surface)); font: 400 12px/16px var(--font-brand); letter-spacing: 0.4px; color: var(--on-surface-variant); pointer-events: none; text-align: left">Géneros musicales</span>
+<button aria-labelledby="r-generos-l" aria-haspopup="dialog" aria-invalid="{{egeneros}}" onClick="{{openGeneros}}" style="min-height: 56px; box-sizing: border-box; border: {{bgeneros}}; border-radius: 4px; padding: 12px 12px 12px 16px; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: left; font: 400 16px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{hasGeneros}}" hint-placeholder-val="{{false}}"><span style="flex: 1; line-height: 1.35">{{generosText}}</span></sc-if>
+<sc-if value="{{noGeneros}}" hint-placeholder-val="{{true}}"><span style="flex: 1; color: var(--on-surface-variant)">Elige tus estilos</span></sc-if>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant); flex: none"><path d="M7 10l5 5 5-5z" fill="currentColor"></path></svg>
+</button>
+<sc-if value="{{egeneros}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px">
+<span id="r-tipo-l" style="font-size: 14px; font-weight: 500">Tipo de proyecto</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">¿Qué proyectos te interesan? Puedes marcar los dos.</span>
+<div role="group" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{tipos}}" as="o" hint-placeholder-count="2">
+<sc-if value="{{o.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{o.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{o.name}}</button></sc-if>
+<sc-if value="{{o.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{o.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{o.name}}</button></sc-if>
+</sc-for>
+</div>
+<sc-if value="{{etipo}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px">
+<span id="r-zona-l" style="font-size: 14px; font-weight: 500">Ubicación</span>
+<div role="tablist" aria-labelledby="r-zona-l" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--outline-variant)">
+<sc-for list="{{zonaTabs}}" as="t" hint-placeholder-count="2"><sc-if value="{{t.on}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="true" onClick="{{t.pick}}" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">{{t.name}}</button></sc-if><sc-if value="{{t.off}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="false" onClick="{{t.pick}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{t.name}}</button></sc-if></sc-for>
+</div>
+<span style="margin-top: 4px; font-size: 12px; color: var(--on-surface-variant)">{{lugarHelp}}</span>
+<div role="radiogroup" aria-label="{{lugarHelp}}" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{lugares}}" as="o" hint-placeholder-count="10"><sc-if value="{{o.on}}" hint-placeholder-val="{{false}}"><button role="radio" aria-checked="true" onClick="{{o.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{o.name}}</button></sc-if><sc-if value="{{o.off}}" hint-placeholder-val="{{true}}"><button role="radio" aria-checked="false" onClick="{{o.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{o.name}}</button></sc-if></sc-for>
+</div>
+<sc-if value="{{hasUbicSel}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: var(--on-surface)">Tu ubicación: <b>{{ubicSel}}</b></span></sc-if>
+<sc-if value="{{eubic}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Elige tu distrito o municipio</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px">
+<span id="r-disp-l" style="font-size: 14px; font-weight: 500">Disponibilidad</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{disp}}" as="d" hint-placeholder-count="5">
+<sc-if value="{{d.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{d.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{d.name}}</button></sc-if>
+<sc-if value="{{d.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{d.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{d.name}}</button></sc-if>
+</sc-for>
+</div>
+<sc-if value="{{edisp}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Elige al menos una opción</span></sc-if>
+<span style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">«Inmediata»: disponible en cuanto te contacten. Ayuda a que te encuentren al filtrar por disponibilidad.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px">
+<span style="font-size: 14px; font-weight: 500">Vídeo <span style="font-weight: 400; color: var(--on-surface-variant)">(obligatorio)</span></span>
+<sc-for list="{{videos}}" as="v" hint-placeholder-count="0">
+<div style="display: flex; align-items: center; gap: 10px; border: 1px solid var(--outline); border-radius: 12px; padding: 8px">
+<span aria-hidden="true" style="flex: none; width: 64px; height: 40px; border-radius: 6px; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: inherit"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px"><input aria-label="Título del vídeo {{v.n}}" placeholder="Título del vídeo" value="{{v.title}}" onChange="{{v.onTitle}}" style="min-width: 0; height: 36px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 4px; padding: 0 8px; font: 400 16px var(--font-brand); background: transparent; color: var(--on-surface)"><span style="display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 12px; color: var(--on-surface-variant)"><sc-if value="{{v.principal}}" hint-placeholder-val="{{true}}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 999px; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container); display: flex; align-items: center; font-size: 11px; font-weight: 500">Principal</span></sc-if><sc-if value="{{v.notPrincipal}}" hint-placeholder-val="{{false}}"><button onClick="{{v.makeMain}}" style="flex: none; min-height: 28px; border: none; background: transparent; padding: 0; font: 500 12px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Hacer principal</button></sc-if><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{v.file}}</span></span></span>
+<button onClick="{{v.remove}}" style="flex: none; height: 40px; padding: 0 12px; border: 1px solid var(--outline); border-radius: 999px; background: var(--surface); font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Quitar</button>
+</div>
+</sc-for>
+<button aria-invalid="{{evideo}}" aria-describedby="r-video-ayuda" onClick="{{addVideo}}" style="height: 40px; border: {{bvideo}}; border-radius: 999px; background: var(--surface); display: flex; align-items: center; justify-content: center; gap: 8px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M12 5v14M5 12h14"></path></svg>Añadir vídeo</button>
+<sc-if value="{{evideo}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Este campo es obligatorio</span></sc-if>
+<span style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">El vídeo marcado como «Principal» es el que se ve arriba en tu perfil.</span>
+<span id="r-video-ayuda" style="font-size: 12px; line-height: 1.35; color: var(--on-surface-variant); text-align: center">¡Elige ese vídeo que te encanta y comparte tu talento con la comunidad!</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px">
+<button role="checkbox" aria-checked="{{terms}}" aria-invalid="{{eterms}}" onClick="{{toggleTerms}}" style="min-height: 44px; border: none; background: transparent; padding: 0; display: flex; align-items: center; gap: 10px; text-align: left; font: 400 14px/1.35 var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{terms}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; border-radius: 4px; background: var(--acento); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+<sc-if value="{{noTerms}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; box-sizing: border-box; border-radius: 4px; border: {{bterms}}"></span></sc-if>
+<span>Acepto las <span style="font-weight: 600; text-decoration: underline">condiciones de uso</span> y la <span style="font-weight: 600; text-decoration: underline">política de privacidad</span>.</span>
+</button>
+<sc-if value="{{eterms}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 400; color: var(--error)">Debes aceptar las condiciones para crear tu cuenta</span></sc-if>
+</div>
+<sc-if value="{{valid}}" hint-placeholder-val="{{false}}"><a class="accion" href="Bienvenida.dc.html" onClick="{{registrar}}" style="flex: none; height: 56px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500">Registrarme</a></sc-if>
+<sc-if value="{{invalid}}" hint-placeholder-val="{{true}}"><button class="accion" onClick="{{submit}}" style="flex: none; width: 100%; height: 56px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 16px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Registrarme</button></sc-if>
+<div style="margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; color: var(--on-surface-variant)">
+<span>¿Ya tienes cuenta?</span>
+<a href="Iniciar-sesion.dc.html" style="min-height: 44px; display: flex; align-items: center; font-weight: 600; color: var(--on-surface); text-decoration: underline">Inicia sesión</a>
+</div>
+</div>
+<sc-if value="{{modalOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="sel-t" style="width: 100%; max-height: 760px; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<h2 id="sel-t" style="margin: 0; font-size: 24px; font-weight: 400">{{modalTitle}}</h2>
+<button aria-label="Cerrar" onClick="{{closeModal}}" style="flex: none; width: 36px; height: 36px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">Marca todas las opciones que quieras.</p>
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px">
+<sc-for list="{{chips}}" as="chip" hint-placeholder-count="12">
+<sc-if value="{{chip.on}}" hint-placeholder-val="{{false}}"><button aria-pressed="true" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 16px 0 8px; border: none; border-radius: 8px; background: var(--degradado-tonal), var(--secondary-container); font: 500 14px var(--font-brand); color: var(--on-secondary-container); cursor: pointer; display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{chip.name}}</button></sc-if>
+<sc-if value="{{chip.off}}" hint-placeholder-val="{{true}}"><button aria-pressed="false" onClick="{{chip.toggle}}" style="height: 32px; padding: 0 14px; border: 1px solid var(--outline); border-radius: 8px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">{{chip.name}}</button></sc-if>
+</sc-for>
+</div>
+<button class="accion" onClick="{{saveModal}}" style="flex: none; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Guardar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["vacio","con_errores","correo_existe"],"default":"vacio"},"$preview":{"width":402,"height":1640}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const ROLES = ['Cantante', 'Corista', 'Piano', 'Teclado', 'Guitarra', 'Bajo', 'Batería', 'Percusión', 'Saxofón', 'Trompeta', 'Trombón', 'Flauta', 'Clarinete', 'Violín', 'Violonchelo', 'Contrabajo', 'Acordeón', 'Arpa', 'DJ', 'Productor/a musical', 'Beatmaker', 'Compositor/a', 'Arreglista', 'Otros'];
+const GENEROS = ['Pop', 'Rock', 'Indie', 'Alternativo', 'Metal', 'Punk', 'Reggae', 'Ska', 'Dub', 'Dancehall', 'Soul', 'R&B', 'Funk', 'Jazz', 'Blues', 'Hip-Hop', 'Rap', 'Electrónica', 'House', 'Techno', 'Drum & Bass', 'Disco', 'Clásica', 'Flamenco', 'Salsa', 'Merengue', 'Bachata', 'Reguetón', 'Latin Pop', 'Cumbia', 'Tango', 'Folk', 'Country', 'Gospel', 'Música experimental', 'Otros'];
+const DISP = ['Inmediata', 'El próximo fin de semana', 'Esta semana', 'La próxima semana', 'Este mes'];
+const ejemplo = (this.props.estado ?? 'vacio') === 'con_errores';
+const existe = (this.props.estado ?? 'vacio') === 'correo_existe';
+const s = this.state || {};
+const val = (k, d) => (s[k] !== undefined ? s[k] : d);
+const nombre = val('nombre', existe ? 'Alex Martín' : '');
+const correo = val('correo', existe ? 'alex@correo.com' : (ejemplo ? 'nombre@correo.com' : ''));
+const pass = val('pass', ejemplo ? 'contraseña' : (existe ? 'contraseña1' : ''));
+const pass2 = val('pass2', ejemplo ? 'contraseña' : (existe ? 'contraseña1' : ''));
+const roles = val('roles', existe ? ['Piano'] : []);
+const generos = val('generos', (ejemplo || existe) ? ['Jazz', 'Soul'] : []);
+const zona = val('zona', (ejemplo || existe) ? 'Barcelona ciudad' : '');
+const lugar = val('lugar', (ejemplo || existe) ? 'Eixample' : '');
+const tipo = val('tipo', (ejemplo || existe) ? ['Proyectos remunerados'] : []);
+const terms = val('terms', ejemplo || existe);
+const foto = val('foto', false);
+const disp = val('disp', existe ? ['Esta semana', 'El próximo fin de semana'] : []);
+const videos = val('videos', existe ? [{ t: 'Directo con trío de jazz', file: 'directo_trio_jazz.mp4' }] : []);
+const enviado = val('enviado', ejemplo || existe);
+const okMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.trim());
+const taken = ['alex@correo.com'].indexOf(correo.trim().toLowerCase()) >= 0;
+const open = s.open || 'ninguna';
+const draft = s.draft || (open === 'instrumento' ? roles : (open === 'generos' ? generos : []));
+const list = open === 'generos' ? GENEROS : ROLES;
+const chips = list.map((name) => {
+const on = draft.indexOf(name) >= 0;
+return { name: name, on: on, off: !on, toggle: () => this.setState({ draft: on ? draft.filter((x) => x !== name) : draft.concat([name]) }) };
+});
+const missing = {
+nombre: !nombre.trim(), correo: !okMail || taken, pass: pass.length < 8, pass2: pass2 === '' || pass2 !== pass, roles: roles.length === 0,
+generos: generos.length === 0, tipo: tipo.length === 0, ubic: !zona || !lugar, disp: disp.length === 0, video: videos.length === 0, terms: !terms
+};
+const valid = Object.keys(missing).every((k) => !missing[k]);
+const onlyTaken = taken && Object.keys(missing).every((k) => k === 'correo' || !missing[k]);
+const LUG = { 'Barcelona ciudad': ['Ciutat Vella', 'Eixample', 'Sants-Montjuïc', 'Les Corts', 'Sarrià-Sant Gervasi', 'Gràcia', 'Horta-Guinardó', 'Nou Barris', 'Sant Andreu', 'Sant Martí'], 'Alrededores': ['L\'Hospitalet de Llobregat', 'Badalona', 'Santa Coloma de Gramenet', 'Sant Adrià de Besòs', 'Esplugues de Llobregat', 'Cornellà de Llobregat', 'El Prat de Llobregat', 'Sant Just Desvern', 'Montcada i Reixac', 'Sant Cugat del Vallès'] };
+const tabZ = LUG[s.tabZ] ? s.tabZ : (LUG[zona] ? zona : 'Barcelona ciudad');
+const __lug = lugar;
+const __ubic = { zonaTabs: Object.keys(LUG).map((z) => ({ name: z, on: z === tabZ, off: z !== tabZ, pick: () => this.setState({ tabZ: z }) })), lugarHelp: tabZ === 'Barcelona ciudad' ? 'Elige tu distrito' : 'Elige tu municipio', lugares: LUG[tabZ].map((n) => { const on = zona === tabZ && __lug === n; return { name: n, on: on, off: !on, toggle: () => this.setState(on ? { zona: '', lugar: '' } : { zona: tabZ, lugar: n }) }; }), hasUbicSel: !!(zona && __lug), ubicSel: __lug ? (zona === 'Alrededores' ? __lug : __lug + ', Barcelona') : '' };
+this.__fref = this.__fref || { current: null };
+const out = Object.assign(__ubic, {
+formRef: this.__fref,
+correoMsg: correo.trim() === '' ? 'Este campo es obligatorio' : (taken ? 'Ya existe una cuenta con este correo.' : 'Introduce un correo válido (nombre@correo.com)'),
+correoTaken: enviado && taken,
+bannerText: onlyTaken ? 'Ya existe una cuenta con este correo. Inicia sesión o usa otro correo.' : 'Faltan campos obligatorios. Revisa los campos marcados.',
+registrar: () => __save({ user: 'nuevo', perfil: { nombre: nombre.trim(), roles: roles, generos: generos, zona: zona, disp: disp, rem: tipo.indexOf('Proyectos remunerados') >= 0, col: tipo.indexOf('Colaboraciones gratuitas') >= 0, f: { lugar: lugar, sobre: '', bolo: '', grab: '', comp: '', otros: '', ig: '', yt: '', sp: '', tt: '', sc: '' }, videos: videos }, favs: [], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }),
+nombre: nombre, correo: correo, pass: pass, lugar: lugar,
+on_nombre: (e) => this.setState({ nombre: e.target.value }),
+on_correo: (e) => this.setState({ correo: e.target.value }),
+on_pass: (e) => this.setState({ pass: e.target.value }),
+on_pass2: (e) => this.setState({ pass2: e.target.value }),
+pass2: pass2,
+pass2Msg: pass2 === '' ? 'Repite la contraseña' : 'Las contraseñas no coinciden',
+on_lugar: (e) => this.setState({ lugar: e.target.value }),
+tipos: ['Proyectos remunerados', 'Colaboraciones gratuitas'].map((t) => { const on = tipo.indexOf(t) >= 0; return { name: t, on: on, off: !on, toggle: () => this.setState({ tipo: on ? tipo.filter((x) => x !== t) : tipo.concat([t]) }) }; }),
+terms: terms, noTerms: !terms, toggleTerms: () => this.setState({ terms: !terms }),
+addFoto: () => this.setState({ foto: true }), fotoLabel: foto ? 'Cambiar foto' : 'Añadir foto', fotoBg: foto ? 'var(--outline)' : 'var(--surface-container-highest)',
+rolesText: roles.join(', '), hasRoles: roles.length > 0, noRoles: roles.length === 0,
+generosText: generos.join(', '), hasGeneros: generos.length > 0, noGeneros: generos.length === 0,
+disp: DISP.map((d) => { const on = disp.indexOf(d) >= 0; return { name: d, on: on, off: !on, toggle: () => this.setState({ disp: on ? disp.filter((x) => x !== d) : disp.concat([d]) }) }; }),
+videos: videos.map((v, i) => ({ title: v.t, file: v.file, n: i + 1, principal: i === 0, notPrincipal: i > 0, onTitle: (e) => this.setState({ videos: videos.map((x, j) => (j === i ? Object.assign({}, x, { t: e.target.value }) : x)) }), makeMain: () => this.setState({ videos: [videos[i]].concat(videos.filter((x, j) => j !== i)) }), remove: () => this.setState({ videos: videos.filter((x, j) => j !== i) }) })),
+addVideo: () => this.setState({ videos: videos.concat([{ t: '', file: videos.length === 0 ? 'mi_video.mp4' : 'mi_video_' + (videos.length + 1) + '.mp4' }]) }),
+passMsg: pass === '' ? 'Este campo es obligatorio' : 'Mínimo 8 caracteres',
+noEpass: !(enviado && pass.length < 8),
+valid: valid, invalid: !valid,
+submit: () => { this.setState({ enviado: true }); const ORDER = ['nombre', 'correo', 'pass', 'pass2', 'roles', 'generos', 'tipo', 'ubic', 'disp', 'video', 'terms']; const SEL = { nombre: '#r-nombre', correo: '#r-correo', pass: '#r-pass', pass2: '#r-pass2', roles: '[aria-labelledby="r-roles-l"][aria-haspopup]', generos: '[aria-labelledby="r-generos-l"][aria-haspopup]', tipo: '#r-tipo-l', ubic: '#r-zona-l', disp: '#r-disp-l', video: '[aria-describedby="r-video-ayuda"]', terms: '[role="checkbox"][aria-checked]' }; const first = ORDER.find((k) => missing[k]); if (!first) { return; } setTimeout(() => { const box = this.__fref && this.__fref.current; if (!box) { return; } const el = box.querySelector(SEL[first]); if (!el) { return; } const top = el.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop - 96; box.scrollTo({ top: first === 'nombre' ? 0 : Math.max(0, top), behavior: 'smooth' }); let f = el; if (!/^(INPUT|BUTTON|TEXTAREA)$/.test(f.tagName)) { const nx = f.parentNode && f.parentNode.querySelector('button'); if (nx) { f = nx; } } try { f.focus({ preventScroll: true }); } catch (e) {} }, 60); },
+showBanner: enviado && !valid, noBanner: !(enviado && !valid),
+modalOpen: open !== 'ninguna',
+modalTitle: open === 'generos' ? 'Géneros musicales' : 'Instrumento o rol',
+chips: chips,
+openRoles: () => this.setState({ open: 'instrumento', draft: roles.slice() }),
+openGeneros: () => this.setState({ open: 'generos', draft: generos.slice() }),
+closeModal: () => this.setState({ open: 'ninguna', draft: null }),
+saveModal: () => this.setState(open === 'generos' ? { generos: draft, open: 'ninguna', draft: null } : { roles: draft, open: 'ninguna', draft: null })
+});
+Object.keys(missing).forEach((k) => {
+const err = enviado && missing[k];
+out['e' + k] = err;
+out['b' + k] = err ? '2px solid var(--error)' : (k === 'video' ? '1px dashed var(--outline)' : (k === 'terms' ? '1px solid var(--outline)' : '1px solid var(--outline)'));
+});
+return out;
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

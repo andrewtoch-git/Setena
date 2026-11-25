@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Perfil de Marta Ruiz, enviar a un chat</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden; position: relative">
+<div style="flex: none; padding: 64px 16px 0">
+<div style="display: flex; align-items: center; gap: 8px; height: 44px">
+<a href="Explorar.dc.html" aria-label="Volver" style="flex: none; width: 28px; height: 44px; display: flex; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="flex: 1; min-width: 0; margin: 0; font-size: 22px; font-weight: 400">Perfil</h1>
+<button aria-label="Compartir perfil" onClick="{{openShare}}" style="flex: none; width: 40px; height: 40px; box-sizing: border-box; border: none; border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; color: var(--on-surface-variant)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"></path></svg></button>
+<button aria-label="Más opciones" onClick="{{openMod}}" style="flex: none; width: 40px; height: 40px; box-sizing: border-box; border: none; border-radius: 999px; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; color: var(--on-surface-variant)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="5" r="1.4" fill="currentColor"></circle><circle cx="12" cy="12" r="1.4" fill="currentColor"></circle><circle cx="12" cy="19" r="1.4" fill="currentColor"></circle></svg></button>
+</div>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 16px 12px; display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><div role="status" style="flex: none; background: var(--surface-container-high); border-radius: 12px; padding: 8px 8px 8px 14px; display: flex; align-items: center; gap: 10px"><span style="flex: 1; font-size: 14px; line-height: 1.35">Has bloqueado a Marta Ruiz. No podrá escribirte ni ver tu perfil.</span><button onClick="{{unblock}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 6px; font: 500 14px var(--font-brand); color: var(--on-surface); text-decoration: underline; cursor: pointer">Desbloquear</button></div></sc-if>
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<div style="position: relative">
+<div class="dc-noscroll" ref="{{mediaRef}}" onScroll="{{onMediaScroll}}" aria-label="Fotos y vídeos" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 12px">
+<sc-for list="{{media}}" as="md" hint-placeholder-count="3">
+<div role="group" aria-label="{{md.aria}}" style="flex: none; width: 100%; height: 220px; scroll-snap-align: start; background: var(--surface-container-highest); position: relative; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{md.conImg}}" hint-placeholder-val="{{false}}"><img src="{{md.img}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></sc-if>
+<span style="position: absolute; top: 10px; left: 10px; max-width: 62%; height: 26px; padding: 0 10px; box-sizing: border-box; border-radius: 999px; background: var(--surface); display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden"><span style="overflow: hidden; text-overflow: ellipsis">{{md.label}}</span></span>
+<sc-if value="{{md.isVideo}}" hint-placeholder-val="{{true}}"><button aria-label="Reproducir {{md.t}}" style="position: relative; width: 48px; height: 48px; border-radius: 50%; background: var(--surface); border: none; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: inherit"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg></button></sc-if>
+<sc-if value="{{md.isFoto}}" hint-placeholder-val="{{false}}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M21 16l-5-5-8 8"></path></svg></sc-if>
+
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; justify-content: center; align-items: center"><sc-for list="{{dots}}" as="dt" hint-placeholder-count="3"><button aria-label="{{dt.label}}" aria-current="{{dt.on}}" onClick="{{dt.go}}" style="width: 24px; height: 24px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer"><sc-if value="{{dt.on}}" hint-placeholder-val="{{false}}"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--acento)"></span></sc-if><sc-if value="{{dt.off}}" hint-placeholder-val="{{true}}"><span style="width: 8px; height: 8px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if></button></sc-for></div>
+</div>
+<div style="flex: none; display: flex; align-items: center; gap: 14px">
+<div style="flex: none; width: 80px; height: 80px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><img src="/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 22px; font-weight: 500">Marta Ruiz</h2>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">Guitarra · Rock, Indie</span>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">Gràcia, Barcelona</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Última actividad: hace 2 h</span>
+</div>
+
+</div>
+<div style="display: flex"><sc-if value="{{saved}}" hint-placeholder-val="{{true}}"><button aria-pressed="true" onClick="{{toggleSaved}}" style="flex: none; align-self: flex-start; height: 40px; padding: 0 16px 0 12px; display: flex; align-items: center; gap: 8px; font: 500 14px/20px var(--font-brand); letter-spacing: 0.1px; cursor: pointer; border: none; border-radius: 12px; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor"></path></svg>{{savedLabel}}</button></sc-if><sc-if value="{{notSaved}}" hint-placeholder-val="{{false}}"><button aria-pressed="false" onClick="{{toggleSaved}}" style="flex: none; align-self: flex-start; height: 40px; padding: 0 16px 0 12px; display: flex; align-items: center; gap: 8px; font: 500 14px/20px var(--font-brand); letter-spacing: 0.1px; cursor: pointer; border: 1.5px solid var(--acento); border-radius: 999px; background: transparent; color: var(--acento)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg>{{savedLabel}}</button></sc-if></div>
+<div style="flex: none; display: flex; flex-wrap: wrap; gap: 6px">
+<span style="height: 24px; padding: 0 10px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="12" cy="12" r="9"></circle><path d="M15 9a4 4 0 1 0 0 6M7 11h6M7 13h6"></path></svg>Proyectos remunerados</span>
+<span style="height: 24px; padding: 0 10px; border-radius: 8px; background: var(--surface-container-highest); display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--on-surface)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface)"><circle cx="9" cy="8" r="3"></circle><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M16 5a3 3 0 0 1 0 6M18 14c2 .5 3 2.3 3 5"></path></svg>Colaboraciones gratuitas</span>
+</div>
+<div role="tablist" style="flex: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--outline-variant)">
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="true" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">Info</button></sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="false" onClick="{{showInfo}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Info</button></sc-if>
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}"><button role="tab" aria-selected="false" onClick="{{showTarifas}}" style="height: 48px; border: none; border-bottom: 2px solid transparent; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface-variant); cursor: pointer">Tarifas</button></sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}"><button role="tab" aria-selected="true" style="height: 48px; border: none; border-bottom: 3px solid var(--acento); background: transparent; font: 500 14px var(--font-brand); color: var(--acento); cursor: pointer">Tarifas</button></sc-if>
+</div>
+<sc-if value="{{isInfo}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Sobre mí</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Guitarrista con diez años tocando en bandas de rock e indie. Disponible para directos y grabaciones.</p>
+</div>
+<div style="flex: none; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Disponibilidad</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">El próximo fin de semana · Este mes</p>
+</div>
+<div style="flex: none; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 500">Redes sociales</h3>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href="https://www.instagram.com/" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">I</span>Instagram</a>
+<a href="https://www.youtube.com/" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Y</span>YouTube</a>
+<a href="https://open.spotify.com/" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">S</span>Spotify</a>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{isTarifas}}" hint-placeholder-val="{{false}}">
+<div style="flex: none; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Bolo / Directo</span><span style="font-size: 12px; color: var(--on-surface-variant)">Conciertos y eventos</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">120 €</span><span style="font-size: 12px; color: var(--on-surface-variant)">por actuación</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Grabación</span><span style="font-size: 12px; color: var(--on-surface-variant)">Instrumentos y voces</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">30 €</span><span style="font-size: 12px; color: var(--on-surface-variant)">por hora</span></div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--outline-variant)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 500">Composición</span><span style="font-size: 12px; color: var(--on-surface-variant)">Canciones y melodías</span></div>
+<div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 16px; font-weight: 700">250 €</span><span style="font-size: 12px; color: var(--on-surface-variant)">por proyecto</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 9px 0">
+<span style="font-size: 14px; font-weight: 500">Otros</span>
+<span style="font-size: 12px; color: var(--on-surface-variant)">Servicios adicionales</span>
+<span style="margin-top: 2px; font-size: 14px; color: var(--on-surface)">Clases de guitarra: 20 € la hora</span>
+</div>
+<p style="margin: 6px 0 0; font-size: 12px; line-height: 1.35; color: var(--on-surface-variant)">Precios orientativos. El precio final se acuerda por chat.</p>
+</div>
+</sc-if>
+</div>
+<div style="flex: none; background: var(--surface); border-top: 1px solid var(--outline-variant); padding: 10px 16px 28px; display: flex; justify-content: center">
+<sc-if value="{{notBlocked}}" hint-placeholder-val="{{true}}"><a class="accion" href="Chat-marta-vacio.dc.html" style="width: 260px; height: 56px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500">Chat</a></sc-if>
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><span aria-disabled="true" style="width: 260px; height: 56px; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent); color: color-mix(in srgb, var(--on-surface) 38%, transparent); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 500">Chat no disponible</span></sc-if>
+</div>
+<sc-if value="{{sheetShare}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-share-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="pm-share-t" style="margin: 0; font-size: 24px; font-weight: 400">Compartir perfil</h2>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">¿Dónde quieres compartir el perfil de Marta Ruiz?</p>
+<span style="margin-top: 4px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">EN TUS CHATS</span>
+<button onClick="{{openPick}}" style="height: 40px; border: none; border-radius: 999px; background: var(--surface-container-high); padding: 0 12px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer; display: flex; align-items: center; justify-content: space-between">Enviar a un chat de la app<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><path d="M9 6l6 6-6 6"></path></svg></button>
+<span style="margin-top: 4px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--on-surface-variant)">FUERA DE LA APP</span>
+<button onClick="{{copyLink}}" style="height: 40px; border: none; border-radius: 999px; background: var(--surface-container-high); padding: 0 12px; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer; display: flex; align-items: center; gap: 12px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>Copiar enlace</button>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">W</span>WhatsApp</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">I</span>Instagram</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">F</span>Facebook</button>
+<button style="border: none; background: transparent; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px var(--font-brand); color: var(--on-surface)"><span style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface-container-high); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">•••</span>Más</button>
+</div>
+<button onClick="{{closeSheet}}" style="margin-top: 6px; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sheetPick}}" hint-placeholder-val="{{true}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-pick-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="pm-pick-t" style="margin: 0; font-size: 24px; font-weight: 400">Enviar a un chat</h2>
+<p style="margin: 0; font-size: 14px; color: var(--on-surface-variant)">Elige con quién quieres compartir el perfil de Marta Ruiz.</p>
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{chats}}" as="c" hint-placeholder-count="4">
+<button role="checkbox" aria-checked="{{c.on}}" onClick="{{c.toggle}}" style="min-height: 52px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; display: flex; align-items: center; gap: 12px; padding: 4px 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{c.conFoto}}" hint-placeholder-val="{{false}}"><img src="{{c.avatar}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{c.sinFoto}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></span>
+<span style="flex: 1">{{c.name}}</span>
+<sc-if value="{{c.on}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--acento); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+<sc-if value="{{c.off}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{canSend}}" hint-placeholder-val="{{false}}"><button class="accion" onClick="{{sendShare}}" style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Enviar</button></sc-if>
+<sc-if value="{{cannotSend}}" hint-placeholder-val="{{true}}"><button disabled style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent); font: 500 14px var(--font-brand); color: color-mix(in srgb, var(--on-surface) 38%, transparent)">Enviar</button></sc-if>
+<button onClick="{{openShare}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{sheetSent}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="pm-sent-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<span aria-hidden="true" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h2 id="pm-sent-t" style="margin: 4px 0 0; font-size: 24px; font-weight: 400">¡Perfil enviado!</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Has compartido el perfil de Marta Ruiz en {{sentTo}}.</p>
+<button class="accion" onClick="{{closeSheet}}" style="align-self: stretch; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Aceptar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modOpciones}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="mod-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="mod-t" style="margin: 0; font-size: 24px; font-weight: 400">Más opciones</h2>
+<button onClick="{{goDenunciar}}" style="min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Denunciar perfil</button>
+<sc-if value="{{notBlocked}}" hint-placeholder-val="{{true}}"><button onClick="{{goBloquear}}" style="width: 100%; min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Bloquear a Marta Ruiz</button></sc-if>
+<sc-if value="{{isBlocked}}" hint-placeholder-val="{{false}}"><button onClick="{{unblock}}" style="width: 100%; min-height: 48px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Desbloquear a Marta Ruiz</button></sc-if>
+<button onClick="{{closeMod}}" style="margin-top: 6px; height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modDenunciar}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="den-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="den-t" style="margin: 0; font-size: 24px; font-weight: 400">Denunciar perfil</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">¿Por qué quieres denunciar a Marta Ruiz? No le diremos quién ha enviado la denuncia.</p>
+<div role="radiogroup" aria-labelledby="den-t" style="display: flex; flex-direction: column">
+<sc-for list="{{motivos}}" as="mo" hint-placeholder-count="4">
+<button role="radio" aria-checked="{{mo.on}}" onClick="{{mo.pick}}" style="min-height: 44px; border: none; border-bottom: 1px solid var(--outline-variant); background: transparent; display: flex; align-items: center; gap: 12px; padding: 0; text-align: left; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">
+<sc-if value="{{mo.on}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="flex: none; width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 6px solid var(--outline)"></span></sc-if>
+<sc-if value="{{mo.off}}" hint-placeholder-val="{{true}}"><span aria-hidden="true" style="flex: none; width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--outline)"></span></sc-if>
+<span>{{mo.name}}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{canDenunciar}}" hint-placeholder-val="{{false}}"><button onClick="{{enviarDenuncia}}" style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: var(--error); font: 500 14px var(--font-brand); color: var(--on-error); cursor: pointer">Enviar denuncia</button></sc-if>
+<sc-if value="{{cannotDenunciar}}" hint-placeholder-val="{{true}}"><button disabled style="margin-top: 6px; width: 100%; height: 40px; border: none; border-radius: 999px; background: color-mix(in srgb, var(--on-surface) 12%, transparent); font: 500 14px var(--font-brand); color: color-mix(in srgb, var(--on-surface) 38%, transparent)">Enviar denuncia</button></sc-if>
+<button onClick="{{closeMod}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modDenunciado}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="dok-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<span aria-hidden="true" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--acento); background: transparent; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--acento)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h2 id="dok-t" style="margin: 4px 0 0; font-size: 24px; font-weight: 400">Gracias por avisarnos</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Revisaremos el perfil de Marta Ruiz. Si incumple las normas de la comunidad, tomaremos medidas.</p>
+<button class="accion" onClick="{{closeMod}}" style="align-self: stretch; height: 40px; border: none; border-radius: 999px; background: var(--accion-destacada); font: 500 14px var(--font-brand); color: var(--on-accion-destacada); cursor: pointer">Aceptar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modBloquear}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="alertdialog" aria-modal="true" aria-labelledby="blq-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="blq-t" style="margin: 0; font-size: 24px; font-weight: 400">¿Bloquear a Marta Ruiz?</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">No podrá enviarte mensajes ni ver tu perfil. No le avisaremos de que le has bloqueado.</p>
+<button onClick="{{confirmBloquear}}" style="height: 40px; border: none; border-radius: 999px; background: var(--error); font: 500 14px var(--font-brand); color: var(--on-error); cursor: pointer">Bloquear</button>
+<button onClick="{{closeMod}}" style="height: 40px; box-sizing: border-box; border: 1px solid var(--outline); border-radius: 999px; background: transparent; font: 500 14px var(--font-brand); color: var(--on-surface); cursor: pointer">Cancelar</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{modBloqueado}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: var(--state-scrim); display: flex; align-items: center; justify-content: center; padding: 0 30px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="bok-t" style="width: 100%; background: var(--surface-container-high); border-radius: 28px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; text-align: center; box-shadow: var(--elevation-level-3); --field-bg: var(--surface-container-high)">
+<h2 id="bok-t" style="margin: 0; font-size: 24px; font-weight: 400">Has bloqueado a Marta Ruiz</h2>
+<p style="margin: 0 0 6px; font-size: 14px; line-height: 1.35; color: var(--on-surface-variant)">Ya no podrá escribirte ni ver tu perfil.</p>
+<a class="accion" href="Explorar.dc.html" style="height: 40px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Aceptar</a>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{false}}"><div role="{{toastRole}}" style="position: absolute; left: 16px; right: 16px; bottom: 96px; z-index: 5; background: var(--inverse-surface); color: var(--inverse-on-surface); border-radius: 4px; min-height: 48px; padding: 4px 6px 4px 14px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; box-shadow: var(--elevation-level-3)"><sc-if value="{{toastErr}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg></sc-if><sc-if value="{{toastOk}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if><sc-if value="{{toastWait}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--inverse-on-surface); flex: none"><path d="M12 3a9 9 0 1 1-9 9"></path></svg></sc-if><span style="flex: 1; font-size: 14px; line-height: 1.35; padding: 8px 0">{{toastText}}</span><sc-if value="{{toastAct}}" hint-placeholder-val="{{false}}"><button onClick="{{toastDo}}" style="flex: none; min-height: 44px; border: none; background: transparent; padding: 0 10px; font: 500 14px var(--font-brand); color: var(--inverse-on-surface); text-decoration: underline; cursor: pointer">{{toastActText}}</button></sc-if></div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"guardado": {"editor": "boolean", "default": true}, "pestana": {"editor": "enum", "options": ["info", "tarifas"], "default": "info"}, "$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __FOTOS = {"alex": {"avatar": "/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00", "card": "/_blob/9dc44dba1a68a7cc6f5f48589961b5dc", "trio": "/_blob/ae0873fb2c60f8ff15b54b541a1905c2"}, "jordi": {"avatar": "/_blob/1a87e895887b62e75bf43c8f576a6bf4", "card": "/_blob/dff067b37ae614b04301862841e3bdb7"}, "laia": {"avatar": "/_blob/a2e5aa228cee003e66aab951c2b4e1f0", "card": "/_blob/6542538e8c25d8fd6fe88fb9fc023a10"}, "marc": {"avatar": "/_blob/7e985aa8f13bdc6beedb1e392303870b", "card": "/_blob/f570be1a1299774a4564357ac00fb19d"}, "marta": {"avatar": "/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a", "card": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, "nuria": {"avatar": "/_blob/cadad787ba381bc1eac53308fb0acd9b", "card": "/_blob/a5cda7d0b726e50e68f45176743503ad"}, "pau": {"avatar": "/_blob/7159f61c0eb6d33c7676e699feda1f65", "card": "/_blob/d0c90a2a36f57d6be5e8f3556f19767d"}};
+const __FOTO_NOMBRE = {"Marta Ruiz": "marta", "Laia Serra": "laia", "Marc Soler": "marc", "Jordi Puig": "jordi", "Núria Font": "nuria", "Pau Vidal": "pau"};
+const __fotoDe = (n) => { const k = __FOTO_NOMBRE[n]; return k ? __FOTOS[k].avatar : ''; };
+const __fotoYo = () => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : __FOTOS.alex.avatar; } catch (e) { return __FOTOS.alex.avatar; } };
+const __VIDFOTO = { 'directo_trio_jazz.mp4': __FOTOS.alex.trio, 'jam_session.mp4': __FOTOS.alex.card };
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const NAMES = ["Jordi Puig", "Laia Serra", "Pau Vidal", "Núria Font", "Marc Soler"];
+const SHEET0 = 'enviar';
+const SEL0 = {"Laia Serra": true};
+const s = this.state || {};
+const LIVE = false;
+const favs = (__ST && __ST.favs) || [];
+const saved = __ST ? favs.indexOf('marta') >= 0 : (typeof s.saved === 'boolean' ? s.saved : (this.props.guardado ?? true));
+const tab = s.tab || (this.props.pestana ?? 'info');
+const sheet = s.sheet !== undefined ? s.sheet : SHEET0;
+const sel = s.sel || SEL0;
+const chats = NAMES.map((n) => { const on = !!sel[n]; return { name: n, avatar: __fotoDe(n), conFoto: !!__fotoDe(n), sinFoto: !__fotoDe(n), on: on, off: !on, toggle: () => { const next = Object.assign({}, sel); if (on) { delete next[n]; } else { next[n] = true; } this.setState({ sel: next }); } }; });
+const picked = NAMES.filter((n) => sel[n]);
+const MOTIVOS = ["Perfil falso o suplantación", "Contenido inapropiado", "Spam o publicidad", "Otro motivo"];
+const mod = s.mod !== undefined ? s.mod : '';
+const motivo = s.motivo || '';
+const KEY = 'marta';
+const isBlocked = s.bl !== undefined ? s.bl : __blocked.indexOf(KEY) >= 0;
+const doBlock = () => { this.setState({ mod: 'bloqueado', bl: true }); __save({ blocked: __blocked.filter((x) => x !== KEY).concat([KEY]) }); };
+const doUnblock = () => { this.setState({ mod: '', bl: false }); __save({ blocked: __blocked.filter((x) => x !== KEY) }); };
+const PILLS = false;
+const MEDIA = [{"type": "video", "t": "Directo con banda", "img": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, {"type": "video", "t": "Ensayo en el local"}, {"type": "foto", "t": "Foto con su guitarra"}];
+this.__mref = this.__mref || { current: null };
+const mi = Math.max(0, Math.min(s.mi || 0, MEDIA.length - 1));
+const goTo = (i) => { this.setState({ mi: i }); const el = this.__mref.current; if (el && el.scrollTo) { el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' }); } };
+const mediaItems = MEDIA.map((x, i) => ({ t: x.t, img: x.img || '', conImg: !!x.img, principal: i === 0 && x.type === 'video', isVideo: x.type === 'video', isFoto: x.type === 'foto', label: (PILLS && i === 0 && x.type === 'video') ? x.t : (x.type === 'video' ? 'Vídeo · ' : 'Foto · ') + x.t, aria: (x.type === 'video' ? 'vídeo ' : 'foto ') + (i + 1) + ' de ' + MEDIA.length + ': ' + x.t }));
+const toast = s.toast !== undefined ? s.toast : null;
+const __toast = (t, ms) => { const id = Date.now() + Math.random(); this.setState({ toast: Object.assign({ id: id }, t) }); if (ms) { setTimeout(() => { const cur = (this.state || {}).toast; if (cur && cur.id === id) { this.setState({ toast: null }); } }, ms); } };
+const ACTIONS = {};
+return {
+media: mediaItems,
+dots: MEDIA.map((x, i) => ({ on: i === mi, off: i !== mi, go: () => goTo(i), label: 'Ver ' + (x.type === 'video' ? 'vídeo' : 'foto') + ' ' + (i + 1) + ' de ' + MEDIA.length })),
+hasPrev: mi > 0,
+hasNext: mi < MEDIA.length - 1,
+prev: () => goTo(mi - 1),
+next: () => goTo(mi + 1),
+onMediaScroll: (e) => { const el = e.target; const i = Math.round(el.scrollLeft / Math.max(1, el.clientWidth)); if (i !== mi) { this.setState({ mi: i }); } },
+mediaRef: this.__mref,
+toastOn: !!toast,
+toastErr: !!toast && toast.kind === 'error',
+toastOk: !!toast && toast.kind === 'ok',
+toastWait: !!toast && toast.kind === 'wait',
+toastText: toast ? toast.text : '',
+toastAct: !!(toast && toast.act),
+toastActText: (toast && toast.actText) || '',
+toastDo: () => { if (toast && toast.act && ACTIONS[toast.act]) { ACTIONS[toast.act](); } },
+toastRole: toast && toast.kind === 'error' ? 'alert' : 'status',
+saved: saved,
+notSaved: !saved,
+savedLabel: saved ? 'Favorito' : 'Añadir a Favoritos',
+toggleSaved: () => { this.setState({ saved: !saved }); __toast({ kind: 'ok', text: saved ? 'Quitado de Favoritos' : 'Añadido a Favoritos' }, 2500); __save({ favs: saved ? favs.filter((x) => x !== 'marta') : favs.filter((x) => x !== 'marta').concat(['marta']) }); },
+backHref: (__ST && __ST.from) || 'Explorar.dc.html',
+isInfo: tab === 'info',
+isTarifas: tab === 'tarifas',
+showInfo: () => this.setState({ tab: 'info' }),
+showTarifas: () => this.setState({ tab: 'tarifas' }),
+sheetShare: sheet === 'compartir',
+sheetPick: sheet === 'enviar',
+sheetSent: sheet === 'enviado',
+openShare: () => this.setState({ sheet: 'compartir' }),
+openPick: () => this.setState({ sheet: 'enviar', sel: {} }),
+closeSheet: () => this.setState({ sheet: '', sel: {} }),
+sendShare: () => { const N2K = {"Jordi Puig": "jordi", "Laia Serra": "laia", "Pau Vidal": "pau", "Núria Font": "nuria", "Marc Soler": "marc", "Marta Ruiz": "marta"}; const BASEM = {"marta": [], "jordi": [{"text": "Hola, he visto tu perfil. ¿Te interesa tocar en un concierto el viernes?", "mine": false, "sent": false, "failed": false}, {"text": "¡Hola! Sí, cuéntame más.", "mine": true, "sent": true, "failed": false}, {"text": "Es en la sala Apolo, repertorio de rock. Es un proyecto remunerado.", "mine": false, "sent": false, "failed": false}, {"text": "Perfecto. ¿Tienes disponibilidad el sábado para ensayar?", "mine": true, "sent": true, "failed": false}], "laia": [{"text": "Te paso las partituras esta tarde", "mine": false, "sent": false, "failed": false}], "pau": [{"text": "Gracias, te escribo cuando tenga la fecha del ensayo", "mine": false, "sent": false, "failed": false}], "nuria": [{"text": "¿Cuánto cobras por bolo?", "mine": false, "sent": false, "failed": false}], "marc": [{"text": "Nos vemos en el ensayo", "mine": false, "sent": false, "failed": false}]}; const CARD = {"name": "Marta Ruiz", "line": "Guitarra · Rock, Indie", "ubic": "Gràcia, Barcelona", "href": "Perfil-musico.dc.html"}; const all = (__ST && __ST.chats) || {}; const nuevo = !!(__ST && __ST.user === 'nuevo'); const next = Object.assign({}, all); picked.forEach((n) => { const k = N2K[n]; if (!k || __blocked.indexOf(k) >= 0) { return; } const prev = next[k] || (nuevo ? [] : (BASEM[k] || [])); next[k] = prev.concat([{ text: 'Perfil compartido: ' + CARD.name, mine: true, sent: true, failed: false, card: CARD }]); }); __save({ chats: next }); this.setState({ sheet: 'enviado' }); },
+copyLink: () => { this.setState({ sheet: '', sel: {} }); __toast({ kind: 'ok', text: 'Enlace copiado' }, 2500); },
+chats: chats,
+canSend: picked.length > 0,
+cannotSend: picked.length === 0,
+sentTo: picked.length === 0 ? 'tus chats' : (picked.length === 1 ? 'el chat con ' + picked[0] : picked.length + ' chats'),
+modOpciones: mod === 'opciones',
+modDenunciar: mod === 'denunciar',
+modDenunciado: mod === 'denunciado',
+modBloquear: mod === 'bloquear',
+modBloqueado: mod === 'bloqueado',
+openMod: () => this.setState({ mod: 'opciones' }),
+closeMod: () => this.setState({ mod: '', motivo: '' }),
+goDenunciar: () => this.setState({ mod: 'denunciar', motivo: '' }),
+goBloquear: () => this.setState({ mod: 'bloquear' }),
+enviarDenuncia: () => this.setState({ mod: 'denunciado' }),
+confirmBloquear: doBlock,
+unblock: doUnblock,
+isBlocked: isBlocked,
+notBlocked: !isBlocked,
+motivos: MOTIVOS.map((x) => ({ name: x, on: motivo === x, off: motivo !== x, pick: () => this.setState({ motivo: x }) })),
+canDenunciar: motivo !== '',
+cannotDenunciar: motivo === '',
+};
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>

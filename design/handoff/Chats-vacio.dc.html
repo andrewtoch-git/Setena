@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Chats, vacío</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/appmusic/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+input::placeholder,textarea::placeholder{color:var(--on-surface-variant)}
+.dc-noscroll{scrollbar-width:none}.dc-noscroll::-webkit-scrollbar{display:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+input:focus,textarea:focus{outline:2px solid var(--acento);outline-offset:-2px;caret-color:var(--acento)}
+input[aria-invalid="true"]:focus,textarea[aria-invalid="true"]:focus{outline-color:var(--error)}
+.accion{transition:box-shadow .15s}
+.accion:hover{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 8%,transparent)}
+.accion:active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--on-accion-destacada) 10%,transparent)}
+.accion:disabled,.accion[aria-disabled="true"]{background:color-mix(in srgb,var(--on-surface) 12%,transparent)!important;color:color-mix(in srgb,var(--on-surface) 38%,transparent)!important;box-shadow:none;cursor:default}
+.logo-puntos{color:var(--palette-primary-40)}
+</style>
+</helmet>
+<div data-theme="{{tema}}" style="width: 402px; height: 874px; box-sizing: border-box; background: var(--surface); font-family: var(--font-brand); color: var(--on-surface); display: flex; flex-direction: column; overflow: hidden">
+<div style="flex: none; height: 56px; padding: 44px 16px 0; display: flex; align-items: center; gap: 8px"><svg width="27" height="24" viewBox="-105.04 -94.64 210.08 189.28" aria-hidden="true" style="flex: none; display: block"><g class="logo-puntos" fill="currentColor"><circle cx="-38.9" cy="-67.4" r="27.24"></circle><circle cx="38.9" cy="-67.4" r="27.24"></circle><circle cx="-77.8" cy="0" r="27.24"></circle><circle cx="-38.9" cy="67.4" r="27.24"></circle><circle cx="38.9" cy="67.4" r="27.24"></circle></g><g fill="currentColor" style="color: var(--acento)"><circle cx="0" cy="0" r="27.24"></circle><circle cx="77.8" cy="0" r="27.24"></circle><path d="M23.01,-14.59a18.83,18.83 0 0 0 31.82,0L54.83,14.59a18.83,18.83 0 0 0 -31.82,0Z"></path></g></svg><span style="font-family: 'Nunito', var(--font-brand); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: -0.2px; color: var(--on-surface)">setena</span></div>
+<div style="flex: none; padding: 8px 16px 0">
+<div style="display: flex; align-items: center; gap: 8px; height: 44px">
+<h1 style="flex: 1; margin: 0; font-size: 28px; font-weight: 400">Chats</h1>
+</div>
+</div>
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px; display: flex; flex-direction: column">
+<ul style="list-style: none; margin: 6px 0 0; padding: 0">
+<sc-for list="{{rows}}" as="c" hint-placeholder-count="0">
+<li style="border-bottom: 1px solid var(--outline-variant)"><a href="{{c.href}}" onClick="{{c.open}}" style="height: 72px; display: flex; align-items: center; gap: 12px; padding: 0 4px"><span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--surface-container-highest); display: flex; align-items: center; justify-content: center; overflow: hidden"><sc-if value="{{c.conFoto}}" hint-placeholder-val="{{false}}"><img src="{{c.avatar}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></sc-if><sc-if value="{{c.sinFoto}}" hint-placeholder-val="{{true}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></sc-if></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><sc-if value="{{c.unread}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; font-weight: 700">{{c.name}}</span><span style="font-size: 14px; font-weight: 500; color: var(--on-surface); white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.prev}}</span></sc-if><sc-if value="{{c.read}}" hint-placeholder-val="{{true}}"><span style="font-size: 16px; font-weight: 500">{{c.name}}</span><span style="font-size: 14px; color: var(--on-surface-variant); white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.prev}}</span></sc-if></span><span style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 6px"><span style="font-size: 12px; color: var(--on-surface-variant)">{{c.time}}</span><sc-if value="{{c.unread}}" hint-placeholder-val="{{false}}"><span aria-label="1 mensaje sin leer" style="min-width: 20px; height: 20px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; background: var(--acento); color: var(--on-acento); font: 500 11px/20px var(--font-brand); text-align: center">1</span></sc-if></span></a></li>
+</sc-for>
+</ul>
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{true}}">
+<div style="margin-top: 12px; display: flex; flex-direction: column"><div style="flex: none; background: var(--surface-container-high); border-radius: 12px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block; color: var(--on-surface-variant)"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path></svg>
+<span style="font-size: 16px; font-weight: 500">¡Tu bandeja está vacía!</span>
+<span style="font-size: 14px; line-height: 1.3; color: var(--on-surface-variant)">Conecta con otros músicos y empieza a conversar.</span>
+<a class="accion" href="Explorar.dc.html" style="margin-top: 8px; padding: 0 24px; height: 40px; border-radius: 999px; background: var(--accion-destacada); color: var(--on-accion-destacada); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500">Buscar músicos</a>
+</div></div>
+</sc-if>
+</div>
+<nav style="flex: none; background: var(--surface-container); padding: 12px 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Explorar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>Explorar</a>
+<a href="Favoritos.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></span>Favoritos</a>
+<a href="Chats.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--secondary)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--degradado-tonal), var(--secondary-container); color: var(--on-secondary-container)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" fill="currentColor"></path></svg></span>Chats</a>
+<a href="Mi-perfil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 12px/16px var(--font-brand); letter-spacing: 0.5px; color: var(--on-surface-variant)"><span style="position: relative; width: 56px; height: 32px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; display: block"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></span>Mi perfil</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 402, "height": 874}}'>
+class Component extends DCLogic {
+renderVals() {
+const __tema = 'dark';
+return Object.assign({}, this.__rvBase(), { tema: __tema });
+}
+componentDidMount() {
+const __pv = () => { let v = 'x'; try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); v = r && r.on ? String(r.ver || 0) : 'off'; } catch (e) { v = 'na'; } return v; };
+this.__v = __pv();
+this.__t = setInterval(() => { const v = __pv(); if (v !== this.__v) { const first = this.__v === null; this.__v = v; if (!first) { this.forceUpdate(); } } }, 800);
+}
+componentWillUnmount() {
+clearInterval(this.__t);
+}
+__rvBase() {
+const __FOTOS = {"alex": {"avatar": "/_blob/3e9394f9f2ff85bbc3a5b8f4252b5c00", "card": "/_blob/9dc44dba1a68a7cc6f5f48589961b5dc", "trio": "/_blob/ae0873fb2c60f8ff15b54b541a1905c2"}, "jordi": {"avatar": "/_blob/1a87e895887b62e75bf43c8f576a6bf4", "card": "/_blob/dff067b37ae614b04301862841e3bdb7"}, "laia": {"avatar": "/_blob/a2e5aa228cee003e66aab951c2b4e1f0", "card": "/_blob/6542538e8c25d8fd6fe88fb9fc023a10"}, "marc": {"avatar": "/_blob/7e985aa8f13bdc6beedb1e392303870b", "card": "/_blob/f570be1a1299774a4564357ac00fb19d"}, "marta": {"avatar": "/_blob/8e60e1fcfcbfae2eb2ae7fcf6c0ad58a", "card": "/_blob/26d9716a3e5d39c4ecd5652916b8c4d1"}, "nuria": {"avatar": "/_blob/cadad787ba381bc1eac53308fb0acd9b", "card": "/_blob/a5cda7d0b726e50e68f45176743503ad"}, "pau": {"avatar": "/_blob/7159f61c0eb6d33c7676e699feda1f65", "card": "/_blob/d0c90a2a36f57d6be5e8f3556f19767d"}};
+const __FOTO_NOMBRE = {"Marta Ruiz": "marta", "Laia Serra": "laia", "Marc Soler": "marc", "Jordi Puig": "jordi", "Núria Font": "nuria", "Pau Vidal": "pau"};
+const __fotoDe = (n) => { const k = __FOTO_NOMBRE[n]; return k ? __FOTOS[k].avatar : ''; };
+const __fotoYo = () => { try { const r = JSON.parse(window.localStorage.getItem('appmusic-prueba-v1') || 'null'); return (r && r.on && r.user === 'nuevo') ? '' : __FOTOS.alex.avatar; } catch (e) { return __FOTOS.alex.avatar; } };
+const __VIDFOTO = { 'directo_trio_jazz.mp4': __FOTOS.alex.trio, 'jam_session.mp4': __FOTOS.alex.card };
+const __K = 'appmusic-prueba-v1';
+const __ST = (() => { try { let r = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!r || !r.on) { r = { on: true, ver: 1, user: 'alex', perfil: null, favs: ['laia', 'marc', 'marta'], chats: {}, read: {}, blocked: [], from: '', exp: null, busq: null }; window.localStorage.setItem(__K, JSON.stringify(r)); } return r; } catch (e) { return null; } })();
+const __save = (patch) => { try { const cur = JSON.parse(window.localStorage.getItem(__K) || 'null'); if (!cur || !cur.on) { return; } window.localStorage.setItem(__K, JSON.stringify(Object.assign({}, cur, patch, { ver: (cur.ver || 0) + 1 }))); } catch (e) {} };
+const __blocked = (__ST && __ST.blocked) || [];
+const __unread = __ST ? (__ST.user !== 'nuevo' && !(__ST.read || {}).nuria && __blocked.indexOf('nuria') < 0 && !((__ST.chats || {}).nuria)) : true;
+const __base = (() => {
+const BASE = [{"key": "marta", "name": "Marta Ruiz", "href": "Chat-marta-vacio.dc.html", "time": "Ahora", "msgs": []}, {"key": "jordi", "name": "Jordi Puig", "href": "Chat-jordi.dc.html", "time": "10:24", "msgs": []}, {"key": "laia", "name": "Laia Serra", "href": "Chat-laia.dc.html", "time": "Ayer", "msgs": []}, {"key": "pau", "name": "Pau Vidal", "href": "Chat-pau.dc.html", "time": "Lun", "msgs": []}, {"key": "nuria", "name": "Núria Font", "href": "Chat-nuria.dc.html", "time": "12/10", "msgs": []}, {"key": "marc", "name": "Marc Soler", "href": "Chat-marc.dc.html", "time": "05/10", "msgs": []}];
+const LIVE = false;
+const chatsSt = (LIVE && __ST && __ST.chats) || {};
+const nuevo = LIVE && __ST && __ST.user === 'nuevo';
+const read = (LIVE && __ST && __ST.read) || {};
+const rows = BASE.filter((b) => !LIVE || __blocked.indexOf(b.key) < 0)
+.map((b) => ({ b: b, ms: chatsSt[b.key] || (nuevo ? [] : b.msgs) }))
+.filter((x) => x.ms.length > 0)
+.map((x) => { const last = x.ms[x.ms.length - 1]; const unread = x.b.key === 'nuria' && !last.mine && !read.nuria && !nuevo; return { name: x.b.name, avatar: (__FOTOS[x.b.key] || {}).avatar || '', conFoto: !!__FOTOS[x.b.key], sinFoto: !__FOTOS[x.b.key], href: x.b.href, prev: (last.mine ? 'Tú: ' : '') + last.text, time: chatsSt[x.b.key] ? 'Ahora' : x.b.time, recent: !!chatsSt[x.b.key], unread: unread, read: !unread, open: () => { if (x.b.key === 'nuria') { __save({ read: Object.assign({}, read, { nuria: true }) }); } } }; });
+rows.sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0));
+return { rows: rows, isEmpty: rows.length === 0 };
+})();
+return Object.assign({ navUnread: __unread, navChatsLabel: __unread ? 'Chats, 1 mensaje sin leer' : 'Chats' }, __base);
+}
+}
+</script>
+</body>
+</html>
