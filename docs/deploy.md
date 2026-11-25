@@ -52,3 +52,8 @@ Usuario demo: `alex.martin@example.com` con la contraseña de `SEED_DEMO_PASSWOR
 
 ## 5. Cuando la app esté en un dominio
 Añade su origen a `CORS_ORIGINS` en Render (por ejemplo, `https://setena.app`). Los orígenes de Capacitor (`capacitor://localhost`, `http://localhost`) ya están incluidos.
+
+## App web (setena-app)
+- URL: https://setena-app.onrender.com (sitio estático gratuito de Render, definido en `render.yaml`).
+- Se compila con `npx ng build` (Node 24) desde `mobile/` y publica `mobile/www`; todas las rutas sirven `index.html`.
+- Se vuelve a desplegar sola con cada push a `main`. Su origen está en `CORS_ORIGINS` de la API.

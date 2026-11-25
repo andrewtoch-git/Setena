@@ -8,6 +8,9 @@ cd mobile
 npm install
 npm start            # http://localhost:8100 (el puerto está permitido en el CORS de la API)
 ```
+Versión publicada: https://setena-app.onrender.com (se despliega sola con cada push a main).
+```bash
+```
 Por defecto usa la API publicada (`src/environments/environment.ts` → `https://setena-api.onrender.com`). Para usar el backend local, cambia `apiUrl` a `http://localhost:3000`.
 
 Usuario demo: `alex.martin@example.com`, con la contraseña de `SEED_DEMO_PASSWORD` en `backend/.env`.
