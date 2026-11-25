@@ -59,4 +59,21 @@ cd android && ./gradlew assembleDebug
 ```
 Es una APK de depuración: se instala en cualquier Android activando «Instalar apps desconocidas». Para publicarla en Google Play haría falta una versión firmada (`assembleRelease` con un keystore).
 
+## iOS (simulador de Xcode)
+El proyecto está en `ios/` (`cat.setena.app`, iOS 15+, dependencias con Swift Package Manager: no hace falta CocoaPods; esquema `setena://perfil/<id>` en `Info.plist`). Para el simulador hace falta **Xcode** (App Store) y no hace falta cuenta de desarrollador de pago.
+
+Una vez, tras instalar Xcode:
+```bash
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -license accept
+xcodebuild -downloadPlatform iOS        # simulador de iOS (unos 8 GB)
+```
+
+Cada vez que cambie la app:
+```bash
+npx ng build && npx cap sync ios
+npx cap run ios                         # elige un iPhone del simulador
+# o bien: npx cap open ios → en Xcode elige un iPhone simulado y pulsa ▶
+```
+
 Pendiente: login con Google (falta el ID de cliente OAuth); subida de vídeos (aplazada). Estado general en `docs/estado.md`.

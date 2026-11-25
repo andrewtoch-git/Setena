@@ -9,6 +9,7 @@ Fases según `Guia_Chat_a_Claude_Code_App_Music.md` (sección 7). Cada «Comprob
 | 2 · Datos mock | ✅ Hecha | `npm run seed` idempotente desde `mock-data/` (32 músicos ficticios + fotos en GridFS). Usuario demo `alex.martin@example.com`; su contraseña va en `SEED_DEMO_PASSWORD` (`.env.example`) |
 | 3 · MongoDB Atlas + Render | ✅ Hecha | API https://setena-api.onrender.com (`/health` → db up). App web https://setena-app.onrender.com. Pasos en `docs/deploy.md` |
 | 4 · Ionic + Capacitor | ✅ Hecha | Todas las pantallas del wireframe (ver `mobile/README.md`); 11 tests unitarios, lint y build de producción limpios. APK de depuración generada desde la terminal (JDK 21 + SDK de Android, sin Android Studio): `cat.setena.app`, Android 7.0+ (SDK 24), destino SDK 36, esquema `setena://perfil/<id>`. La API acepta su origen (`https://localhost`) |
+| 4b · iOS (vinculación) | 🟡 Proyecto creado | `mobile/ios` generado con Capacitor 8 (SPM, iOS 15+, `cat.setena.app`, esquema `setena://`). La API ya acepta su origen (`capacitor://localhost`). **Falta:** instalar Xcode en el Mac para abrirlo en el simulador (`mobile/README.md`, sección iOS) |
 | 5 · Evaluar Ionic vs. nativo | ⏳ Sin empezar | Criterios ya fijados en `docs/producto.md` (60 fps en Explorar, ficha < 300 ms, Atrás y teclado nativos, fidelidad al design system). Necesita la APK en un Android de gama media |
 
 ## Diferencias con la guía (decididas)

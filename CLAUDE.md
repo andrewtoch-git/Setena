@@ -35,5 +35,6 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 - Fase 3 hecha: API en https://setena-api.onrender.com con Atlas; app web en https://setena-app.onrender.com (detalles en `docs/deploy.md`).
 - Fase 4, iteración 1 hecha (`mobile/README.md`): Explorar, Filtros, Perfil, Iniciar sesión, Registro, Bienvenida, Favoritos, Chats y Chat en tiempo real.
 - Fase 4 completa: Inicio, Mi perfil, Editar perfil, Ajustes, Compartir (enlace público /p/:id y «Perfil compartido» en el chat), denunciar y bloquear. APK de depuración generada desde la terminal (`mobile/README.md`, sección Android).
+- iOS vinculado: proyecto `mobile/ios` (Capacitor, SPM). Para verlo en el simulador hace falta Xcode (`mobile/README.md`, sección iOS).
 - Siguiente: fase 5 (evaluar Ionic vs. nativo con los criterios de docs/producto.md).
 - Resumen verificado por fase: `docs/estado.md`.
