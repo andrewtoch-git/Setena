@@ -1,0 +1,313 @@
+.barra {
+  height: 56px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  h1 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+}
+
+.icono-boton {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: var(--corner-full);
+  background: transparent;
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.contenido {
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aviso-bloqueo {
+  background: var(--surface-container-highest);
+  border-radius: var(--corner-medium);
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.carrusel-vacio {
+  height: 220px;
+  border-radius: var(--corner-medium);
+  background: var(--surface-container-high);
+}
+
+.carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border-radius: var(--corner-medium);
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.diapositiva {
+  flex: none;
+  width: 100%;
+  height: 220px;
+  scroll-snap-align: start;
+  background: var(--surface-container-highest);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant);
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Sobre fotos, el texto va en una pastilla surface opaca. */
+.rotulo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  max-width: 62%;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--corner-full);
+  background: var(--surface);
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.puntos {
+  display: flex;
+  justify-content: center;
+  button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  span {
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 1.5px solid var(--outline);
+    &.activo {
+      border: none;
+      background: var(--acento);
+    }
+  }
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  flex: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--surface-container-highest);
+  color: var(--on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.identidad {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+  }
+  span {
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--on-surface-variant);
+  }
+}
+
+.pequeno {
+  font-size: 12px !important;
+  color: var(--on-surface-variant);
+}
+
+/* «Añadir a Favoritos»: contorno lima; «Favorito»: tonal con forma más cuadrada. */
+.favorito {
+  padding: 0 16px 0 12px;
+  border: 1px solid var(--acento);
+  color: var(--on-surface);
+  &.activo {
+    border: none;
+    border-radius: var(--corner-medium);
+    background: var(--degradado-tonal), var(--secondary-container);
+    color: var(--on-secondary-container);
+    app-icono {
+      color: var(--acento);
+    }
+  }
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pestanas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--outline-variant);
+  button {
+    height: 48px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--on-surface-variant);
+    font: 500 14px var(--font-brand);
+    cursor: pointer;
+    &[aria-selected='true'] {
+      border-bottom-color: var(--acento);
+      color: var(--on-surface);
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--on-surface-variant);
+  }
+}
+
+.redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+  }
+}
+.red {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--outline);
+  background: var(--surface-container-high);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.tarifas {
+  display: flex;
+  flex-direction: column;
+  .nota {
+    margin: 12px 0 0;
+  }
+}
+.tarifa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--outline-variant);
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .derecha {
+    flex: none;
+    align-items: flex-end;
+  }
+  .servicio {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .importe {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.pie {
+  padding: 10px 16px calc(10px + var(--ion-safe-area-bottom, 0px));
+  border-top: 1px solid var(--outline-variant);
+  background: var(--surface);
+  .btn {
+    width: 100%;
+  }
+}
+
+ion-modal.ventana {
+  --width: calc(100% - 48px);
+  --max-width: 360px;
+  --height: auto;
+  --border-radius: var(--corner-extra-large);
+  --background: var(--surface-container-high);
+}
+
+ion-toast {
+  --background: var(--inverse-surface);
+  --color: var(--inverse-on-surface);
+}

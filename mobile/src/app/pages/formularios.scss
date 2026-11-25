@@ -1,0 +1,141 @@
+/* Estilos compartidos de las pantallas de formulario (Iniciar sesión, Registro). */
+.barra {
+  height: 56px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+}
+
+.icono-boton {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: var(--corner-full);
+  background: transparent;
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  h1 {
+    margin: 6px 0 0;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+  h2 {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .btn-m {
+    width: 100%;
+  }
+}
+
+/* Campo de texto con contorno (M3): etiqueta sobre el borde, error de 2 dp debajo. */
+.campo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    padding: 0 4px;
+    background: var(--surface);
+    font: 400 12px/16px var(--font-brand);
+    letter-spacing: 0.4px;
+    color: var(--on-surface-variant);
+    pointer-events: none;
+  }
+  input,
+  select,
+  textarea {
+    height: 56px;
+    box-sizing: border-box;
+    border-radius: var(--corner-extra-small);
+    border: 1px solid var(--outline);
+    padding: 0 16px;
+    background: transparent;
+    color: var(--on-surface);
+    font: 400 16px var(--font-brand);
+    &:focus {
+      outline: 2px solid var(--acento);
+      outline-offset: -2px;
+    }
+  }
+  textarea {
+    height: 112px;
+    padding: 16px;
+    resize: none;
+  }
+  &.invalido input,
+  &.invalido select,
+  &.invalido textarea {
+    border: 2px solid var(--error);
+  }
+  .ayuda {
+    font-size: 12px;
+    color: var(--on-surface-variant);
+  }
+}
+
+.mensaje-error {
+  font-size: 12px;
+  color: var(--error);
+}
+
+.aviso-error {
+  background: var(--error-container);
+  color: var(--on-error-container);
+  border-radius: var(--corner-medium);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.alternativa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.casilla {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: var(--acento);
+    flex: none;
+  }
+}

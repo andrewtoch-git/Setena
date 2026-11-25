@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <div class="barra">
+    <button type="button" class="icono-boton" aria-label="Volver" (click)="volver()">
+      <app-icono nombre="volver" />
+    </button>
+    @if (resumen()?.con; as con) {
+    <span class="avatar">
+      @if (avatar(); as src) {
+      <img [src]="src" alt="" />
+      } @else {
+      <app-icono nombre="persona" [tam]="20" />
+      }
+    </span>
+    <div class="quien">
+      <span class="nombre">{{ con.nombre }}</span>
+      <a class="ver-perfil" [routerLink]="['/perfil', con.perfilId]">Ver perfil</a>
+    </div>
+    }
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="mensajes">
+    @if (!cargando() && !mensajes().length) {
+    <div class="vacio">
+      <span class="titulo">Aún no hay mensajes</span>
+      <span class="texto-secundario">Escribe el primero para presentarte.</span>
+      <span class="texto-secundario pequeno">Sugerencia (toca para usarla):</span>
+      <button type="button" class="sugerencia" (click)="usarSugerencia()">{{ sugerencia }}</button>
+    </div>
+    } @for (m of mensajes(); track m.id) {
+    <div class="fila" [class.mia]="m.mio">
+      <div class="burbuja" [class.mia]="m.mio" [class.fallida]="m.estado === 'fallido'">{{ m.texto }}</div>
+      @if (m.estado === 'fallido') {
+      <div class="estado-envio error" role="alert">
+        <app-icono nombre="error" [tam]="16" />
+        No se ha enviado
+        <button type="button" class="btn btn-texto" (click)="reintentar(m)">Reintentar</button>
+      </div>
+      } @else if (m.id === ultimoPropio()) {
+      <div class="estado-envio">Enviado</div>
+      }
+    </div>
+    }
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  @if (bloqueado()) {
+  <div class="aviso-bloqueo" role="status">No puedes enviar mensajes a una persona bloqueada.</div>
+  }
+  <form class="envio" (submit)="$event.preventDefault(); enviar()">
+    <textarea
+      #campo
+      rows="1"
+      placeholder="Escribe un mensaje"
+      aria-label="Escribe un mensaje"
+      maxlength="2000"
+      [value]="texto()"
+      (input)="texto.set($any($event.target).value)"
+      (keydown)="teclado($event)"
+    ></textarea>
+    <button type="submit" class="enviar" aria-label="Enviar mensaje" [disabled]="!texto().trim()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 20.5V3.5L22 12z" />
+      </svg>
+    </button>
+  </form>
+</ion-footer>

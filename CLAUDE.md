@@ -33,4 +33,5 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 - Fase 1 (backend REST + auth) y 1b (chat en tiempo real, socket.io `/chat`) hechas y con tests. Contrato del socket en `docs/evaluacion-websocket.md`.
 - Fase 2 hecha: `npm run seed` (desde `mock-data/`) y fotos en GridFS (`/media/:id`, `/me/avatar`, `/me/fotos`).
 - Fase 3 hecha: API en https://setena-api.onrender.com con Atlas (detalles en `docs/deploy.md`).
-- Siguiente: fase 4 (app Ionic + Angular en `mobile/`).
+- Fase 4, iteración 1 hecha (`mobile/README.md`): Explorar, Filtros, Perfil, Iniciar sesión, Registro, Bienvenida, Favoritos, Chats y Chat en tiempo real.
+- Siguiente: Editar perfil, fotos, Ajustes, Compartir, denunciar y bloquear desde la app, animación de Inicio, proyecto Android.

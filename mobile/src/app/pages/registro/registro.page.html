@@ -1,0 +1,226 @@
+<ion-header class="ion-no-border">
+  <div class="barra">
+    <button type="button" class="icono-boton" aria-label="Volver" (click)="volver()">
+      <app-icono nombre="volver" />
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <form class="pagina formulario" (submit)="$event.preventDefault(); registrarme()" novalidate>
+    <h1>Crear cuenta</h1>
+    @if (banner()) {
+    <div class="aviso-error" role="alert"><app-icono nombre="error" /><span>{{ banner() }}</span></div>
+    }
+    <p class="texto-secundario">Crea tu cuenta para ver los perfiles completos y contactar con otros músicos.</p>
+
+    <!-- Foto de perfil (opcional) -->
+    <div class="foto">
+      <span class="avatar"><app-icono nombre="persona" [tam]="32" /></span>
+      <div class="foto-texto">
+        <span class="titulo-campo">Foto de perfil <span class="texto-secundario">(opcional)</span></span>
+        <label class="btn btn-contorno">
+          {{ foto() ? 'Cambiar foto' : 'Añadir foto' }}
+          <input type="file" accept="image/jpeg,image/png" hidden (change)="elegirFoto($event)" />
+        </label>
+      </div>
+    </div>
+
+    <div class="campo" [class.invalido]="err('nombre')">
+      <label for="r-nombre">Nombre</label>
+      <input
+        id="r-nombre"
+        autocomplete="name"
+        placeholder="Escribe tu nombre"
+        [value]="nombre()"
+        (input)="nombre.set($any($event.target).value)"
+      />
+      @if (err('nombre')) {
+      <span class="mensaje-error">{{ err('nombre') }}</span>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('correo')">
+      <label for="r-correo">Correo electrónico</label>
+      <input
+        id="r-correo"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="nombre@correo.com"
+        [value]="correo()"
+        (input)="correo.set($any($event.target).value); correoOcupado.set(false)"
+      />
+      @if (err('correo')) {
+      <span class="mensaje-error">{{ err('correo') }}</span>
+      } @if (correoOcupado()) {
+      <button type="button" class="btn btn-texto enlace" (click)="iniciarConEsteCorreo()">
+        Iniciar sesión con este correo
+      </button>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('pass')">
+      <label for="r-pass">Contraseña</label>
+      <input
+        id="r-pass"
+        type="password"
+        autocomplete="new-password"
+        [value]="pass()"
+        (input)="pass.set($any($event.target).value)"
+      />
+      @if (err('pass')) {
+      <span class="mensaje-error">{{ err('pass') }}</span>
+      } @else {
+      <span class="ayuda">Mínimo 8 caracteres.</span>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('pass2')">
+      <label for="r-pass2">Repite la contraseña</label>
+      <input
+        id="r-pass2"
+        type="password"
+        autocomplete="new-password"
+        [value]="pass2()"
+        (input)="pass2.set($any($event.target).value)"
+      />
+      @if (err('pass2')) {
+      <span class="mensaje-error">{{ err('pass2') }}</span>
+      }
+    </div>
+
+    <!-- Selectores de solo lectura que abren una ventana con chips -->
+    <div class="campo" [class.invalido]="err('roles')">
+      <label for="r-roles">Instrumento o rol</label>
+      <button id="r-roles" type="button" class="selector" (click)="abrirSelector('roles')">
+        <span [class.texto-secundario]="!roles().length"
+          >{{ roles().length ? roles().join(', ') : 'Elige uno o varios' }}</span
+        >
+        <span aria-hidden="true">▾</span>
+      </button>
+      @if (err('roles')) {
+      <span class="mensaje-error">{{ err('roles') }}</span>
+      }
+    </div>
+
+    <div class="campo" [class.invalido]="err('generos')">
+      <label for="r-generos">Géneros musicales</label>
+      <button id="r-generos" type="button" class="selector" (click)="abrirSelector('generos')">
+        <span [class.texto-secundario]="!generos().length"
+          >{{ generos().length ? generos().join(', ') : 'Elige tus estilos' }}</span
+        >
+        <span aria-hidden="true">▾</span>
+      </button>
+      @if (err('generos')) {
+      <span class="mensaje-error">{{ err('generos') }}</span>
+      }
+    </div>
+
+    <fieldset>
+      <legend>Tipo de proyecto</legend>
+      <p class="texto-secundario">¿Qué proyectos te interesan? Puedes marcar los dos.</p>
+      <div class="chips">
+        @for (t of tipos; track t.clave) {
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="tipo().includes(t.clave)"
+          (click)="alternar(tipo, t.clave)"
+        >
+          @if (tipo().includes(t.clave)) {
+          <app-icono nombre="check" [tam]="18" />
+          } {{ t.texto }}
+        </button>
+        }
+      </div>
+      @if (err('tipo')) {
+      <span class="mensaje-error">{{ err('tipo') }}</span>
+      }
+    </fieldset>
+
+    <fieldset>
+      <legend>Ubicación</legend>
+      <div class="pestanas" role="tablist">
+        @for (z of catalogos()?.zonas ?? []; track z) {
+        <button type="button" role="tab" [attr.aria-selected]="zona() === z" (click)="elegirZona(z)">{{ z }}</button>
+        }
+      </div>
+      <p class="texto-secundario">{{ zona() === 'Barcelona ciudad' ? 'Elige tu distrito' : 'Elige tu municipio' }}</p>
+      <div class="chips">
+        @for (l of lugares(); track l) {
+        <button type="button" class="chip" [attr.aria-pressed]="lugar() === l" (click)="lugar.set(l)">
+          @if (lugar() === l) {
+          <app-icono nombre="check" [tam]="18" />
+          } {{ l }}
+        </button>
+        }
+      </div>
+      @if (lugar()) {
+      <p>Tu ubicación: {{ zona() === 'Barcelona ciudad' ? lugar() + ', Barcelona' : lugar() }}</p>
+      } @if (err('ubic')) {
+      <span class="mensaje-error">{{ err('ubic') }}</span>
+      }
+    </fieldset>
+
+    <fieldset>
+      <legend>Disponibilidad</legend>
+      <div class="chips">
+        @for (d of catalogos()?.disponibilidad ?? []; track d) {
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-pressed]="disponibilidad().includes(d)"
+          (click)="alternar(disponibilidad, d)"
+        >
+          @if (disponibilidad().includes(d)) {
+          <app-icono nombre="check" [tam]="18" />
+          } {{ d }}
+        </button>
+        }
+      </div>
+      @if (err('disp')) {
+      <span class="mensaje-error">{{ err('disp') }}</span>
+      } @else {
+      <span class="ayuda"
+        >«Inmediata»: disponible en cuanto te contacten. Ayuda a que te encuentren al filtrar por disponibilidad.</span
+      >
+      }
+    </fieldset>
+
+    <div>
+      <label class="casilla">
+        <input type="checkbox" [checked]="terminos()" (change)="terminos.set($any($event.target).checked)" />
+        <span>Acepto las condiciones de uso y la política de privacidad.</span>
+      </label>
+      @if (err('terminos')) {
+      <span class="mensaje-error">{{ err('terminos') }}</span>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-principal btn-m" [disabled]="enviando()">Registrarme</button>
+    <div class="alternativa">
+      <span class="texto-secundario">¿Ya tienes cuenta?</span>
+      <a routerLink="/iniciar-sesion" class="btn btn-texto">Inicia sesión</a>
+    </div>
+  </form>
+
+  <ion-modal class="hoja" [isOpen]="selector() !== null" (didDismiss)="selector.set(null)">
+    <ng-template>
+      <div class="ventana-selector">
+        <h2>{{ selector() === 'roles' ? 'Instrumento o rol' : 'Géneros musicales' }}</h2>
+        <p class="texto-secundario">Marca todas las opciones que quieras.</p>
+        <div class="chips">
+          @for (o of opcionesSelector(); track o) {
+          <button type="button" class="chip" [attr.aria-pressed]="borrador().includes(o)" (click)="alternarBorrador(o)">
+            @if (borrador().includes(o)) {
+            <app-icono nombre="check" [tam]="18" />
+            } {{ o }}
+          </button>
+          }
+        </div>
+        <button type="button" class="btn btn-principal" (click)="guardarSelector()">Guardar</button>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>

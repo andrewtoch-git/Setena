@@ -1,0 +1,116 @@
+.foto {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.avatar {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--surface-container-highest);
+  color: var(--on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.foto-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.titulo-campo {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.selector {
+  height: 56px;
+  box-sizing: border-box;
+  border-radius: var(--corner-extra-small);
+  border: 1px solid var(--outline);
+  padding: 0 16px;
+  background: transparent;
+  color: var(--on-surface);
+  font: 400 16px var(--font-brand);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+  cursor: pointer;
+  span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.campo.invalido .selector {
+  border: 2px solid var(--error);
+}
+
+.enlace {
+  align-self: flex-start;
+  padding: 0;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+legend {
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pestanas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--outline-variant);
+  button {
+    height: 48px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--on-surface-variant);
+    font: 500 14px var(--font-brand);
+    cursor: pointer;
+    &[aria-selected='true'] {
+      border-bottom-color: var(--acento);
+      color: var(--on-surface);
+    }
+  }
+}
+
+ion-modal.hoja {
+  --height: auto;
+  --border-radius: var(--corner-extra-large) var(--corner-extra-large) 0 0;
+  --background: var(--surface-container-low);
+  align-items: flex-end;
+}
+.ventana-selector {
+  padding: 24px 16px calc(16px + var(--ion-safe-area-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 80vh;
+  overflow-y: auto;
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+  .btn {
+    margin-top: 8px;
+  }
+}

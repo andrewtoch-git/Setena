@@ -1,0 +1,41 @@
+// Tema de setena: SOLO MODO OSCURO.
+// Los colores vienen de tokens.css (copia de design/handoff/ds/appmusic/tokens.css, la fuente de verdad).
+// Aquí solo se traducen a las variables de Ionic. Nunca hex sueltos en los componentes: usar los roles.
+
+:root {
+  color-scheme: dark;
+
+  --font-logo: 'Nunito', var(--font-brand);
+  --ion-font-family: var(--font-brand);
+
+  --ion-background-color: var(--surface);
+  --ion-background-color-rgb: 20, 19, 24;
+  --ion-text-color: var(--on-surface);
+  --ion-text-color-rgb: 229, 225, 233;
+  --ion-border-color: var(--outline-variant);
+  --ion-item-background: var(--surface);
+  --ion-toolbar-background: var(--surface);
+  --ion-toolbar-color: var(--on-surface);
+  --ion-tab-bar-background: var(--surface-container);
+  --ion-tab-bar-border-color: transparent;
+  --ion-tab-bar-color: var(--on-surface-variant);
+  --ion-tab-bar-color-selected: var(--secondary);
+  --ion-placeholder-color: var(--on-surface-variant);
+  --ion-backdrop-color: #000;
+  --ion-backdrop-opacity: 0.32;
+
+  // Color «primary» de Ionic = acción destacada (lima): spinners, foco, etc.
+  --ion-color-primary: var(--acento);
+  --ion-color-primary-rgb: 212, 240, 106;
+  --ion-color-primary-contrast: var(--on-acento);
+  --ion-color-primary-contrast-rgb: 26, 29, 0;
+  --ion-color-primary-shade: #bbd35d;
+  --ion-color-primary-tint: #d8f279;
+
+  --ion-color-danger: var(--error);
+  --ion-color-danger-rgb: 255, 180, 171;
+  --ion-color-danger-contrast: var(--on-error);
+  --ion-color-danger-contrast-rgb: 105, 0, 5;
+  --ion-color-danger-shade: #e09e96;
+  --ion-color-danger-tint: #ffbcb3;
+}

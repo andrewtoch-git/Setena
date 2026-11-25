@@ -1,0 +1,144 @@
+<ion-header class="ion-no-border">
+  <div class="barra-logo"><app-logo /></div>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content />
+  </ion-refresher>
+
+  <div class="cabecera">
+    <div class="busqueda">
+      <app-icono nombre="buscar" />
+      <input
+        type="search"
+        placeholder="Buscar músicos"
+        aria-label="Buscar músicos"
+        enterkeyhint="search"
+        [value]="texto()"
+        (input)="escribir($any($event.target).value)"
+      />
+      <button
+        type="button"
+        class="boton-filtros"
+        [attr.aria-label]="nAplicados() ? 'Filtros de búsqueda (' + nAplicados() + ' aplicados)' : 'Filtros de búsqueda'"
+        (click)="abrirPanel()"
+      >
+        <app-icono nombre="filtros" />
+        @if (nAplicados()) {
+        <span class="insignia" aria-hidden="true">{{ nAplicados() }}</span>
+        }
+      </button>
+    </div>
+
+    <div class="rapidos">
+      @for (rol of chipsRapidos(); track rol) {
+      <button type="button" class="chip" [attr.aria-pressed]="chipRapidoActivo(rol)" (click)="chipRapido(rol)">
+        @if (chipRapidoActivo(rol)) {
+        <app-icono nombre="check" [tam]="18" />
+        } {{ rol }}
+      </button>
+      }
+    </div>
+
+    <div class="titulo">
+      <h1>Explorar</h1>
+      @if (estado() === 'listo') {
+      <span class="texto-secundario">{{ cuenta() }}</span>
+      } @else if (estado() === 'cargando') {
+      <span role="status" class="texto-secundario">Cargando músicos…</span>
+      }
+    </div>
+
+    @if (nAplicados()) {
+    <div class="aplicados">
+      @for (a of aplicados(); track a.clave + a.valor) {
+      <span class="aplicado">
+        {{ a.texto }}
+        <button type="button" [attr.aria-label]="'Quitar filtro ' + a.texto" (click)="quitar(a.clave, a.valor)">
+          <app-icono nombre="cerrar" [tam]="18" />
+        </button>
+      </span>
+      }
+      <button type="button" class="btn btn-texto" (click)="borrarTodo()">Borrar todo</button>
+    </div>
+    }
+  </div>
+
+  <div class="lista">
+    @switch (estado()) { @case ('error') {
+    <div class="estado" role="alert">
+      <app-icono nombre="error" [tam]="32" />
+      <span class="titulo">No se ha podido cargar el catálogo</span>
+      <span class="texto">Revisa tu conexión a internet e inténtalo de nuevo.</span>
+      <button type="button" class="btn btn-principal" (click)="cargar()">Reintentar</button>
+    </div>
+    } @case ('cargando') { @for (i of [1, 2]; track i) {
+    <div class="esqueleto" aria-hidden="true">
+      <div class="img"></div>
+      <div class="lineas">
+        <span style="width: 40%"></span><span style="width: 70%"></span><span style="width: 55%"></span>
+      </div>
+    </div>
+    } } @default { @if (!resultados().length) {
+    <div class="estado">
+      <app-icono nombre="buscar" [tam]="32" />
+      <span class="titulo">No hay músicos con estos filtros</span>
+      <span class="texto">Prueba a quitar algún filtro o a elegir otro instrumento.</span>
+      <button type="button" class="btn btn-contorno" (click)="borrarTodo()">Quitar filtros</button>
+    </div>
+    } @for (t of resultados(); track t.id) {
+    <app-tarjeta-musico [tarjeta]="t" (chat)="chat($event)" />
+    } } }
+  </div>
+
+  <ion-infinite-scroll [disabled]="!hayMas() || estado() !== 'listo'" (ionInfinite)="masResultados($event)">
+    <ion-infinite-scroll-content />
+  </ion-infinite-scroll>
+
+  <!-- Filtros de búsqueda: diálogo a pantalla completa -->
+  <ion-modal [isOpen]="panelAbierto()" (didDismiss)="panelAbierto.set(false)">
+    <ng-template>
+      <ion-content>
+        <div class="panel">
+          <div class="panel-cabecera">
+            <button type="button" class="icono-boton" aria-label="Volver sin aplicar" (click)="panelAbierto.set(false)">
+              <app-icono nombre="volver" />
+            </button>
+            <h1>Filtros</h1>
+            <button type="button" class="btn btn-texto" (click)="borrarBorrador()">Borrar filtros</button>
+          </div>
+          @for (s of secciones(); track s.clave) {
+          <section>
+            <h2>{{ s.titulo }}</h2>
+            <div class="chips">
+              @for (item of s.items; track item.valor) {
+              <button
+                type="button"
+                class="chip"
+                [attr.aria-pressed]="activoEnBorrador(s.clave, item.valor)"
+                (click)="alternar(s.clave, item.valor)"
+              >
+                @if (activoEnBorrador(s.clave, item.valor)) {
+                <app-icono nombre="check" [tam]="18" />
+                } {{ item.texto }}
+              </button>
+              }
+            </div>
+          </section>
+          }
+        </div>
+      </ion-content>
+      <div class="panel-pie">
+        <button type="button" class="btn btn-principal btn-m" (click)="aplicarPanel()">{{ textoAplicar() }}</button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Ventana de registro (Chat sin sesión) -->
+  <ion-modal class="ventana" [isOpen]="invitar()" (didDismiss)="invitar.set(false)">
+    <ng-template>
+      <app-invitacion-registro (navegar)="invitar.set(false)" />
+    </ng-template>
+  </ion-modal>
+</ion-content>
