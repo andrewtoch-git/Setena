@@ -27,6 +27,8 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 - **Vídeos aplazados:** no implementar subida ni reproducción de vídeo hasta que se pida. Límite futuro: 30 s. El registro no exige vídeo por ahora.
 - Conflictos de diseño: **manda el wireframe** (`design/handoff/`).
 
-## Decisiones pendientes (no resolver sin preguntar)
-- Qué se muestra en lugar del vídeo mientras esté aplazado.
-- Criterios de «aceptable» para Ionic vs. nativo.
+- **Decisiones delegadas (25/11):** el equipo permite a Claude decidir para avanzar. Registrar cada decisión, con su motivo, en `docs/producto.md` («Decisiones delegadas»).
+
+## Estado
+- Fase 1 (backend REST + auth) y 1b (chat en tiempo real, socket.io `/chat`) hechas y con tests. Contrato del socket en `docs/evaluacion-websocket.md`.
+- Siguiente: fase 2 (seed desde `mock-data/` + fotos en GridFS).

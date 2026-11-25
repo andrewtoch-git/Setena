@@ -6,6 +6,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model, Types } from 'mongoose';
 import { ProfilesService } from '../profiles/profiles.service';
+import { ChatEventos } from './chat-eventos';
 import {
   Conversation,
   ConversationDoc,
@@ -25,6 +26,7 @@ export class ChatsService {
     @InjectModel(Message.name) private readonly mensajes: Model<Message>,
     @InjectModel(Profile.name) private readonly perfilesModel: Model<Profile>,
     private readonly perfiles: ProfilesService,
+    private readonly eventos: ChatEventos,
   ) {}
 
   private clave(a: Types.ObjectId, b: Types.ObjectId) {
@@ -135,6 +137,18 @@ export class ChatsService {
       },
     );
     await this.perfiles.tocarActividad(userId);
+    // Tiempo real: avisa a los dos participantes (también a otras sesiones del remitente).
+    this.eventos.mensajeNuevo(
+      c._id.toString(),
+      c.participantes.map((p) => p.toString()),
+      {
+        id: m._id.toString(),
+        texto: m.texto,
+        de: userId,
+        enviadoAt: m.createdAt,
+        leidoAt: null,
+      },
+    );
     return this.serializar(m, userId);
   }
 
@@ -147,6 +161,11 @@ export class ChatsService {
     await this.conversaciones.updateOne(
       { _id: c._id },
       { $set: { [`noLeidos.${userId}`]: 0 } },
+    );
+    this.eventos.conversacionLeida(
+      c._id.toString(),
+      userId,
+      this.otro(c, userId).toString(),
     );
   }
 

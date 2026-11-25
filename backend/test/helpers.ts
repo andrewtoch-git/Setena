@@ -26,9 +26,11 @@ export interface Contexto {
   app: INestApplication;
   mongo: MongoMemoryServer;
   http: () => ReturnType<typeof request>;
+  /** URL base si la app se arrancó con escuchar = true (necesario para sockets). */
+  url?: string;
 }
 
-export async function crearApp(): Promise<Contexto> {
+export async function crearApp(escuchar = false): Promise<Contexto> {
   const mongo = await MongoMemoryServer.create();
   Object.assign(process.env, {
     MONGODB_URI: mongo.getUri('setena-test'),
@@ -50,8 +52,14 @@ export async function crearApp(): Promise<Contexto> {
     .useValue(googleFalso)
     .compile();
   const app = setupApp(modulo.createNestApplication());
-  await app.init();
-  return { app, mongo, http: () => request(app.getHttpServer()) };
+  let url: string | undefined;
+  if (escuchar) {
+    await app.listen(0, '127.0.0.1');
+    url = await app.getUrl();
+  } else {
+    await app.init();
+  }
+  return { app, mongo, url, http: () => request(app.getHttpServer()) };
 }
 
 export async function cerrarApp(ctx: Contexto | undefined) {

@@ -1,6 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SocketAdapter } from './chats/socket-adapter';
 import { EnvVars } from './config/env.validation';
 
 /** Configuración común a main.ts y a los tests e2e. */
@@ -20,6 +21,7 @@ export function setupApp(app: INestApplication) {
     .map((s) => s.trim())
     .filter(Boolean);
   app.enableCors({ origin: origenes, credentials: false });
+  app.useWebSocketAdapter(new SocketAdapter(app, origenes));
 
   const doc = SwaggerModule.createDocument(
     app,

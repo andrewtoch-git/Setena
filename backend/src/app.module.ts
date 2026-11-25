@@ -5,6 +5,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { AuthModule } from './auth/auth.module';
+import { ChatEventos } from './chats/chat-eventos';
+import { ChatGateway } from './chats/chat.gateway';
 import { ChatsController } from './chats/chats.controller';
 import { ChatsService } from './chats/chats.service';
 import { AuthGuard } from './common/auth.guard';
@@ -50,6 +52,11 @@ import { MeController } from './users/me.controller';
     ChatsController,
     ModerationController,
   ],
-  providers: [ChatsService, { provide: APP_GUARD, useClass: AuthGuard }],
+  providers: [
+    ChatsService,
+    ChatEventos,
+    ChatGateway,
+    { provide: APP_GUARD, useClass: AuthGuard },
+  ],
 })
 export class AppModule {}

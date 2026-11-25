@@ -87,8 +87,19 @@ Secciones: Instrumento o rol · Estilo musical · Ubicación (Barcelona ciudad /
 ## Fuera del prototipo
 Búsqueda urgente, Mi disponibilidad (sección completa), Mis contactos, valoraciones y recomendaciones, notificaciones push.
 
-## Pendiente de decidir
-- Qué muestran el carrusel y la tarjeta de Explorar mientras no haya vídeos (propuesta: la miniatura/foto como marcador).
-- Criterios concretos de «aceptable» para decidir Ionic vs. nativo (fase 5).
-- Diseño: en caso de conflicto **manda el wireframe** (decisión del 25/11). Anillo de foco 2 px en `acento`; botones al pie como dibuja cada pantalla.
-- `applicationId` de Android (depende del nombre definitivo; la marca es «setena»).
+## Decisiones delegadas (25/11)
+El equipo delegó en Claude estas decisiones para poder avanzar. Se pueden revisar en cualquier momento.
+
+| Tema | Decisión | Motivo |
+|---|---|---|
+| Chat | **Tiempo real con WebSocket (socket.io), implementado.** REST sigue siendo la fuente de verdad. | Coste real bajo sobre el chat REST ya probado; detalles en `docs/evaluacion-websocket.md`. |
+| Búsqueda libre | Sinónimos de rol: «pianista» → Piano, «guitarrista» → Guitarra, etc. | La gente escribe así, aunque los roles se nombran por instrumento. |
+| Bloquear | Al bloquear a alguien se quita de tus Favoritos y no vuelve al desbloquear. | Coherente con «no podrá escribirte ni ver tu perfil». |
+| Vídeo aplazado | La tarjeta y el carrusel muestran la **miniatura/foto principal sin botón de reproducir**; si no hay imagen, el marcador de foto del wireframe. No se añade texto nuevo. | No inventar textos ni pantallas. |
+| Textos «hasta 100 MB» del wireframe | Se mantienen hasta que se implemente el vídeo; entonces pasan a «hasta 30 s». | Hoy la subida de vídeo no existe. |
+| Conflictos C5–C7 (wireframe vs. M3) | Se mantiene M3: chips de 8 dp, **áreas táctiles de 48 dp**, botones de ventana de M3. | 48 dp es el mínimo de accesibilidad de Android; bajar a 44 empeora la app. |
+| `applicationId` Android | `cat.setena.app` | La marca es «setena» y el proyecto es de Barcelona. |
+| Ionic vs. nativo (fase 5) | Ionic es **aceptable** si en un Android de gama media: (1) el scroll de Explorar con 30 tarjetas va a 60 fps sin tirones visibles, (2) abrir una ficha tarda < 300 ms desde el toque, (3) el botón Atrás y el teclado se comportan como en una app nativa en todas las pantallas, y (4) los componentes cumplen el design system (color, Roboto, formas, estados). Si falla (1) o (3), plan B nativo. | Criterios medibles y ligados a la experiencia real. |
+
+## Pendiente
+- Nada bloqueante. Las propuestas de diseño de la librería siguen en `design/design-system/07-Pendientes.md`.

@@ -21,6 +21,8 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   async canActivate(ctx: ExecutionContext): Promise<boolean> {
+    // Los WebSockets se autentican al conectar (ChatGateway.handleConnection).
+    if (ctx.getType() !== 'http') return true;
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC, [
       ctx.getHandler(),
       ctx.getClass(),

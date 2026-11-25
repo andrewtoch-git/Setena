@@ -3,7 +3,10 @@
 > Decisión del equipo (25/11): el chat será en tiempo real. Esta nota evalúa el coste y fija el alcance.
 > Las horas son una **estimación** para una persona trabajando con Claude Code, no una medida.
 
-## Veredicto
+## Resultado (25/11)
+**Implementado y probado.** Sobre el chat REST ya existente, el tiempo real ha supuesto un gateway de ~150 líneas, un emisor de eventos y 5 tests e2e con clientes socket.io reales. Coste real: bajo. Ver «Contrato para la app» abajo.
+
+## Veredicto previo (estimación)
 **Coste moderado: unos 2–3 días** sobre un chat que ya funcione por REST. Merece la pena para el prototipo si se limita el alcance a lo que muestra el wireframe. La alternativa (refrescar cada pocos segundos) costaría medio día, pero no da sensación de tiempo real.
 
 ## Piezas y estimación
@@ -27,3 +30,18 @@
 
 ## Fuera de alcance
 Indicador «escribiendo…», estado «en línea», adjuntos en el chat, notificaciones push, chats de grupo.
+
+## Contrato para la app (implementado)
+Conexión: `io(API_URL + '/chat', { auth: { token: accessToken } })`.
+
+| Dirección | Evento | Datos | Respuesta (ack) |
+|---|---|---|---|
+| app → servidor | `mensaje:enviar` | `{ conversacionId, texto }` | `{ ok: true, datos: mensaje }` o `{ ok: false, error, status }` |
+| app → servidor | `conversacion:leer` | `{ conversacionId }` | `{ ok: true }` o error |
+| servidor → app | `mensaje:nuevo` | `{ conversacionId, mensaje: { id, texto, mio, enviadoAt, leidoAt } }` | — |
+| servidor → app | `conversacion:leida` | `{ conversacionId, lector, leidoAt }` | — |
+| servidor → app | `error:auth` / `sesion:caducada` | — | La app renueva el token y reconecta |
+
+- Los mensajes enviados por REST (`POST /conversaciones/:id/mensajes`) también se emiten por el socket.
+- Sin ack en 5 s → la app marca el mensaje como «No se ha enviado» con reintento (pantalla `Chat-jordi-error`).
+- Al reconectar, la app vuelve a pedir el historial por REST.
