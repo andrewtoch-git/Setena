@@ -30,6 +30,7 @@ App móvil (Android primero) para que músicos del área de Barcelona encuentren
 - **Decisiones delegadas (25/11):** el equipo permite a Claude decidir para avanzar. Registrar cada decisión, con su motivo, en `docs/producto.md` («Decisiones delegadas»).
 
 ## Estado
+- **Sesión en pausa (25/11): leer primero `docs/retomar.md`** (falta abrir la app en el simulador de iOS tras instalar Xcode).
 - Fase 1 (backend REST + auth) y 1b (chat en tiempo real, socket.io `/chat`) hechas y con tests. Contrato del socket en `docs/evaluacion-websocket.md`.
 - Fase 2 hecha: `npm run seed` (desde `mock-data/`) y fotos en GridFS (`/media/:id`, `/me/avatar`, `/me/fotos`).
 - Fase 3 hecha: API en https://setena-api.onrender.com con Atlas; app web en https://setena-app.onrender.com (detalles en `docs/deploy.md`).
