@@ -1,60 +1,54 @@
-# Retomar la sesión: ver la app en el simulador de iOS (25/11/2026)
+# Retomar la sesión en otro ordenador (26/11/2026)
 
-> Para Claude Code al volver: lee este archivo, `CLAUDE.md` y `docs/estado.md`, y sigue desde «Pasos para Claude al volver». No hace falta volver a planificar: la vinculación con iOS ya está aprobada y hecha; solo falta compilar y abrir en el simulador.
+> Para Claude Code al volver: lee este archivo, `CLAUDE.md` y `docs/estado.md`. Sigue desde «Pasos para Claude al volver». No hace falta volver a planificar lo que ya está hecho.
 
 ## Dónde estamos
 | | Estado |
 |---|---|
 | Fases 1–4 (backend, chat, seed, Render, app Ionic) | ✅ Hechas y comprobadas (`docs/estado.md`) |
 | Web publicada | https://setena-app.onrender.com · API https://setena-api.onrender.com |
-| APK Android (depuración) | ✅ Generada desde la terminal con JDK 21 + SDK de Android, copia en `~/Desktop/setena.apk` |
-| iOS | 🟡 Proyecto `mobile/ios` creado y subido (commit `94dcff1`): Capacitor 8, Swift Package Manager (sin CocoaPods), iOS 15+, `cat.setena.app`, esquema `setena://` en `Info.plist`. **Falta Xcode** en el Mac |
+| APK Android (depuración) | ✅ Generada el 25/11 (solo estaba en el escritorio del Mac anterior; se puede regenerar, ver `mobile/README.md`) |
+| iOS | ⏸️ **Aparcado por decisión del equipo (26/11).** El proyecto `mobile/ios` existe, pero falta Xcode. Pasos en `mobile/README.md`, sección iOS |
+| Móvil del equipo | iPhone: la app se prueba con el **enlace web** en Safari («Añadir a pantalla de inicio») |
 | Fase 5 (Ionic vs. nativo) | ⏳ Sin empezar; criterios en `docs/producto.md` |
 
-Todo está en GitHub (`main`), sin cambios locales pendientes.
+Todo está en GitHub (`main`).
 
-## Lo que hace la persona del equipo (antes de volver)
-1. Instalar **Xcode** desde la App Store (≈15 GB) y abrirlo una vez para que instale sus componentes.
-2. En la terminal (piden la contraseña del Mac):
+## En qué estábamos
+La persona del equipo quiere **seguir iterando la app** (fase 4, mejoras de pantallas). La forma de trabajo acordada el 26/11:
+1. Ver los cambios en local en el navegador: `http://localhost:8100` (modo dispositivo con ⌥⌘I y ⇧⌘M).
+2. Para verlos en el iPhone, hacer commit + push a `main`. Render redespliega la web solo en unos minutos y se ve en https://setena-app.onrender.com.
+
+Aún no se había pedido ningún cambio concreto para esta iteración.
+
+## Lo que hace la persona del equipo en el ordenador nuevo
+1. Instalar **Node 22 o superior** (en el Mac anterior: v26) y **git**.
+2. Clonar el repositorio y abrir Claude Code en la carpeta:
    ```bash
-   sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-   sudo xcodebuild -license accept
-   xcodebuild -downloadPlatform iOS
+   git clone https://github.com/andrewtoch-git/Setena.git setena
+   cd setena
    ```
-   La última línea descarga el simulador de iOS (≈8 GB).
-3. Abrir Claude Code en la carpeta del proyecto y decir: **«lee docs/retomar.md y sigue»**.
-
-No hace falta cuenta de desarrollador de Apple de pago para el simulador.
+3. (Solo si hace falta el backend local o el seed) Crear `backend/.env` a partir de `backend/.env.example`. Los valores (`MONGODB_URI`, `SEED_DEMO_PASSWORD`, …) **no están en git**: copiarlos del `backend/.env` del ordenador anterior o del panel de Render. Para ver la app **no hace falta**, porque usa la API publicada.
+4. Decir a Claude Code: **«lee docs/retomar.md y sigue»**.
 
 ## Pasos para Claude al volver
-1. Comprobar Xcode y el simulador:
+1. Instalar dependencias y arrancar la app:
    ```bash
-   xcodebuild -version
-   xcrun simctl list runtimes | grep -i ios
-   xcrun simctl list devices available | grep -i iphone | head
+   cd mobile && npm install && npm start      # http://localhost:8100
    ```
-   Si falta algo, decir exactamente qué paso de la sección anterior falta y parar.
-2. Compilar y abrir en el simulador:
-   ```bash
-   cd mobile
-   npx ng build && npx cap sync ios
-   npx cap run ios --list                # elegir un iPhone disponible
-   npx cap run ios --target <id>
-   ```
-   Alternativa si `cap run` falla: `xcodebuild -project ios/App/App.xcodeproj -scheme App -sdk iphonesimulator -destination 'platform=iOS Simulator,name=<iPhone>' -derivedDataPath ios/DerivedData build`, luego `xcrun simctl boot`, `xcrun simctl install booted ios/DerivedData/Build/Products/Debug-iphonesimulator/App.app` y `xcrun simctl launch booted cat.setena.app`.
-3. Verificar (capturas con `xcrun simctl io booted screenshot <ruta en el scratchpad>`):
-   - Inicio con la animación, X → Explorar carga los 32+ músicos de la API publicada (la primera petición puede tardar ~1 min si Render está dormido).
-   - Abrir una ficha y la hoja Compartir.
-   - Enlace: `xcrun simctl openurl booted setena://perfil/6b06bfc12a0d450b87e29105` abre la ficha de Alex Martín.
-4. Si algo falla, corregir, volver a probar, y hacer commit + push (con el trailer `Co-Authored-By` de siempre).
-5. Actualizar `docs/estado.md` (fila «4b · iOS» → ✅), `CLAUDE.md` (Estado) y borrar o archivar este archivo.
+   (Lanzar `npm start` en segundo plano y abrir el navegador con la URL.)
+2. Comprobar que la API responde: `curl -s -o /dev/null -w "%{http_code}\n" https://setena-api.onrender.com/`. Si Render está dormido, la primera petición tarda unos 40 s. Un 404 en `/` es normal.
+3. Preguntar qué cambios quiere en esta iteración y, si son nuevos, proponer un plan antes de implementar (regla de `CLAUDE.md`).
+4. Al terminar cada cambio, ejecutar las comprobaciones de `mobile/README.md` (`npm run test:unit`, `npm run eslint`, `npx ng build`), hacer commit + push y avisar de que en unos minutos se verá en el iPhone.
 
 ## A tener en cuenta
-- **CORS:** el origen de la app en iOS es `capacitor://localhost` y ya está permitido en la API (`render.yaml`, `CORS_ORIGINS`). En Android es `https://localhost` (añadido el 25/11).
-- **Android:** para regenerar la APK, `export JAVA_HOME=~/Library/Java/jdk-21/Contents/Home` y seguir `mobile/README.md` (sección Android). SDK en `~/Library/Android/sdk`.
-- **Secretos:** `backend/.env` (no está en git) guarda `MONGODB_URI` y `SEED_DEMO_PASSWORD`. Claude no muestra ni usa contraseñas; la persona del equipo inicia sesión con el usuario demo si hace falta.
-- **Reglas del proyecto:** textos del wireframe tal cual, solo modo oscuro, vídeos aplazados, registrar decisiones delegadas en `docs/producto.md`.
+- **CORS:** la API solo acepta `https://setena-app.onrender.com`, `http://localhost:8100`, `https://localhost` (Android), `capacitor://localhost` (iOS) y `http://localhost` (`render.yaml`, `CORS_ORIGINS`). Si se sirve la app en otro puerto o en una IP de red local, la API la rechaza.
+- **Enlace `setena://perfil/<id>`:** en el iPhone no funciona, porque solo abre la app instalada (Android o iOS nativo). Compartir funciona con el enlace público `/p/<id>`.
+- **Android:** para regenerar la APK hace falta JDK 21 y el SDK de Android en el ordenador nuevo (`mobile/README.md`, sección Android).
+- **Secretos:** nunca commitear `.env`. Claude no muestra ni usa contraseñas. Usuario demo: `alex.martin@example.com`, con la contraseña de `SEED_DEMO_PASSWORD`.
+- **Reglas del proyecto:** textos del wireframe tal cual, solo modo oscuro, vídeos aplazados, registrar las decisiones delegadas en `docs/producto.md`.
 
-## Después de iOS
-- Fase 5: instalar la APK (y probar en el simulador iOS) y medir los 4 criterios de `docs/producto.md`; si fallan el scroll o Atrás/teclado → plan B nativo.
+## Pendiente después
+- iOS en el simulador cuando haya Xcode (pasos en `mobile/README.md`).
+- Fase 5: medir los 4 criterios de `docs/producto.md` (APK en Android y web/iOS); si fallan el scroll o Atrás/teclado → plan B nativo.
 - Opcional: ID de cliente OAuth de Google para el botón de Google; vídeos cuando se pidan.
